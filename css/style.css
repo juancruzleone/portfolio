@@ -201,6 +201,7 @@ input[type="submit"] {
 
 .trabajos{
     margin-top: 60px;
+    display: flex;
 }
 
 
@@ -284,5 +285,27 @@ footer h3{
     padding: 20px;
     border-radius: 10px;
     margin: 10px;
+}
+
+.contenido-proyecto{
+    color: white;
+    padding-left: 50px;
+}
+
+.contenido-proyecto h3{
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.categoria-proyecto{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    background-color: #00f0ff;
+    color: black;
+    padding: 2px;
+    border-radius: 4px;
+    width: 100px;
+    text-align: center;
+    font-weight: 600;
 }
 
