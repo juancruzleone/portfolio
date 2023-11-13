@@ -1,0 +1,311 @@
+/*Probar padding 120px para el contenido (Diseño)*/
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: "montserrat", sans-serif;
+}
+
+.contenedorPortfolio{
+    padding: 120px;
+    padding-top: 0px;
+    /*background-image: linear-gradient(to right, #0f2027, #203a43, #2c5364)*/
+}
+
+body{
+    background-color: black;
+}
+
+.contenedor-portada{
+    padding: 60px; 
+    padding-top: 0px;
+    margin-top: 180px;
+}
+
+.contenedor-portada h1{
+    font-size: 70px;
+    border: 12px solid #00f0ff;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    color: white;
+    font-family: "montserrat", sans-serif;
+}
+
+.contenedor-portada p{
+    font-size: 28px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    color: white;
+    font-family: "montserrat", sans-serif;
+}
+
+
+nav{
+    padding: 60px;
+    padding-left: 30px;
+}
+
+nav ul{
+    display: flex;
+    justify-content: left;
+    list-style-type: none;
+}
+
+nav ul li{
+    list-style-type: none;
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: white;
+    font-family: "montserrat", sans-serif;
+    font-size: 24px;
+    margin-left: 30px;
+}
+
+nav ul li a:hover{
+    border: 5px solid #00f0ff;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+}
+
+#contenedor-flecha{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 160px;
+}
+
+#about-me{
+    margin-top: 80px;
+}
+
+#works{
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+#contact{
+    margin-top: 80px;
+}
+
+.contenedor-about-me{
+    display: flex;
+    padding: 60px;
+    padding-top: 0px;
+}
+
+h2{
+    color: white;
+    font-family: "montserrat", sans-serif;
+    font-size: 36px;
+    padding: 60px;
+    padding-bottom: 0px;
+    display: block;
+    margin-bottom: 20px;
+    text-decoration: underline 6px #00f0ff;
+}
+
+.texto-about-me{
+    font-size: 20px;
+    color: white;
+    font-family: "montserrat", sans-serif;
+}
+
+.boton-cv a{
+    background-color: #212121;
+    padding: 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+    margin-left: 28px;
+    font-weight: bolder;
+}
+
+.boton-cv a:hover{
+    border: 0px;
+    background-color: #00f0ff;
+    color: black;
+}
+
+.boton-contactame a{
+    font-family: "montserrat", sans-serif;
+    font-weight: bolder;
+    background-color: #212121;
+    padding: 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+    font-size: 22px;
+}
+
+.boton-contactame{
+    margin-top: 80px;
+    padding: 60px;
+    padding-top: 0px;
+}
+
+.boton-contactame a:hover {
+    background-color: #00f0ff;
+    color: black;
+  }
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: white;
+    margin-top: 15px;
+}
+
+label{
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+input{
+    height: 45px;
+}
+  
+input, textarea {
+    width: 50%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+  
+input[type="submit"] {
+    display: block;
+    background-color: #00f0ff;
+    color: #ffffff;
+    font-weight: bolder;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100px;
+}
+
+.contenedor-trabajos{
+    display: block;
+    justify-content: left;
+    padding: 60px;
+    padding-top: 0px;
+}
+
+.trabajos{
+    margin-top: 60px;
+    display: flex;
+}
+
+
+/*.trabajos{
+    height: 250px;
+    width: fit-content;
+}
+
+.trabajos img{
+    border-radius: 20px;
+    height: 250px;
+    margin-top: 50px;
+}
+*/
+
+#proyecto1{
+    margin-top: 35px;
+}
+
+#mensaje{
+    height: 120px;
+}
+
+.contenedor-contacto {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 80px; 
+}
+
+.formulario {
+    width: 700px; 
+}
+
+label {
+    display: block;
+    margin-left: 10px
+}
+  
+input {
+    width: 100%; 
+}
+
+footer{
+    background-color: #00f0ff;
+}
+
+footer h3{
+    display: block;
+    text-align: center;
+    font-size: 32px;
+}
+
+.titulo-contacto{
+    display: block;
+    text-align: center;
+}
+
+.formulario #boton-formulario{
+    margin: auto;
+    margin-top: 20px;
+}
+
+.header{
+    height: 768px;
+}
+
+.contenedor-skills, .caja-skills{
+    display: flex;
+    padding: 50px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.caja-skills{
+    background-color: #121212;
+    justify-content: center;
+    height: 100px;
+    width: 120px;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.contenido-proyecto{
+    color: white;
+    padding-left: 50px;
+}
+
+.contenido-proyecto h3{
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.categoria-proyecto{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    background-color: #00f0ff;
+    color: black;
+    padding: 2px;
+    border-radius: 4px;
+    width: 100px;
+    text-align: center;
+    font-weight: 600;
+}
+
