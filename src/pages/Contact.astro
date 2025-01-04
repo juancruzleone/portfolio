@@ -1,6 +1,16 @@
 ---
+import MainH2 from "../components/MainH2.astro"
+import Label from "../components/Label.astro"
+import Input from "../components/Input.astro"
+import Texarea from "../components/Textarea.astro"
 ---
 
-<section>
-    
+<section class="pl-6 mt-[60px]">
+    <MainH2 title="Contact"/>
+    <form action="" class="flex flex-col mt-2">
+        <Label label="Email"/>
+        <Input />
+        <Label label="Message"/>
+        <Texarea />
+    </form>
 </section>
