@@ -1,0 +1,48 @@
+---
+const skills = [
+  "Html", "Css", "Javascript", "Typescript", "Tailwind", "React", "NextJS",
+  "Vue", "Astro", "Node", "Express", "MongoDB", "PHP", "Laravel",
+  "Firebase", "MySQL", "Photoshop", "Illustrator", "Figma", "Git", "Github"
+];
+
+// Duplicate the skills array to create a seamless loop
+const loopedSkills = [...skills, ...skills];
+---
+
+<div class="skills-carousel-container overflow-hidden mt-4">
+  <div class="skills-carousel flex animate-scroll">
+    {loopedSkills.map((skill) => (
+      <div class="skill-item flex-shrink-0 bg-transparent border border-contenedor rounded text-center p-[4px] mr-[15px] w-[150px]">
+        <p class="text-white font-montserrat text-sm">{skill}</p>
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .skills-carousel-container {
+    width: 100%;
+  }
+
+  .skills-carousel {
+    display: flex;
+    width: max-content;
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-scroll {
+    animation: scroll 60s linear infinite;
+  }
+
+  .skill-item {
+    min-width: 150px;
+  }
+</style>
