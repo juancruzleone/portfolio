@@ -8,29 +8,43 @@
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>Juan Cruz Leone | Portfolio</title>
 	</head>
 	<body class="bg-principal">
 		<div class="max-w-[1000px] mx-auto mt-10 px-4">
 			<header>
 				<nav class="border border-contenedor bg-transparent rounded-md p-6 pl-4">
-					<ul class="flex justify-left flex-wrap">
-						<li>
-							<a href="#home" class="text-white font-montserrat font-medium text-xl m-6 hover:border-b-[4px] border-celeste ml-0">Home</a>
-						</li>
-						<li>
-							<a href="#about-me" class="text-white font-montserrat font-medium text-xl m-6 hover:border-b-[4px] border-celeste ml-0">About me</a>
-						</li>
-						<li>
-							<a href="#skills" class="text-white font-montserrat font-medium text-xl m-6 hover:border-b-[4px] border-celeste ml-0">Skills</a>
-						</li>
-						<li>
-							<a href="#projects" class="text-white font-montserrat font-medium text-xl m-6 hover:border-b-[4px] border-celeste ml-0">Projects</a>
-						</li>
-						<li>
-							<a href="#contact" class="text-white font-montserrat font-medium text-xl m-6 hover:border-b-[4px] border-celeste ml-0">Contact</a>
-						</li>
-					</ul>
+					<div class="flex justify-between items-center">
+						<ul class="flex justify-left flex-wrap">
+							<li>
+								<a href="#home" class="text-white font-montserrat font-medium text-base m-6 hover:border-b-[2px] border-celeste ml-0">Home</a>
+							</li>
+							<li>
+								<a href="#about-me" class="text-white font-montserrat font-medium text-base m-6 hover:border-b-[2px] border-celeste ml-0">About me</a>
+							</li>
+							<li>
+								<a href="#skills" class="text-white font-montserrat font-medium text-base m-6 hover:border-b-[2px] border-celeste ml-0">Skills</a>
+							</li>
+							<li>
+								<a href="#projects" class="text-white font-montserrat font-medium text-base m-6 hover:border-b-[2px] border-celeste ml-0">Projects</a>
+							</li>
+							<li>
+								<a href="#contact" class="text-white font-montserrat font-medium text-base m-6 hover:border-b-[2px] border-celeste ml-0">Contact</a>
+							</li>
+						</ul>
+						<div class="flex">
+							<div class="border border-contenedor rounded mr-4">
+								<a href="">
+									<img src="/src/assets/sol.svg" alt="Sol" width="30" height="30" class="p-1">
+								</a>
+							</div>
+							<div class="border border-contenedor rounded">
+								<a href="">
+									<img src="/src/assets/traductor.svg" alt="Traductor" width="30" height="30" class="p-1">
+								</a>
+							</div>
+						</div>
+					</div>
 				</nav>
 			</header>
 			<slot />
@@ -52,4 +66,3 @@
 		font-weight:300
 	}
 </style>
-
