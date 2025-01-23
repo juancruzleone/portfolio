@@ -1,0 +1,8 @@
+---
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<button type="submit" class="p-2 bg-white mb-10 font-monserrat font-light rounded mt-2">{t('contact.button')}</button>

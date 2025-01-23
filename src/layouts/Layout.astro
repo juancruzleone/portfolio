@@ -1,12 +1,17 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { ui, defaultLang } from '../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href="/logo-2.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Juan Cruz Leone | Portfolio</title>
 	</head>
@@ -17,31 +22,31 @@
 					<div class="flex justify-between items-center">
 						<ul class="flex justify-left flex-wrap">
 							<li>
-								<a href="#home" class="text-white font-montserrat font-medium text-base m-6 hover:border-b-[2px] border-celeste ml-0">Home</a>
+								<a href="#home" class="text-white font-montserrat font-medium text-base m-6 hover:border-b-[2px] border-celeste ml-0" data-i18n="nav.home">{t('nav.home')}</a>
 							</li>
 							<li>
-								<a href="#about-me" class="text-white font-montserrat font-medium text-base m-6 hover:border-b-[2px] border-celeste ml-0">About me</a>
+								<a href="#about-me" class="text-white font-montserrat font-medium text-base m-6 hover:border-b-[2px] border-celeste ml-0" data-i18n="nav.aboutme">{t('nav.aboutme')}</a>
 							</li>
 							<li>
-								<a href="#skills" class="text-white font-montserrat font-medium text-base m-6 hover:border-b-[2px] border-celeste ml-0">Skills</a>
+								<a href="#skills" class="text-white font-montserrat font-medium text-base m-6 hover:border-b-[2px] border-celeste ml-0" data-i18n="nav.skills">{t('nav.skills')}</a>
 							</li>
 							<li>
-								<a href="#projects" class="text-white font-montserrat font-medium text-base m-6 hover:border-b-[2px] border-celeste ml-0">Projects</a>
+								<a href="#projects" class="text-white font-montserrat font-medium text-base m-6 hover:border-b-[2px] border-celeste ml-0" data-i18n="nav.projects">{t('nav.projects')}</a>
 							</li>
 							<li>
-								<a href="#contact" class="text-white font-montserrat font-medium text-base m-6 hover:border-b-[2px] border-celeste ml-0">Contact</a>
+								<a href="#contact" class="text-white font-montserrat font-medium text-base m-6 hover:border-b-[2px] border-celeste ml-0" data-i18n="nav.contact">{t('nav.contact')}</a>
 							</li>
 						</ul>
 						<div class="flex">
 							<div class="border border-contenedor rounded mr-4">
 								<a href="">
-									<img src="/src/assets/sol.svg" alt="Sol" width="30" height="30" class="p-1">
+									<img src="/src/assets/sol.svg" alt="Sol" width="30" height="30" class="p-2">
 								</a>
 							</div>
 							<div class="border border-contenedor rounded">
-								<a href="">
-									<img src="/src/assets/traductor.svg" alt="Traductor" width="30" height="30" class="p-1">
-								</a>
+								<button id="langSwitch">
+									<img src="/src/assets/traductor.svg" alt="Traductor" width="30" height="30" class="p-2 pb-0">
+								</button>
 							</div>
 						</div>
 					</div>
@@ -49,6 +54,34 @@
 			</header>
 			<slot />
 		</div>
+
+		<script>
+			import { ui, defaultLang } from '../i18n/ui';
+
+			let currentLang = localStorage.getItem('lang') || defaultLang;
+
+			function switchLanguage() {
+				currentLang = currentLang === 'en' ? 'es' : 'en';
+				localStorage.setItem('lang', currentLang);
+				updateContent();
+				window.location.reload(); // Recargar la página para actualizar todos los componentes
+			}
+
+			function updateContent() {
+				document.querySelectorAll('[data-i18n]').forEach(el => {
+					const key = el.getAttribute('data-i18n');
+					if (key) {
+						el.textContent = key.split('.').reduce((obj, k) => obj && obj[k], ui[currentLang]) || key;
+					}
+				});
+				document.documentElement.lang = currentLang;
+			}
+
+			document.getElementById('langSwitch').addEventListener('click', switchLanguage);
+
+			// Initial content update
+			updateContent();
+		</script>
 	</body>
 </html>
 

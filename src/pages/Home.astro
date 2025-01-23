@@ -1,12 +1,16 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section class="mt-16 pl-5">
     <div class="font-montserrat font-bold text-white relative">
         <div class="relative border-b-[8px] border-celeste absolute w-screen right-0">
-            <h1 class="inline-block text-[50px] leading-none mb-2">Juan Cruz Leone</h1>
+            <h1 class="inline-block text-[50px] leading-none mb-2">{t('home.name')}</h1>
         </div>
-        <p class="text-white font-montserrat text-[20px] font-semibold mt-4">Fullstack developer</p>
+        <p class="text-white font-montserrat text-[20px] font-semibold mt-4">{t('home.role')}</p>
     </div>
 </section>
 

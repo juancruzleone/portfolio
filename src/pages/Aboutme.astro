@@ -1,8 +1,16 @@
 ---
 import MainH2 from "../components/MainH2.astro"
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
+
+
 <section class="pl-6 mt-[100px]">
-    <MainH2 title="About me"/>
+    <MainH2 title={t('aboutme.title')}/>
+    <div class="mt-1">
+        <p class="font-montserrat text-white">{t('aboutme.description')}</p>
+    </div>
 </section>

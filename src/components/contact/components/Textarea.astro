@@ -1,0 +1,8 @@
+---
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<textarea name="message" id="" placeholder={t('contact.textareaMessage')} class="font-montserrat p-2 rounded border border-contenedor bg-transparent text-white"></textarea>

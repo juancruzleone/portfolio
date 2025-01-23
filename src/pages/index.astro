@@ -5,6 +5,10 @@ import AboutMe from './Aboutme.astro'
 import Skills from './Skills.astro'
 import Projects from './Projects.astro'
 import Contact from './Contact.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <Layout>
