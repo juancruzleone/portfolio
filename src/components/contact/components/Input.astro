@@ -1,9 +1,2 @@
----
-import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
-
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
----
-
-<input type="text" placeholder={t('contact.inputEmail')} class="p-2 rounded border border-contenedor bg-transparent text-white">
+<input type="text" data-i18n-placeholder="contact.inputEmail" class="p-2 rounded border border-contenedor bg-transparent text-white">
 

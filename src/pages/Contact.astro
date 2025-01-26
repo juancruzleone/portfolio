@@ -6,20 +6,16 @@ import Textarea from "../components/contact/components/Textarea.astro"
 import ButtonContact from "../components/contact/components/buttonContact.astro"
 import SvgLinkedin from "../components/SvgLinkedin.astro"
 import SvgGithub from "../components/SvgGithub.astro"
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
-
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
 ---
 
 <section class="pl-6 mt-[60px]">
-    <MainH2 title={t('contact.title')}/>
+    <MainH2 title="contact.title" />
     <div class="flex">
         <div class="w-[750px]">
             <form action="" class="flex flex-col">
-                <Label label={t('contact.email')}/>
+                <Label label="contact.email" />
                 <Input />
-                <Label label={t('contact.message')}/>
+                <Label label="contact.message" />
                 <Textarea />
                 <ButtonContact />
             </form>

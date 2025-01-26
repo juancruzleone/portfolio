@@ -1,13 +1,10 @@
 ---
-import MainH2 from "../components/MainH2.astro"
+import MainH2 from "../components/MainH2.astro";
 import Skill from "../components/skills/components/boxSkills.astro";
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
-
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
 ---
 
 <section class="pl-6 mt-[60px]">
-    <MainH2 title={t('skills.title')} />
+    <MainH2 title="skills.title" />
     <Skill />
 </section>
+

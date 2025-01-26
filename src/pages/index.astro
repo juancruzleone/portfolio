@@ -1,9 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Home from './Home.astro';
-import AboutMe from './Aboutme.astro'
-import Skills from './Skills.astro'
-import Projects from './Projects.astro'
+import AboutMe from './Aboutme.astro';
+import Skills from './Skills.astro';
+import Projects from './Projects.astro';
 import Contact from './Contact.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
@@ -12,10 +12,40 @@ const t = useTranslations(lang);
 ---
 
 <Layout>
-	<Home />
-	<AboutMe />
-	<Skills />
-	<Projects />
-	<Contact />
+	<Home t={t} />
+	<AboutMe t={t} />
+	<Skills t={t} />
+	<Projects t={t} />
+	<Contact t={t} />
 </Layout>
 
+<script>
+	import { ui, defaultLang } from '../i18n/ui';
+
+	function updateComponentContent() {
+		const lang = localStorage.getItem('lang') || defaultLang;
+		document.querySelectorAll('[data-i18n]').forEach(el => {
+			const key = el.getAttribute('data-i18n');
+			if (key) {
+				el.textContent = key.split('.').reduce((obj, k) => obj && obj[k], ui[lang]) || key;
+			}
+		});
+		document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+			const key = el.getAttribute('data-i18n-placeholder');
+			if (key) {
+				el.setAttribute('placeholder', key.split('.').reduce((obj, k) => obj && obj[k], ui[lang]) || key);
+			}
+		});
+	}
+
+	// Initial update
+	document.addEventListener('DOMContentLoaded', () => {
+		if (!localStorage.getItem('lang')) {
+			localStorage.setItem('lang', defaultLang);
+		}
+		updateComponentContent();
+	});
+
+	// Listen for language changes
+	window.addEventListener('languagechange', updateComponentContent);
+</script>

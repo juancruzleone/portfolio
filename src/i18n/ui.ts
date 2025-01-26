@@ -30,7 +30,13 @@ export const ui = {
       title: "Projects",
       titleInelar: "Inelar | Redesign of web",
       description:
-        "To approve my thesis, redesign the inelar website and optimize the services provided through an admin panel",
+        "To approve my thesis, I redesigned the Inelar website and optimized the services provided through an admin panel",
+      tech: {
+        nextjs: "NextJs",
+        nodejs: "NodeJs",
+        expressjs: "ExpressJs",
+        mongodb: "MongoDB",
+      },
     },
     nav: {
       home: "Home",
@@ -57,18 +63,24 @@ export const ui = {
       title: "Habilidades",
     },
     aboutme: {
-      title: "Sobre mi",
+      title: "Sobre mí",
       description: "",
     },
     projects: {
       title: "Proyectos",
       titleInelar: "Inelar | Rediseño de la web",
       description:
-        "Para probar mi tesis, rediseñe el sitio web de inelar y optimizé los servicios prestados a través de un panel de administración",
+        "Para aprobar mi tesis, rediseñé el sitio web de Inelar y optimicé los servicios prestados a través de un panel de administración",
+      tech: {
+        nextjs: "NextJs",
+        nodejs: "NodeJs",
+        expressjs: "ExpressJs",
+        mongodb: "MongoDB",
+      },
     },
     nav: {
       home: "Inicio",
-      aboutme: "Sobre mi",
+      aboutme: "Sobre mí",
       skills: "Habilidades",
       projects: "Proyectos",
       contact: "Contacto",

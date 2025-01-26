@@ -2,19 +2,13 @@
 import MainH3 from "../../../components/MainH3.astro"
 import SvgUrl from "./SvgUrl.astro";
 import SvgGithub from "../../../components/projects/components/SvgGithub.astro";
-import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
-
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
 ---
 
 <div class="flex mt-4">
     <img src="/src/assets/frontInelar.svg" alt="" class="w-[500px] h-[180px] rounded">
     <div class="ml-4">
-        <MainH3 title={t('projects.titleInelar')} />
-        <p class="font-montserrat text-white text-normal text-sm mt-2">
-            {t('projects.description')} 
-        </p>
+        <MainH3 title="projects.titleInelar" />
+        <p class="font-montserrat text-white text-normal text-sm mt-2" data-i18n="projects.description"></p>
         <div class="flex mt-2">
             <div class="border border-contenedor rounded text-center mr-[15px] w-[80px] p-1">
                 <p class="text-white font-montserrat text-xs">NextJs</p>

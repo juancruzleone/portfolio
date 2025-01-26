@@ -1,16 +1,10 @@
 ---
-import MainH2 from "../components/MainH2.astro"
-import MainH3 from "../components/MainH3.astro"
-import SvgGithub from "../components/projects/components/SvgGithub.astro";
-import ProjectInelar from "../components/projects/components/ProjectInelar.astro"
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
-
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+import MainH2 from "../components/MainH2.astro";
+import ProjectInelar from "../components/projects/components/ProjectInelar.astro";
 ---
 
 <section class="pl-6 mt-[60px]">
-    <MainH2 title={t('projects.title')} />
+    <MainH2 title="projects.title" />
     <div>
         <ProjectInelar />
     </div>

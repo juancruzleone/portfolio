@@ -1,9 +1,8 @@
 ---
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
-import { ui, defaultLang } from '../i18n/ui';
+import { defaultLang } from '../i18n/ui';
 
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+
+const lang = Astro.cookies.get('lang')?.value || defaultLang;
 ---
 
 <!doctype html>
@@ -22,19 +21,19 @@ const t = useTranslations(lang);
 					<div class="flex justify-between items-center">
 						<ul class="flex justify-left flex-wrap">
 							<li>
-								<a href="#home" class="text-white font-montserrat font-medium text-base m-6 hover:border-b-[2px] border-celeste ml-0" data-i18n="nav.home">{t('nav.home')}</a>
+								<a href="#home" class="text-white font-montserrat font-medium text-base m-6 hover:border-b-[2px] border-celeste ml-0" data-i18n="nav.home"></a>
 							</li>
 							<li>
-								<a href="#about-me" class="text-white font-montserrat font-medium text-base m-6 hover:border-b-[2px] border-celeste ml-0" data-i18n="nav.aboutme">{t('nav.aboutme')}</a>
+								<a href="#about-me" class="text-white font-montserrat font-medium text-base m-6 hover:border-b-[2px] border-celeste ml-0" data-i18n="nav.aboutme"></a>
 							</li>
 							<li>
-								<a href="#skills" class="text-white font-montserrat font-medium text-base m-6 hover:border-b-[2px] border-celeste ml-0" data-i18n="nav.skills">{t('nav.skills')}</a>
+								<a href="#skills" class="text-white font-montserrat font-medium text-base m-6 hover:border-b-[2px] border-celeste ml-0" data-i18n="nav.skills"></a>
 							</li>
 							<li>
-								<a href="#projects" class="text-white font-montserrat font-medium text-base m-6 hover:border-b-[2px] border-celeste ml-0" data-i18n="nav.projects">{t('nav.projects')}</a>
+								<a href="#projects" class="text-white font-montserrat font-medium text-base m-6 hover:border-b-[2px] border-celeste ml-0" data-i18n="nav.projects"></a>
 							</li>
 							<li>
-								<a href="#contact" class="text-white font-montserrat font-medium text-base m-6 hover:border-b-[2px] border-celeste ml-0" data-i18n="nav.contact">{t('nav.contact')}</a>
+								<a href="#contact" class="text-white font-montserrat font-medium text-base m-6 hover:border-b-[2px] border-celeste ml-0" data-i18n="nav.contact"></a>
 							</li>
 						</ul>
 						<div class="flex">
@@ -58,13 +57,12 @@ const t = useTranslations(lang);
 		<script>
 			import { ui, defaultLang } from '../i18n/ui';
 
-			let currentLang = localStorage.getItem('lang') || defaultLang;
+			let currentLang = localStorage.getItem('lang') || '${lang}';
 
 			function switchLanguage() {
 				currentLang = currentLang === 'en' ? 'es' : 'en';
 				localStorage.setItem('lang', currentLang);
 				updateContent();
-				window.location.reload(); // Recargar la página para actualizar todos los componentes
 			}
 
 			function updateContent() {
@@ -74,13 +72,23 @@ const t = useTranslations(lang);
 						el.textContent = key.split('.').reduce((obj, k) => obj && obj[k], ui[currentLang]) || key;
 					}
 				});
+				document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+					const key = el.getAttribute('data-i18n-placeholder');
+					if (key) {
+						el.setAttribute('placeholder', key.split('.').reduce((obj, k) => obj && obj[k], ui[currentLang]) || key);
+					}
+				});
 				document.documentElement.lang = currentLang;
+				
+				// Dispatch a custom event to notify components of language change
+				window.dispatchEvent(new CustomEvent('languagechange', { detail: { lang: currentLang } }));
 			}
 
 			document.getElementById('langSwitch').addEventListener('click', switchLanguage);
 
 			// Initial content update
-			updateContent();
+			localStorage.setItem('lang', currentLang);
+			document.addEventListener('DOMContentLoaded', updateContent);
 		</script>
 	</body>
 </html>
@@ -99,3 +107,4 @@ const t = useTranslations(lang);
 		font-weight:300
 	}
 </style>
+
