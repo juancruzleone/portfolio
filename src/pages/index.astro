@@ -1,4 +1,6 @@
 ---
+export const prerender = false;
+
 import Layout from '../layouts/Layout.astro';
 import Home from './Home.astro';
 import AboutMe from './Aboutme.astro';
@@ -6,8 +8,9 @@ import Skills from './Skills.astro';
 import Projects from './Projects.astro';
 import Contact from './Contact.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { defaultLang } from '../i18n/ui';
 
-const lang = getLangFromUrl(Astro.url);
+const lang = getLangFromUrl(Astro.url, Astro.request);
 const t = useTranslations(lang);
 ---
 

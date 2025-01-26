@@ -1,7 +1,6 @@
 ---
 import { defaultLang } from '../i18n/ui';
 
-
 const lang = Astro.cookies.get('lang')?.value || defaultLang;
 ---
 
@@ -14,10 +13,10 @@ const lang = Astro.cookies.get('lang')?.value || defaultLang;
 		<meta name="generator" content={Astro.generator} />
 		<title>Juan Cruz Leone | Portfolio</title>
 	</head>
-	<body class="bg-principal">
+	<body class="bg-principal-light dark:bg-principal transition-colors duration-300">
 		<div class="max-w-[1000px] mx-auto mt-10 px-4">
-			<header>
-				<nav class="border border-contenedor bg-transparent rounded-md p-6 pl-4">
+			<header class="sticky top-0 z-50">
+				<nav class="border border-contenedor bg-black rounded-md p-6 pl-4">
 					<div class="flex justify-between items-center">
 						<ul class="flex justify-left flex-wrap">
 							<li>
@@ -37,12 +36,12 @@ const lang = Astro.cookies.get('lang')?.value || defaultLang;
 							</li>
 						</ul>
 						<div class="flex">
-							<div class="border border-contenedor rounded mr-4">
-								<a href="">
-									<img src="/src/assets/sol.svg" alt="Sol" width="30" height="30" class="p-2">
-								</a>
+							<div class="border border-contenedor rounded mr-4 bg-black">
+								<button id="themeSwitch">
+									<img src="/src/assets/sol.svg" alt="Theme" width="30" height="30" class="p-2 pb-1" id="themeIcon">
+								</button>
 							</div>
-							<div class="border border-contenedor rounded">
+							<div class="border border-contenedor rounded  bg-black">
 								<button id="langSwitch">
 									<img src="/src/assets/traductor.svg" alt="Traductor" width="30" height="30" class="p-2 pb-0">
 								</button>
@@ -58,11 +57,18 @@ const lang = Astro.cookies.get('lang')?.value || defaultLang;
 			import { ui, defaultLang } from '../i18n/ui';
 
 			let currentLang = localStorage.getItem('lang') || '${lang}';
+			let currentTheme = localStorage.getItem('theme') || 'light';
 
 			function switchLanguage() {
 				currentLang = currentLang === 'en' ? 'es' : 'en';
 				localStorage.setItem('lang', currentLang);
 				updateContent();
+			}
+
+			function switchTheme() {
+				currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+				localStorage.setItem('theme', currentTheme);
+				updateTheme();
 			}
 
 			function updateContent() {
@@ -84,11 +90,26 @@ const lang = Astro.cookies.get('lang')?.value || defaultLang;
 				window.dispatchEvent(new CustomEvent('languagechange', { detail: { lang: currentLang } }));
 			}
 
-			document.getElementById('langSwitch').addEventListener('click', switchLanguage);
+			function updateTheme() {
+				if (currentTheme === 'dark') {
+					document.documentElement.classList.add('dark');
+					document.getElementById('themeIcon').src = '/src/assets/luna.svg';
+				} else {
+					document.documentElement.classList.remove('dark');
+					document.getElementById('themeIcon').src = '/src/assets/sol.svg';
+				}
+			}
 
-			// Initial content update
-			localStorage.setItem('lang', currentLang);
-			document.addEventListener('DOMContentLoaded', updateContent);
+			document.getElementById('langSwitch').addEventListener('click', switchLanguage);
+			document.getElementById('themeSwitch').addEventListener('click', switchTheme);
+
+			// Initial content and theme update
+			document.addEventListener('DOMContentLoaded', () => {
+				localStorage.setItem('lang', currentLang);
+				localStorage.setItem('theme', currentTheme);
+				updateContent();
+				updateTheme();
+			});
 		</script>
 	</body>
 </html>
