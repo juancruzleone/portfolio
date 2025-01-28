@@ -1,4 +1,5 @@
 ---
+// src/pages/index.astro
 export const prerender = false;
 
 import Layout from '../layouts/Layout.astro';
@@ -22,33 +23,44 @@ const t = useTranslations(lang);
 	<Contact t={t} />
 </Layout>
 
+<script is:inline>
+    // Set initial config BEFORE DOM loads
+    (function() {
+        // Dark mode
+        if(!localStorage.getItem('theme')) {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+        } else if(localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+        }
+        
+        // Language
+        if(!localStorage.getItem('lang')) {
+            localStorage.setItem('lang', 'es');
+        }
+    })();
+</script>
+
 <script>
-	import { ui, defaultLang } from '../i18n/ui';
+	import { ui } from '../i18n/ui';
 
 	function updateComponentContent() {
-		const lang = localStorage.getItem('lang') || defaultLang;
+		const lang = localStorage.getItem('lang') || 'es';
 		document.querySelectorAll('[data-i18n]').forEach(el => {
 			const key = el.getAttribute('data-i18n');
 			if (key) {
-				el.textContent = key.split('.').reduce((obj, k) => obj && obj[k], ui[lang]) || key;
+				el.textContent = key.split('.').reduce((obj, k) => obj?.[k], ui[lang]) || key;
 			}
 		});
 		document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
 			const key = el.getAttribute('data-i18n-placeholder');
 			if (key) {
-				el.setAttribute('placeholder', key.split('.').reduce((obj, k) => obj && obj[k], ui[lang]) || key);
+				el.setAttribute('placeholder', key.split('.').reduce((obj, k) => obj?.[k], ui[lang]) || key);
 			}
 		});
 	}
 
-	// Initial update
-	document.addEventListener('DOMContentLoaded', () => {
-		if (!localStorage.getItem('lang')) {
-			localStorage.setItem('lang', defaultLang);
-		}
-		updateComponentContent();
-	});
-
-	// Listen for language changes
+	// Execute immediately after script load
+	updateComponentContent();
 	window.addEventListener('languagechange', updateComponentContent);
 </script>

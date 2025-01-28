@@ -1,2 +1,15 @@
-<textarea name="message" id="" data-i18n-placeholder="contact.textareaMessage" class="font-montserrat p-2 rounded border border-contenedor bg-transparent text-white"></textarea>
+---
+interface Props {
+    name: string;
+    required?: boolean;
+}
 
+const { name, required } = Astro.props;
+---
+
+<textarea 
+    name={name}
+    required={required}
+    data-i18n-placeholder="contact.textareaMessage" 
+    class="p-2 rounded border border-contenedor bg-transparent text-black dark:text-white h-32"
+></textarea>

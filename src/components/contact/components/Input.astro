@@ -1,2 +1,16 @@
-<input type="text" data-i18n-placeholder="contact.inputEmail" class="p-2 rounded border border-contenedor bg-transparent text-white">
+---
+interface Props {
+    name: string;
+    required?: boolean;
+}
 
+const { name, required } = Astro.props;
+---
+
+<input 
+    type="email" 
+    name={name}
+    required={required}
+    data-i18n-placeholder="contact.inputEmail" 
+    class="p-2 rounded border border-contenedor bg-transparent text-black dark:text-white"
+>

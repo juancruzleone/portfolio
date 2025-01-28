@@ -45,6 +45,11 @@ export const ui = {
       projects: "Projects",
       contact: "Contact",
     },
+    modal: {
+      title: "",
+      message: "Message sent successfully",
+      close: "Close"
+    }
   },
   es: {
     home: {
@@ -85,6 +90,10 @@ export const ui = {
       projects: "Proyectos",
       contact: "Contacto",
     },
+    modal: {
+      title: "",
+      message: "Mensaje enviado correctamente",
+      close: "Cerrar"
+    }
   },
 } as const
-

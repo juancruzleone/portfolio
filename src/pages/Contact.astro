@@ -1,4 +1,5 @@
 ---
+// Contact.astro (modificado)
 import MainH2 from "../components/MainH2.astro"
 import Label from "../components/contact/components/Label.astro"
 import Input from "../components/contact/components/Input.astro"
@@ -6,20 +7,33 @@ import Textarea from "../components/contact/components/Textarea.astro"
 import ButtonContact from "../components/contact/components/buttonContact.astro"
 import SvgLinkedin from "../components/SvgLinkedin.astro"
 import SvgGithub from "../components/SvgGithub.astro"
+import Modal from "../components/contact/components/Modal.astro"
 ---
 
 <section class="pl-6 mt-[60px]" id="contact">
     <MainH2 title="contact.title" />
     <div class="flex">
         <div class="w-[750px]">
-            <form action="" class="flex flex-col">
+            <form 
+                action="https://formsubmit.co/juancruzleone10@gmail.com" 
+                method="POST"
+                enctype="multipart/form-data"
+                class="flex flex-col"
+                id="contactForm"
+            >
+                <input type="hidden" name="_next" value="{Astro.url.origin + Astro.url.pathname}#contact">
+                <input type="hidden" name="_captcha" value="false">
+                
                 <Label label="contact.email" />
-                <Input />
+                <Input name="email" required />
+                
                 <Label label="contact.message" />
-                <Textarea />
+                <Textarea name="message" required />
+                
                 <ButtonContact />
             </form>
         </div>
+        
         <div>
             <div class="bg-black p-2 rounded cursor-pointer mt-[30px] ml-[60px] border border-contenedor w-[48px]">
                 <SvgLinkedin />
@@ -29,5 +43,45 @@ import SvgGithub from "../components/SvgGithub.astro"
             </div>
         </div>
     </div>
+    
+    <!-- Modal sin directiva client:load -->
+    <Modal />
 </section>
 
+<script is:inline>
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('contactForm');
+    const modal = document.querySelector('.modal');
+    const closeButton = modal.querySelector('button');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        try {
+            const formData = new FormData(form);
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: formData
+            });
+
+            if (response.ok) {
+                modal.classList.remove('hidden');
+                form.reset();
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    });
+
+    closeButton.addEventListener('click', () => {
+        modal.classList.add('hidden');
+    });
+
+    // Cerrar modal al hacer clic fuera
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.add('hidden');
+        }
+    });
+});
+</script>
