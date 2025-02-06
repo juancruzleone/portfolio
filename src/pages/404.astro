@@ -1,6 +1,12 @@
 ---
+import Layout from "../layouts/Layout404.astro"
+import MainH1 from "../components/MainH1.astro"
 ---
 
-<section>
-    
-<section>
+<Layout>
+    <section class="text-center mt-40">
+        <MainH1 title="Error 404" />
+        <p data-i18n="404.error" class="text-black dark:text-white text-xl mb-10"></p>
+        <a href="/" data-i18n="404.buttonHome" class="border border-black dark:border-white rounded p-1 text-black dark:text-white"></a>
+    <section>
+  

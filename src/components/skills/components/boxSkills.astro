@@ -12,8 +12,8 @@ const loopedSkills = [...skills, ...skills];
 <div class="skills-carousel-container overflow-hidden mt-4">
   <div class="skills-carousel flex animate-scroll">
     {loopedSkills.map((skill) => (
-      <div class="skill-item flex-shrink-0 bg-black border border-contenedor rounded text-center p-[4px] mr-[15px] w-[150px]">
-        <p class="text-white font-montserrat text-sm">{skill}</p>
+      <div class="skill-item flex-shrink-0 dark:bg-transparent border border-black dark:border-white rounded text-center p-[4px] mr-[15px] w-[150px]">
+        <p class="text-black dark:text-white font-montserrat text-sm">{skill}</p>
       </div>
     ))}
   </div>

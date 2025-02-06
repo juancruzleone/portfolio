@@ -16,28 +16,8 @@ const lang = Astro.cookies.get('lang')?.value || defaultLang;
 	<body class="bg-principal-light dark:bg-principal transition-colors duration-300">
 		<div class="max-w-[1000px] mx-auto mt-10 px-4">
 			<header class="sticky top-0 z-50">
-				<nav class="border border-contenedor bg-black rounded-md p-6 pl-4">
+				<nav class="border border-contenedor bg-[#121212] rounded-md p-6 pl-4">
 					<div class="flex justify-between items-center">
-						<ul class="flex justify-left flex-wrap">
-							<li>
-								<a href="#home" class="text-white font-montserrat font-medium text-base m-6 hover:border-b-[2px] border-celeste ml-0" data-i18n="nav.home"></a>
-							</li>
-							<li>
-								<a href="#about-me" class="text-white font-montserrat font-medium text-base m-6 hover:border-b-[2px] border-celeste ml-0" data-i18n="nav.aboutme"></a>
-							</li>
-							<li>
-								<a href="#skills" class="text-white font-montserrat font-medium text-base m-6 hover:border-b-[2px] border-celeste ml-0" data-i18n="nav.skills"></a>
-							</li>
-							<li>
-								<a href="#projects" class="text-white font-montserrat font-medium text-base m-6 hover:border-b-[2px] border-celeste ml-0" data-i18n="nav.projects"></a>
-							</li>
-							<li>
-								<a href="#contact" class="text-white font-montserrat font-medium text-base m-6 hover:border-b-[2px] border-celeste ml-0" data-i18n="nav.contact"></a>
-							</li>
-							<li>
-								<a href="cv.pdf" target="_blank" rel="noopener noreferrer" class="text-white font-montserrat font-medium text-base m-6 ml-0 border border-black border-white p-1 rounded" data-i18n="nav.buttonCV"></a>
-							</li>							
-						</ul>
 						<div class="flex">
 							<div class="border border-contenedor rounded mr-4 bg-black">
 								<button id="themeSwitch">

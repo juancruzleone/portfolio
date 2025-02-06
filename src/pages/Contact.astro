@@ -1,5 +1,4 @@
 ---
-// Contact.astro (modificado)
 import MainH2 from "../components/MainH2.astro"
 import Label from "../components/contact/components/Label.astro"
 import Input from "../components/contact/components/Input.astro"
@@ -26,15 +25,13 @@ import Modal from "../components/contact/components/Modal.astro"
                 
                 <Label label="contact.email" />
                 <Input name="email" required />
-                
                 <Label label="contact.message" />
-                <Textarea name="message" required />
-                
+                <Textarea name="message" required />     
                 <ButtonContact />
             </form>
         </div>
         
-        <div>
+        <div class="mt-[5px]">
             <div class="bg-black p-2 rounded cursor-pointer mt-[30px] ml-[60px] border border-contenedor w-[48px]">
                 <SvgLinkedin />
             </div>

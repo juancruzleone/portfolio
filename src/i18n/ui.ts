@@ -10,6 +10,7 @@ export const ui = {
     home: {
       name: "Juan Cruz Leone",
       role: "Fullstack developer",
+       buttonContact: "Contact me"
     },
     contact: {
       title: "Contact",
@@ -44,17 +45,23 @@ export const ui = {
       skills: "Skills",
       projects: "Projects",
       contact: "Contact",
+      buttonCV: "My CV"
     },
     modal: {
       title: "",
       message: "Message sent successfully",
       close: "Close"
+    },
+    404: {
+      error: "Page not found",
+      buttonHome: "Go to home"
     }
   },
   es: {
     home: {
       name: "Juan Cruz Leone",
       role: "Desarrollador Fullstack",
+      buttonContact: "Contáctame"
     },
     contact: {
       title: "Contacto",
@@ -89,11 +96,16 @@ export const ui = {
       skills: "Habilidades",
       projects: "Proyectos",
       contact: "Contacto",
+      buttonCV: "Mi CV"
     },
     modal: {
       title: "",
       message: "Mensaje enviado correctamente",
       close: "Cerrar"
+    },
+    404:{
+      error: "Página no encontrada",
+      buttonHome: "Ir al inicio"
     }
   },
 } as const
