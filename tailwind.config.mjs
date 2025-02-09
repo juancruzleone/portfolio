@@ -15,6 +15,7 @@ export default {
         contenedor: "#d9d9d9",
         celeste: "#00FFF6",
         light: "#003366",
+        lightBlue: "#0080FF",
       },
     },
   },

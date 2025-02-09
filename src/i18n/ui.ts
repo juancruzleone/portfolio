@@ -1,16 +1,16 @@
 export const languages = {
   en: "English",
   es: "Español",
-}
+};
 
-export const defaultLang = "en"
+export const defaultLang = "en";
 
 export const ui = {
   en: {
     home: {
       name: "Juan Cruz Leone",
-      role: "Fullstack developer",
-       buttonContact: "Contact me"
+      role: "Frontend developer",
+      buttonContact: "Contact me",
     },
     contact: {
       title: "Contact",
@@ -25,7 +25,8 @@ export const ui = {
     },
     aboutme: {
       title: "About me",
-      description: "",
+      description:
+        "I'm a Frontend Developer with backend knowledge. I studied Web Design and Development at Instituto Da Vinci, and I enjoy building intuitive and well-structured interfaces. I focus on writing clean code, optimizing performance, and improving the user experience.",
     },
     projects: {
       title: "Projects",
@@ -45,23 +46,23 @@ export const ui = {
       skills: "Skills",
       projects: "Projects",
       contact: "Contact",
-      buttonCV: "My CV"
+      buttonCV: "My CV",
     },
     modal: {
       title: "",
       message: "Message sent successfully",
-      close: "Close"
+      close: "Close",
     },
     404: {
       error: "Page not found",
-      buttonHome: "Go to home"
-    }
+      buttonHome: "Go to home",
+    },
   },
   es: {
     home: {
       name: "Juan Cruz Leone",
-      role: "Desarrollador Fullstack",
-      buttonContact: "Contáctame"
+      role: "Desarrollador frontend",
+      buttonContact: "Contáctame",
     },
     contact: {
       title: "Contacto",
@@ -76,7 +77,8 @@ export const ui = {
     },
     aboutme: {
       title: "Sobre mí",
-      description: "",
+      description:
+        "Soy Frontend Developer con conocimientos en backend. Estudié Diseño y Programación Web en el Instituto Da Vinci y me gusta crear interfaces intuitivas y bien estructuradas. Me enfoco en escribir código limpio, optimizar el rendimiento y mejorar la experiencia del usuario",
     },
     projects: {
       title: "Proyectos",
@@ -96,16 +98,17 @@ export const ui = {
       skills: "Habilidades",
       projects: "Proyectos",
       contact: "Contacto",
-      buttonCV: "Mi CV"
+      buttonCV: "Mi CV",
     },
     modal: {
       title: "",
       message: "Mensaje enviado correctamente",
-      close: "Cerrar"
+      close: "Cerrar",
     },
-    404:{
+    404: {
       error: "Página no encontrada",
-      buttonHome: "Ir al inicio"
-    }
+      buttonHome: "Ir al inicio",
+    },
   },
-} as const
+} as const;
+

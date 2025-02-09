@@ -4,10 +4,11 @@ import Label from "../components/contact/components/Label.astro"
 import Input from "../components/contact/components/Input.astro"
 import Textarea from "../components/contact/components/Textarea.astro"
 import ButtonContact from "../components/contact/components/buttonContact.astro"
+import SvgMail from "../../src/components/SvgMail.astro"
 import SvgLinkedin from "../components/SvgLinkedin.astro"
 import SvgGithub from "../components/SvgGithub.astro"
 import Modal from "../components/contact/components/Modal.astro"
----
+--- 
 
 <section class="pl-6 mt-[60px]" id="contact">
     <MainH2 title="contact.title" />
@@ -32,12 +33,15 @@ import Modal from "../components/contact/components/Modal.astro"
         </div>
         
         <div class="mt-[5px]">
-            <div class="bg-black p-2 rounded cursor-pointer mt-[30px] ml-[60px] border border-contenedor w-[48px]">
-                <SvgLinkedin />
-            </div>
-            <div class="bg-black p-2 rounded cursor-pointer mt-[28px] ml-[60px] border border-contenedor w-[48px]">
-                <SvgGithub />
-            </div>
+          <div class="hover:bg-[#2d2d2d] bg-black p-2 rounded cursor-pointer mt-[30px] ml-[60px] border border-contenedor w-[48px]">
+            <SvgMail />
+          </div>
+          <div class="hover:bg-[#2d2d2d] bg-black p-2 rounded cursor-pointer mt-[30px] ml-[60px] border border-contenedor w-[48px]">
+            <SvgLinkedin />
+          </div>
+          <div class="hover:bg-[#2d2d2d] bg-black p-2 rounded cursor-pointer mt-[28px] ml-[60px] border border-contenedor w-[48px]">
+            <SvgGithub />
+          </div>
         </div>
     </div>
     
