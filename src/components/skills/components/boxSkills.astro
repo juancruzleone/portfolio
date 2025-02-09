@@ -1,48 +1,48 @@
 ---
 const skills = [
-  "Html", "Css", "Javascript", "Typescript", "Tailwind", "React", "NextJS",
-  "Vue", "Astro", "Node", "Express", "MongoDB", "PHP", "Laravel",
-  "Firebase", "MySQL", "Photoshop", "Illustrator", "Figma", "Git", "Github"
+  { name: "Html", light: "/htmlLight.svg", dark: "/html5.svg" },
+  { name: "Css", light: "/cssLight.svg", dark: "/css_old.svg" },
+  { name: "Javascript", light: "/javascriptLight.svg", dark: "/javascript.svg" },
+  { name: "React", light: "/React_light.svg", dark: "/React_dark.svg" },
+  { name: "NextJs", light: "/nextLight.svg", dark: "/nextjs.svg" },
+  { name: "Vue", light: "/vueLight.svg", dark: "/vue.svg" },
+  { name: "Astro", light: "/Astro_light.svg", dark: "/Astro_dark.svg" },
+  { name: "Tailwind", light: "/tailwindcssLight.svg", dark: "/tailwindcss.svg" },
+  { name: "Node", light: "/nodejsLight.svg", dark: "/nodejs.svg" },
+  { name: "Express", light: "/Express.js_light.svg", dark: "/Express.js_dark.svg" },
+  { name: "Mongodb", light: "/mongodbLight.svg", dark: "/mongodb.svg" },
+  { name: "PHP", light: "/Php_light.svg", dark: "/Php_dark.svg" },
+  { name: "MySQL", light: "/mysqlLight.svg", dark: "/mysql.svg" },
+  { name: "Laravel", light: "/laravelLight.svg", dark: "/laravel.svg" },
+  { name: "Firebase", light: "/firebaseLight.svg", dark: "/firebase.svg" },
+  { name: "Git", light: "/GitDark.svg", dark: "/git.svg" },
+  { name: "Github", light: "/Github_light.svg", dark: "/Github_dark.svg" },
+  { name: "Photoshop", light: "/photoshopLight.svg", dark: "/photoshop.svg" },
+  { name: "Illustrator", light: "/IllustratorLight.svg", dark: "/illustrator.svg" },
+  { name: "Figma", light: "/figmaLight.svg", dark: "/figma.svg" },
 ];
+--- 
 
-// Duplicate the skills array to create a seamless loop
-const loopedSkills = [...skills, ...skills];
----
-
-<div class="skills-carousel-container overflow-hidden mt-4">
-  <div class="skills-carousel flex animate-scroll">
-    {loopedSkills.map((skill) => (
-      <div class="skill-item flex-shrink-0 dark:bg-transparent border border-black dark:border-white rounded text-center p-[4px] mr-[15px] w-[150px]">
-        <p class="text-black dark:text-white font-montserrat text-sm">{skill}</p>
-      </div>
-    ))}
-  </div>
+<div class="flex flex-wrap gap-2 mt-4">
+  {skills.map((skill) => (
+    <div
+      key={skill.name}
+      class="flex items-center rounded border dark:border-white border-black px-4 p-1"
+    >
+      <img
+        src={skill.light}
+        alt={skill.name}
+        class="w-6 h-6 mr-2 p-1 block dark:hidden"
+      />
+      <img
+        src={skill.dark}
+        alt={skill.name}
+        class="w-6 h-6 mr-2 p-1 hidden dark:block"
+      />
+      <p class="text-sm mt-1 text-[14px] dark:text-white text-black">
+        {skill.name}
+      </p>
+    </div>
+  ))}
 </div>
 
-<style>
-  .skills-carousel-container {
-    width: 100%;
-  }
-
-  .skills-carousel {
-    display: flex;
-    width: max-content;
-  }
-
-  @keyframes scroll {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
-  }
-
-  .animate-scroll {
-    animation: scroll 60s linear infinite;
-  }
-
-  .skill-item {
-    min-width: 150px;
-  }
-</style>

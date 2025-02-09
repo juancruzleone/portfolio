@@ -62,7 +62,7 @@ export const ui = {
     home: {
       name: "Juan Cruz Leone",
       role: "Desarrollador frontend",
-      buttonContact: "Contáctame",
+      buttonContact: "Contactame",
     },
     contact: {
       title: "Contacto",
@@ -111,4 +111,3 @@ export const ui = {
     },
   },
 } as const;
-
