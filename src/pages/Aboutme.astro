@@ -4,11 +4,12 @@ import MainH2 from "../components/MainH2.astro"
 
 <section class="pl-6 mt-[200px]" id="about-me">
     <MainH2 title="aboutme.title" />
-    <div class="mt-1">
-      <div>
-        <p class="font-montserrat text-black dark:text-white" data-i18n="aboutme.description"></p>
+    <div class="mt-2 flex flex-col md:flex-row items-center md:items-start gap-8">
+      <div class="flex-1">
+        <p class="font-montserrat text-black dark:text-white text-ls leading-relaxed" data-i18n="aboutme.description"></p>
       </div>
-      <img src="" alt="" />
+      <div class="flex-shrink-0">
+        <img src="/aboutme2.jpg" alt="Juan Cruz Leone en Mendoza" class="w-64 h-64 rounded-lg object-cover shadow-lg">
+      </div>
     </div>
 </section>
-
