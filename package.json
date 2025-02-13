@@ -9,6 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^12.2.1",
     "@astrojs/node": "^9.0.2",
     "@astrojs/tailwind": "^5.1.5",
     "@astrojs/vercel": "^8.0.4",
