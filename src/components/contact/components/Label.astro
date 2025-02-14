@@ -1,10 +1,10 @@
 ---
-interface Props {
-    label: string;
-    inputId: string;
+interface props {
+    label: string
 }
 
-const { label, inputId } = Astro.props;
+const { label } = Astro.props
 ---
 
-<label for={inputId} class="text-black dark:text-white font-montserrat text-[18px] mt-[10px]" data-i18n={label}></label>
+<label for="" class="text-black dark:text-white font-montserrat text-[18px] mt-[10px]" data-i18n={label}></label>
+
