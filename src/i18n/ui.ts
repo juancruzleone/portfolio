@@ -79,7 +79,7 @@ export const ui = {
     aboutme: {
       title: "Sobre mí",
       description:
-        "Soy Frontend Developer con conocimientos en backend. Estudié Diseño y Programación Web en el Instituto Da Vinci y me gusta crear interfaces intuitivas y bien estructuradas. Me enfoco en escribir código limpio, optimizar el rendimiento y mejorar la experiencia del usuario",
+        "Soy Desarrollador frontend con conocimientos en backend. Estudié Diseño y Programación Web en el Instituto Da Vinci y me gusta crear interfaces intuitivas y bien estructuradas. Me enfoco en escribir código limpio, optimizar el rendimiento y mejorar la experiencia del usuario",
     },
     projects: {
       title: "Proyectos",
