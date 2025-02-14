@@ -2,13 +2,18 @@
 import MainH3 from "../../../components/MainH3.astro";
 import SvgUrl from "./SvgUrl.astro";
 import SvgGithub from "../../../components/projects/components/SvgGithub.astro";
+import { ui, defaultLang } from '../../../i18n/ui';
+
+const lang = Astro.cookies.get('lang')?.value || defaultLang;
 ---
 
 <div class="mt-4 rounded">
     <div class="flex flex-col md:flex-row">
         <img
             src="/frontInelar.svg"
-            alt=""
+            alt={lang === 'es' ? "Imagen del proyecto Front Inelar" : "Image of the Front Inelar project"}
+            width="500"
+            height="auto"
             class="w-full h-auto md:w-[50%] rounded object-fit object-contain"
         />
 
