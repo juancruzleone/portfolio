@@ -28,6 +28,37 @@ const lang = Astro.cookies.get('lang')?.value || defaultLang;
     <link rel="icon" type="image/svg+xml" href="/logo-3.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>Juan Cruz Leone | Portfolio</title>
+
+    <!-- Estilos iniciales para evitar el parpadeo -->
+    <style>
+        :root {
+            --bg-principal-light: #ffffff; /* Color para light theme */
+            --bg-principal-dark: #121212; /* Color para dark theme */
+        }
+
+        body {
+            background-color: var(--bg-principal-dark); /* Fondo oscuro por defecto */
+        }
+
+        .light body {
+            background-color: var(--bg-principal-light); /* Fondo claro si el tema es light */
+        }
+    </style>
+
+    <!-- Script para aplicar el tema antes de que el DOM se cargue -->
+    <script is:inline>
+        (function() {
+            // Obtener el tema guardado en localStorage o usar 'dark' como predeterminado
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            // Aplicar el tema al elemento <html>
+            if (savedTheme === 'dark') {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+                document.documentElement.classList.add('light');
+            }
+        })();
+    </script>
 </head>
 <body class="bg-principal-light dark:bg-principal transition-colors duration-300">
     <div class="max-w-[1000px] mx-auto mt-10 px-4">
@@ -65,7 +96,7 @@ const lang = Astro.cookies.get('lang')?.value || defaultLang;
         import { ui, defaultLang } from '../i18n/ui';
 
         let currentLang = localStorage.getItem('lang') || '${lang}';
-        let currentTheme = localStorage.getItem('theme') || 'light';
+        let currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
 
         function switchLanguage() {
             currentLang = currentLang === 'en' ? 'es' : 'en';
@@ -102,9 +133,11 @@ const lang = Astro.cookies.get('lang')?.value || defaultLang;
         function updateTheme() {
             if (currentTheme === 'dark') {
                 document.documentElement.classList.add('dark');
+                document.documentElement.classList.remove('light');
                 document.getElementById('themeIcon').src = '/luna.svg';
             } else {
                 document.documentElement.classList.remove('dark');
+                document.documentElement.classList.add('light');
                 document.getElementById('themeIcon').src = '/sol.svg';
             }
         }

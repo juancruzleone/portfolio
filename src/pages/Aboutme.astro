@@ -1,5 +1,8 @@
 ---
-import MainH2 from "../components/MainH2.astro"
+import MainH2 from "../components/MainH2.astro";
+import { ui, defaultLang } from '../i18n/ui';
+
+const lang = Astro.cookies.get('lang')?.value || 'es';
 ---
 
 <section class="pl-6 mt-[200px]" id="about-me">
@@ -9,7 +12,11 @@ import MainH2 from "../components/MainH2.astro"
         <p class="font-montserrat text-black dark:text-white text-ls leading-relaxed" data-i18n="aboutme.description"></p>
       </div>
       <div class="flex-shrink-0">
-        <img src="/aboutme.avif" alt="Juan Cruz Leone en Mendoza" class="w-64 h-64 rounded-lg object-cover shadow-lg">
+        <img 
+          src="/aboutme.avif" 
+          alt={lang === 'es' ? "Juan Cruz Leone en Mendoza" : "Juan Cruz Leone in Mendoza"} 
+          class="w-64 h-64 rounded-lg object-cover shadow-lg"
+        >
       </div>
     </div>
 </section>
