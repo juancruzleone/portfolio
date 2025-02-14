@@ -1,6 +1,10 @@
 ---
+import { ui, defaultLang } from '../../../i18n/ui';
+
+const lang = Astro.cookies.get('lang')?.value || defaultLang;
 ---
-<a href="https://inelar.vercel.app/" target="_blank">
+
+<a href="https://inelar.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label={lang === 'es' ? 'Abrir proyecto Inelar' : 'Open Inelar project'}>
   <svg 
     xmlns="http://www.w3.org/2000/svg" 
     viewBox="0 0 192 192" 
@@ -15,4 +19,3 @@
     ></path>
   </svg>
 </a>
-

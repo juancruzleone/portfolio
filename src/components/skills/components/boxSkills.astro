@@ -21,7 +21,7 @@ const skills = [
   { name: "Illustrator", light: "/IllustratorLight.svg", dark: "/illustrator.svg" },
   { name: "Figma", light: "/figmaLight.svg", dark: "/figma.svg" },
 ];
---- 
+---
 
 <div class="flex flex-wrap gap-2 mt-4">
   {skills.map((skill) => (
@@ -31,12 +31,12 @@ const skills = [
     >
       <img
         src={skill.light}
-        alt={skill.name}
+        alt={`${skill.name} logo in light mode`}
         class="w-6 h-6 mr-2 p-1 block dark:hidden"
       />
       <img
         src={skill.dark}
-        alt={skill.name}
+        alt={`${skill.name} logo in dark mode`}
         class="w-6 h-6 mr-2 p-1 hidden dark:block"
       />
       <p class="text-sm mt-1 text-[14px] dark:text-white text-black">
@@ -45,4 +45,3 @@ const skills = [
     </div>
   ))}
 </div>
-

@@ -47,6 +47,7 @@ export const ui = {
       projects: "Projects",
       contact: "Contact",
       buttonCV: "My CV",
+      navMenu: "Open navigation menu"
     },
     modal: {
       title: "",
@@ -99,6 +100,7 @@ export const ui = {
       projects: "Proyectos",
       contact: "Contacto",
       buttonCV: "Mi CV",
+      navMenu: "Abrir menú de navegación"
     },
     modal: {
       title: "",
