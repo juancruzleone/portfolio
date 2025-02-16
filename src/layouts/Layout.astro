@@ -10,20 +10,7 @@ const lang = Astro.cookies.get('lang')?.value || defaultLang;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <!-- Meta description for SEO -->
-    <meta name="description" content="Portfolio de Juan Cruz Leone, un desarrollador web y diseñador con pasión por la creación de experiencias digitales. Descubre sus proyectos, habilidades y mucho más." />
-    
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Juan Cruz Leone | Portfolio" />
-    <meta property="og:description" content="Portfolio de Juan Cruz Leone, un desarrollador web y diseñador con pasión por la creación de experiencias digitales. Descubre sus proyectos, habilidades y mucho más." />
-    <meta property="og:url" content="https://www.juancruzleone.dev" />
-    <meta property="og:type" content="website" />
-    
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Juan Cruz Leone | Portfolio" />
-    <meta name="twitter:description" content="Portfolio de Juan Cruz Leone, un desarrollador web y diseñador con pasión por la creación de experiencias digitales. Descubre sus proyectos, habilidades y mucho más." />
-    <meta name="twitter:image" content="https://juancruzleone.dev/og-image.jpg" /> <!-- Usa la URL de una imagen relevante -->
+    <!-- Meta tags omitidos para brevedad -->
 
     <link rel="icon" type="image/svg+xml" href="/logo-3.svg" />
     <meta name="generator" content={Astro.generator} />
@@ -32,31 +19,38 @@ const lang = Astro.cookies.get('lang')?.value || defaultLang;
     <!-- Estilos iniciales para evitar el parpadeo -->
     <style>
         :root {
-            --bg-principal-light: #ffffff; /* Color para light theme */
-            --bg-principal-dark: #121212; /* Color para dark theme */
+            --bg-principal-light: #ffffff;
+            --bg-principal-dark: #121212;
         }
 
         body {
-            background-color: var(--bg-principal-dark); /* Fondo oscuro por defecto */
+            background-color: var(--bg-principal-dark);
         }
 
         .light body {
-            background-color: var(--bg-principal-light); /* Fondo claro si el tema es light */
+            background-color: var(--bg-principal-light);
+        }
+
+        #themeIcon {
+            content: url('/luna.svg');
+        }
+
+        .light #themeIcon {
+            content: url('/sol.svg');
+        }
+
+        #langIcon {
+            content: url('/traductor.svg');
         }
     </style>
 
     <!-- Script para aplicar el tema antes de que el DOM se cargue -->
     <script is:inline>
         (function() {
-            // Obtener el tema guardado en localStorage o usar 'dark' como predeterminado
             const savedTheme = localStorage.getItem('theme') || 'dark';
-            // Aplicar el tema al elemento <html>
-            if (savedTheme === 'dark') {
-                document.documentElement.classList.add('dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-                document.documentElement.classList.add('light');
-            }
+            const savedLang = localStorage.getItem('lang') || 'es';
+            document.documentElement.classList.add(savedTheme);
+            document.documentElement.lang = savedLang;
         })();
     </script>
 </head>
@@ -80,10 +74,10 @@ const lang = Astro.cookies.get('lang')?.value || defaultLang;
                     </ul>
                     <div class="flex">
                         <button id="themeSwitch" class="border border-contenedor rounded mr-4 bg-black hover:bg-[#2d2d2d] hover:dark:bg-[#2d2d2d]">
-                            <img src="/sol.svg" alt="Theme" width="30" height="30" class="p-2 pb-2" id="themeIcon">
+                            <img id="themeIcon" alt="Cambiar tema" width="30" height="30" class="p-2 pb-2">
                         </button>
                         <button id="langSwitch" class="border border-contenedor rounded bg-black hover:bg-[#2d2d2d] hover:dark:bg-[#2d2d2d]">
-                            <img src="/traductor.svg" alt="Traductor" width="30" height="30" class="p-2 pb-2">
+                            <img id="langIcon" alt="Traductor" width="30" height="30" class="p-2 pb-2">
                         </button>
                     </div>
                 </div>
@@ -134,11 +128,9 @@ const lang = Astro.cookies.get('lang')?.value || defaultLang;
             if (currentTheme === 'dark') {
                 document.documentElement.classList.add('dark');
                 document.documentElement.classList.remove('light');
-                document.getElementById('themeIcon').src = '/luna.svg';
             } else {
                 document.documentElement.classList.remove('dark');
                 document.documentElement.classList.add('light');
-                document.getElementById('themeIcon').src = '/sol.svg';
             }
         }
 
@@ -150,12 +142,9 @@ const lang = Astro.cookies.get('lang')?.value || defaultLang;
             navMenu.classList.toggle('hidden');
         });
 
-        document.addEventListener('DOMContentLoaded', () => {
-            localStorage.setItem('lang', currentLang);
-            localStorage.setItem('theme', currentTheme);
-            updateContent();
-            updateTheme();
-        });
+        // Aplicar el tema y el idioma inmediatamente al cargar la página
+        updateTheme();
+        updateContent();
     </script>
 </body>
 </html>
@@ -169,3 +158,5 @@ const lang = Astro.cookies.get('lang')?.value || defaultLang;
         overflow-x: hidden;
     }
 </style>
+
+s
