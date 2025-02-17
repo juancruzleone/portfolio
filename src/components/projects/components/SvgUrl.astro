@@ -4,7 +4,7 @@ import { ui, defaultLang } from '../../../i18n/ui';
 const lang = Astro.cookies.get('lang')?.value || defaultLang;
 ---
 
-<a href="https://inelar.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label={lang === 'es' ? 'Abrir proyecto Inelar' : 'Open Inelar project'}>
+<a href="https://inelar.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label={lang === 'es' ? 'Abrir proyecto Inelar' : 'Open Inelar project'} id="inelarLink">
   <svg 
     xmlns="http://www.w3.org/2000/svg" 
     viewBox="0 0 192 192" 
@@ -19,3 +19,30 @@ const lang = Astro.cookies.get('lang')?.value || defaultLang;
     ></path>
   </svg>
 </a>
+
+<script>
+  function updateAriaLabel() {
+    const lang = localStorage.getItem('lang') || 'es';
+    const inelarLink = document.getElementById('inelarLink');
+    if (inelarLink) {
+      inelarLink.setAttribute('aria-label', lang === 'es' ? 'Abrir proyecto Inelar' : 'Open Inelar project');
+    }
+  }
+
+  // Ejecutar la función al cargar la página
+  updateAriaLabel();
+
+  // Observar cambios en localStorage
+  window.addEventListener('storage', (event) => {
+    if (event.key === 'lang') {
+      updateAriaLabel();
+    }
+  });
+
+  // Manejar cambios de idioma dentro de la misma página
+  document.addEventListener('astro:language-changed', updateAriaLabel);
+
+  // Agregar un observer para cambios en el DOM en caso de que el cambio de idioma modifique la estructura
+  const observer = new MutationObserver(updateAriaLabel);
+  observer.observe(document.body, { childList: true, subtree: true });
+</script>
