@@ -16,7 +16,35 @@ const lang = Astro.cookies.get('lang')?.value || 'es';
           src="/aboutme.avif" 
           alt={lang === 'es' ? "Juan Cruz Leone en Mendoza" : "Juan Cruz Leone in Mendoza"} 
           class="w-64 h-64 rounded-lg object-cover shadow-lg"
+          id="aboutMeImage"
         >
       </div>
     </div>
 </section>
+
+<script>
+  function updateImageAlt() {
+    const lang = localStorage.getItem('lang') || 'es';
+    const aboutMeImage = document.getElementById('aboutMeImage');
+    if (aboutMeImage) {
+      aboutMeImage.alt = lang === 'es' ? "Juan Cruz Leone en Mendoza" : "Juan Cruz Leone in Mendoza";
+    }
+  }
+
+  // Ejecutar la función al cargar la página
+  updateImageAlt();
+
+  // Observar cambios en localStorage
+  window.addEventListener('storage', (event) => {
+    if (event.key === 'lang') {
+      updateImageAlt();
+    }
+  });
+
+  // Manejar cambios de idioma dentro de la misma página
+  document.addEventListener('astro:language-changed', updateImageAlt);
+
+  // Agregar un observer para cambios en el DOM en caso de que el cambio de idioma modifique la estructura
+  const observer = new MutationObserver(updateImageAlt);
+  observer.observe(document.body, { childList: true, subtree: true });
+</script>
