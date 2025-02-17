@@ -31,13 +31,15 @@ const skills = [
     >
       <img
         src={skill.light}
-        alt={`${skill.name} logo in light mode`}
-        class="w-6 h-6 mr-2 p-1 block dark:hidden"
+        alt=""
+        class="w-6 h-6 mr-2 p-1 block dark:hidden skill-icon"
+        data-skill={skill.name}
       />
       <img
         src={skill.dark}
-        alt={`${skill.name} logo in dark mode`}
-        class="w-6 h-6 mr-2 p-1 hidden dark:block"
+        alt=""
+        class="w-6 h-6 mr-2 p-1 hidden dark:block skill-icon"
+        data-skill={skill.name}
       />
       <p class="text-sm mt-1 text-[14px] dark:text-white text-black">
         {skill.name}
@@ -45,3 +47,28 @@ const skills = [
     </div>
   ))}
 </div>
+
+<script>
+  function updateSkillsAlt() {
+    const lang = localStorage.getItem('lang') || 'es';
+    document.querySelectorAll('.skill-icon').forEach((img) => {
+      const skillName = img.getAttribute('data-skill');
+      img.alt = lang === 'es' 
+        ? `Logo de ${skillName} en modo ${img.classList.contains('dark:hidden') ? 'claro' : 'oscuro'}`
+        : `${skillName} logo in ${img.classList.contains('dark:hidden') ? 'light' : 'dark'} mode`;
+    });
+  }
+
+  // Ejecutar la función al cargar la página
+  updateSkillsAlt();
+
+  // Escuchar cambios en el idioma en localStorage sin recargar la página
+  window.addEventListener('storage', (event) => {
+    if (event.key === 'lang') {
+      updateSkillsAlt();
+    }
+  });
+
+  // Detectar cambios en el idioma manualmente dentro de la página
+  document.addEventListener('astro:language-changed', updateSkillsAlt);
+</script>
