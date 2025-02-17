@@ -67,12 +67,12 @@ const lang = Astro.cookies.get('lang')?.value || defaultLang;
 						<div class="flex">
 							<div class="border border-contenedor rounded mr-4 bg-black">
 								<button id="themeSwitch">
-									<img src="/luna.svg" alt="Theme" width="30" height="30" class="p-2 pb-1" id="themeIcon">
+									<img src="/luna.svg" alt={lang === 'es' ? "Cambiar tema" : "Change theme"} width="30" height="30" class="p-2 pb-1" id="themeIcon">
 								</button>
 							</div>
 							<div class="border border-contenedor rounded bg-black">
 								<button id="langSwitch">
-									<img src="/traductor.svg" alt="Traductor" width="30" height="30" class="p-2 pb-0">
+									<img src="/traductor.svg" alt={lang === 'es' ? "Cambiar idioma" : "Change language"} width="30" height="30" class="p-2 pb-0" id="langIcon">
 								</button>
 							</div>
 						</div>
@@ -114,6 +114,7 @@ const lang = Astro.cookies.get('lang')?.value || defaultLang;
 					}
 				});
 				document.documentElement.lang = currentLang;
+				updateAltTexts();
 				
 				// Dispatch a custom event to notify components of language change
 				window.dispatchEvent(new CustomEvent('languagechange', { detail: { lang: currentLang } }));
@@ -131,6 +132,18 @@ const lang = Astro.cookies.get('lang')?.value || defaultLang;
 				}
 			}
 
+			function updateAltTexts() {
+				const themeIcon = document.getElementById('themeIcon');
+				const langIcon = document.getElementById('langIcon');
+				
+				if (themeIcon) {
+					themeIcon.alt = currentLang === 'es' ? "Cambiar tema" : "Change theme";
+				}
+				if (langIcon) {
+					langIcon.alt = currentLang === 'es' ? "Cambiar idioma" : "Change language";
+				}
+			}
+
 			document.getElementById('langSwitch').addEventListener('click', switchLanguage);
 			document.getElementById('themeSwitch').addEventListener('click', switchTheme);
 
@@ -141,6 +154,24 @@ const lang = Astro.cookies.get('lang')?.value || defaultLang;
 				updateContent();
 				updateTheme();
 			});
+
+			// Observar cambios en localStorage
+			window.addEventListener('storage', (event) => {
+				if (event.key === 'lang') {
+					currentLang = event.newValue;
+					updateContent();
+				} else if (event.key === 'theme') {
+					currentTheme = event.newValue;
+					updateTheme();
+				}
+			});
+
+			// Manejar cambios de idioma dentro de la misma página
+			document.addEventListener('astro:language-changed', updateContent);
+
+			// Agregar un observer para cambios en el DOM en caso de que el cambio de idioma modifique la estructura
+			const observer = new MutationObserver(updateContent);
+			observer.observe(document.body, { childList: true, subtree: true });
 		</script>
 	</body>
 </html>

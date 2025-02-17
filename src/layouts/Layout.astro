@@ -90,10 +90,10 @@ const t = useTranslations(lang);
                     </ul>
                     <div class="flex">
                         <button id="themeSwitch" class="border border-contenedor rounded mr-4 bg-black hover:bg-[#2d2d2d] hover:dark:bg-[#2d2d2d]">
-                            <img id="themeIcon" alt="Cambiar tema" width="30" height="30" class="p-2 pb-2">
+                            <img id="themeIcon" alt={lang === 'es' ? "Cambiar tema" : "Change theme"} width="30" height="30" class="p-2 pb-2">
                         </button>
                         <button id="langSwitch" class="border border-contenedor rounded bg-black hover:bg-[#2d2d2d] hover:dark:bg-[#2d2d2d]">
-                            <img id="langIcon" alt="Traductor" width="30" height="30" class="p-2 pb-2">
+                            <img id="langIcon" alt={lang === 'es' ? "Cambiar idioma" : "Change language"} width="30" height="30" class="p-2 pb-2">
                         </button>
                     </div>
                 </div>
@@ -127,6 +127,7 @@ const t = useTranslations(lang);
             });
             document.documentElement.lang = currentLang;
             updateAriaLabels();
+            updateAltTexts();
         }
 
         function updateAriaLabels() {
@@ -136,6 +137,18 @@ const t = useTranslations(lang);
                     el.setAttribute('aria-label', ui[currentLang].nav[ariaLabel] || ariaLabel);
                 }
             });
+        }
+
+        function updateAltTexts() {
+            const themeIcon = document.getElementById('themeIcon');
+            const langIcon = document.getElementById('langIcon');
+            
+            if (themeIcon) {
+                themeIcon.alt = currentLang === 'es' ? "Cambiar tema" : "Change theme";
+            }
+            if (langIcon) {
+                langIcon.alt = currentLang === 'es' ? "Cambiar idioma" : "Change language";
+            }
         }
 
         function updateTheme() {
@@ -159,6 +172,24 @@ const t = useTranslations(lang);
         // Aplicar el tema y el idioma inmediatamente al cargar la página
         updateTheme();
         updateContent();
+
+        // Observar cambios en localStorage
+        window.addEventListener('storage', (event) => {
+            if (event.key === 'lang') {
+                currentLang = event.newValue;
+                updateContent();
+            } else if (event.key === 'theme') {
+                currentTheme = event.newValue;
+                updateTheme();
+            }
+        });
+
+        // Manejar cambios de idioma dentro de la misma página
+        document.addEventListener('astro:language-changed', updateContent);
+
+        // Agregar un observer para cambios en el DOM en caso de que el cambio de idioma modifique la estructura
+        const observer = new MutationObserver(updateContent);
+        observer.observe(document.body, { childList: true, subtree: true });
     </script>
 </body>
 </html>
