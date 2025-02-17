@@ -1,11 +1,10 @@
-// src/i18n/utils.ts
 import { ui, defaultLang } from "./ui";
 
 export function getLangFromUrl(url: URL) {
   if (typeof window !== "undefined") {
-    return localStorage.getItem("lang") as keyof typeof ui || 'es';
+    return localStorage.getItem("lang") as keyof typeof ui || defaultLang;
   }
-  return 'es';
+  return defaultLang;
 }
 
 export function useTranslations(lang: keyof typeof ui) {

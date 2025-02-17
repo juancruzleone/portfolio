@@ -1,7 +1,9 @@
 ---
-import { defaultLang } from '../i18n/ui';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { ui, defaultLang } from '../i18n/ui';
 
-const lang = Astro.cookies.get('lang')?.value || defaultLang;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <!doctype html>
@@ -59,18 +61,18 @@ const lang = Astro.cookies.get('lang')?.value || defaultLang;
         <header class="sticky top-0 z-50">
             <nav class="border border-contenedor bg-black rounded-md p-6 pl-4 relative">
                 <div class="flex justify-between items-center">
-                    <button id="menuToggle" class="md:hidden text-white focus:outline-none" aria-label={lang === 'es' ? 'Abrir menú de navegación' : 'Open navigation menu'}>
+                    <button id="menuToggle" class="md:hidden text-white focus:outline-none" aria-label={t('nav.navMenu')}>
                         <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
                         </svg>
                     </button>
                     <ul id="navMenu" class="hidden md:flex flex-col md:flex-row md:items-center w-full md:w-auto absolute md:static top-full left-0 bg-black md:bg-transparent rounded-md shadow-lg md:shadow-none md:space-x-6 p-4 md:p-0 transition-all duration-300 ease-in-out">
-                        <li><a href="#home" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 hover:border-b-[2px] border-white" data-i18n="nav.home"></a></li>
-                        <li><a href="#about-me" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 hover:border-b-[2px] border-white" data-i18n="nav.aboutme"></a></li>
-                        <li><a href="#skills" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 hover:border-b-[2px] border-white" data-i18n="nav.skills"></a></li>
-                        <li><a href="#projects" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 hover:border-b-[2px] border-white" data-i18n="nav.projects"></a></li>
-                        <li><a href="#contact" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 hover:border-b-[2px] border-white" data-i18n="nav.contact"></a></li>
-                        <li><a href="cv.pdf" target="_blank" rel="noopener noreferrer" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 border border-white p-1 rounded hover:bg-[#2d2d2d] dark:hover:bg-[#2d2d2d]" data-i18n="nav.buttonCV"></a></li>
+                        <li><a href="#home" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 hover:border-b-[2px] border-white" data-i18n="nav.home">{t('nav.home')}</a></li>
+                        <li><a href="#about-me" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 hover:border-b-[2px] border-white" data-i18n="nav.aboutme">{t('nav.aboutme')}</a></li>
+                        <li><a href="#skills" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 hover:border-b-[2px] border-white" data-i18n="nav.skills">{t('nav.skills')}</a></li>
+                        <li><a href="#projects" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 hover:border-b-[2px] border-white" data-i18n="nav.projects">{t('nav.projects')}</a></li>
+                        <li><a href="#contact" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 hover:border-b-[2px] border-white" data-i18n="nav.contact">{t('nav.contact')}</a></li>
+                        <li><a href="cv.pdf" target="_blank" rel="noopener noreferrer" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 border border-white p-1 rounded hover:bg-[#2d2d2d] dark:hover:bg-[#2d2d2d]" data-i18n="nav.buttonCV">{t('nav.buttonCV')}</a></li>
                     </ul>
                     <div class="flex">
                         <button id="themeSwitch" class="border border-contenedor rounded mr-4 bg-black hover:bg-[#2d2d2d] hover:dark:bg-[#2d2d2d]">
@@ -86,10 +88,8 @@ const lang = Astro.cookies.get('lang')?.value || defaultLang;
         <slot />
     </div>
 
-    <script>
-        import { ui, defaultLang } from '../i18n/ui';
-
-        let currentLang = localStorage.getItem('lang') || '${lang}';
+    <script define:vars={{ initialLang: lang, ui }}>
+        let currentLang = localStorage.getItem('lang') || initialLang;
         let currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
 
         function switchLanguage() {
@@ -158,5 +158,3 @@ const lang = Astro.cookies.get('lang')?.value || defaultLang;
         overflow-x: hidden;
     }
 </style>
-
-s

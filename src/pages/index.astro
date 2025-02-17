@@ -1,5 +1,4 @@
 ---
-// src/pages/index.astro
 export const prerender = false;
 
 import Layout from '../layouts/Layout.astro';
@@ -9,58 +8,40 @@ import Skills from './Skills.astro';
 import Projects from './Projects.astro';
 import Contact from './Contact.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
-import { defaultLang } from '../i18n/ui';
+import { ui, defaultLang } from '../i18n/ui';
 
-const lang = getLangFromUrl(Astro.url, Astro.request);
+const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
 <Layout>
-	<Home t={t} />
-	<AboutMe t={t} />
-	<Skills t={t} />
-	<Projects t={t} />
-	<Contact t={t} />
+    <Home t={t} />
+    <AboutMe t={t} />
+    <Skills t={t} />
+    <Projects t={t} />
+    <Contact t={t} />
 </Layout>
 
-<script is:inline>
-    // Set initial config BEFORE DOM loads
-    (function() {
-        // Dark mode
-        if(!localStorage.getItem('theme')) {
-            document.documentElement.classList.add('dark');
-            localStorage.setItem('theme', 'dark');
-        } else if(localStorage.getItem('theme') === 'dark') {
-            document.documentElement.classList.add('dark');
-        }
-        
-        // Language
-        if(!localStorage.getItem('lang')) {
-            localStorage.setItem('lang', 'es');
-        }
-    })();
-</script>
-
 <script>
-	import { ui } from '../i18n/ui';
+    import { ui } from '../i18n/ui';
 
-	function updateComponentContent() {
-		const lang = localStorage.getItem('lang') || 'es';
-		document.querySelectorAll('[data-i18n]').forEach(el => {
-			const key = el.getAttribute('data-i18n');
-			if (key) {
-				el.textContent = key.split('.').reduce((obj, k) => obj?.[k], ui[lang]) || key;
-			}
-		});
-		document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-			const key = el.getAttribute('data-i18n-placeholder');
-			if (key) {
-				el.setAttribute('placeholder', key.split('.').reduce((obj, k) => obj?.[k], ui[lang]) || key);
-			}
-		});
-	}
+    function updateComponentContent() {
+        const lang = localStorage.getItem('lang') || 'es';
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (key) {
+                el.textContent = key.split('.').reduce((obj, k) => obj?.[k], ui[lang]) || key;
+            }
+        });
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+            const key = el.getAttribute('data-i18n-placeholder');
+            if (key) {
+                el.setAttribute('placeholder', key.split('.').reduce((obj, k) => obj?.[k], ui[lang]) || key);
+            }
+        });
+    }
 
-	// Execute immediately after script load
-	updateComponentContent();
-	window.addEventListener('languagechange', updateComponentContent);
+    // Ejecutar inmediatamente después de cargar el script
+    updateComponentContent();
+    window.addEventListener('languagechange', updateComponentContent);
 </script>
