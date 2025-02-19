@@ -90,10 +90,10 @@ const t = useTranslations(lang);
                     </ul>
                     <div class="flex">
                         <button id="themeSwitch" class="border border-contenedor rounded mr-4 bg-black hover:bg-[#2d2d2d] hover:dark:bg-[#2d2d2d]">
-                            <img id="themeIcon" alt={lang === 'es' ? "Cambiar tema" : "Change theme"} width="30" height="30" class="p-2 pb-2">
+                            <img id="themeIcon" alt={lang === 'es' ? "Cambiar tema" : "Change theme"} title={lang === 'es' ? "Cambiar tema" : "Change theme"} width="30" height="30" class="p-2 pb-2">
                         </button>
                         <button id="langSwitch" class="border border-contenedor rounded bg-black hover:bg-[#2d2d2d] hover:dark:bg-[#2d2d2d]">
-                            <img id="langIcon" alt={lang === 'es' ? "Cambiar idioma" : "Change language"} width="30" height="30" class="p-2 pb-2">
+                            <img id="langIcon" alt={lang === 'es' ? "Cambiar idioma" : "Change language"} title={lang === 'es' ? "Cambiar idioma" : "Change language"} width="30" height="30" class="p-2 pb-2">
                         </button>
                     </div>
                 </div>
@@ -145,9 +145,11 @@ const t = useTranslations(lang);
             
             if (themeIcon) {
                 themeIcon.alt = currentLang === 'es' ? "Cambiar tema" : "Change theme";
+                themeIcon.title = currentLang === 'es' ? "Cambiar tema" : "Change theme";
             }
             if (langIcon) {
                 langIcon.alt = currentLang === 'es' ? "Cambiar idioma" : "Change language";
+                langIcon.title = currentLang === 'es' ? "Cambiar idioma" : "Change language";
             }
         }
 

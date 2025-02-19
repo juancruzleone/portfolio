@@ -15,6 +15,7 @@ const lang = Astro.cookies.get('lang')?.value || 'es';
         <img 
           src="/aboutme.avif" 
           alt={lang === 'es' ? "Juan Cruz Leone en Mendoza" : "Juan Cruz Leone in Mendoza"} 
+          title={lang === 'es' ? "Juan Cruz Leone en Mendoza" : "Juan Cruz Leone in Mendoza"}
           class="w-64 h-64 rounded-lg object-cover shadow-lg"
           id="aboutMeImage"
         >
@@ -28,6 +29,7 @@ const lang = Astro.cookies.get('lang')?.value || 'es';
     const aboutMeImage = document.getElementById('aboutMeImage');
     if (aboutMeImage) {
       aboutMeImage.alt = lang === 'es' ? "Juan Cruz Leone en Mendoza" : "Juan Cruz Leone in Mendoza";
+      aboutMeImage.title = lang === 'es' ? "Juan Cruz Leone en Mendoza" : "Juan Cruz Leone in Mendoza";
     }
   }
 

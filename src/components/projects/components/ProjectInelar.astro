@@ -12,6 +12,7 @@ const lang = Astro.cookies.get('lang')?.value || defaultLang;
         <img
             src="/frontInelar.svg"
             alt={lang === 'es' ? "Imagen del proyecto Front Inelar" : "Image of the Front Inelar project"}
+            title={lang === 'es' ? "Imagen del proyecto Front Inelar" : "Image of the Front Inelar project"}
             width="500"
             height="auto"
             class="w-full h-auto md:w-[50%] rounded object-fit object-contain"
@@ -79,6 +80,9 @@ const lang = Astro.cookies.get('lang')?.value || defaultLang;
     const projectInelarImage = document.getElementById('projectInelarImage');
     if (projectInelarImage) {
       projectInelarImage.alt = lang === 'es' 
+        ? "Imagen del proyecto Front Inelar" 
+        : "Image of the Front Inelar project";
+      projectInelarImage.title = lang === 'es' 
         ? "Imagen del proyecto Front Inelar" 
         : "Image of the Front Inelar project";
     }
