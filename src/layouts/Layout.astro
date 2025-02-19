@@ -4,6 +4,9 @@ import { ui, defaultLang } from '../i18n/ui';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+// Definir la URL canónica
+const canonicalUrl = 'https://www.juancruzleone.dev';
 ---
 
 <!doctype html>
@@ -16,13 +19,29 @@ const t = useTranslations(lang);
     <meta name="author" content="Juan Cruz Leone" />
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#121212" />
+
+    <!-- Canonical URL para SEO -->
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Publisher (opcional, aunque su uso es limitado) -->
+    <link rel="publisher" href="https://www.juancruzleone.dev" />
+
+    <!-- Open Graph Meta Tags para redes sociales -->
     <meta property="og:title" content="Juan Cruz Leone | Portfolio de Desarrollador Frontend" />
     <meta property="og:description" content="Desarrollador Frontend de 21 años de Argentina. Creando interfaces intuitivas y optimizando rendimiento web. Graduado del Instituto Da Vinci en Diseño y Programación Web." />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.juancruzleone.dev" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content="https://www.juancruzleone.dev/logo-3.svg" /> <!-- Agrega una imagen relevante para redes sociales -->
+    <meta property="og:site_name" content="Juan Cruz Leone | Portfolio" />
+
+    <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Juan Cruz Leone | Portfolio de Desarrollador Frontend" />
     <meta name="twitter:description" content="Desarrollador Frontend de 21 años de Argentina. Especializado en interfaces intuitivas y optimización de rendimiento. Graduado en Diseño y Programación Web." />
+    <meta name="twitter:url" content={canonicalUrl} />
+    <meta name="twitter:image" content="https://www.juancruzleone.dev/logo-3.svg" /> <!-- Agrega una imagen relevante para Twitter -->
+
+    <!-- Geo Tags -->
     <meta name="geo.region" content="AR-B" />
     <meta name="geo.placename" content="Buenos Aires" />
     <meta name="geo.position" content="-34.6037;-58.3816" />
@@ -81,12 +100,12 @@ const t = useTranslations(lang);
                         </svg>
                     </button>
                     <ul id="navMenu" class="hidden md:flex flex-col md:flex-row md:items-center w-full md:w-auto absolute md:static top-full left-0 bg-black md:bg-transparent rounded-md shadow-lg md:shadow-none md:space-x-6 p-4 md:p-0 transition-all duration-300 ease-in-out">
-                        <li><a href="#home" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 hover:border-b-[2px] border-white" data-i18n="nav.home">{t('nav.home')}</a></li>
-                        <li><a href="#about-me" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 hover:border-b-[2px] border-white" data-i18n="nav.aboutme">{t('nav.aboutme')}</a></li>
-                        <li><a href="#skills" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 hover:border-b-[2px] border-white" data-i18n="nav.skills">{t('nav.skills')}</a></li>
-                        <li><a href="#projects" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 hover:border-b-[2px] border-white" data-i18n="nav.projects">{t('nav.projects')}</a></li>
-                        <li><a href="#contact" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 hover:border-b-[2px] border-white" data-i18n="nav.contact">{t('nav.contact')}</a></li>
-                        <li><a href="cv-juancruzleone.pdf" target="_blank" rel="noopener noreferrer" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 border border-white p-1 rounded hover:bg-[#2d2d2d] dark:hover:bg-[#2d2d2d]" data-i18n="nav.buttonCV">{t('nav.buttonCV')}</a></li>
+                        <li><a href="#home" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 hover:border-b-[2px] border-white" data-i18n="nav.home" title={lang === 'es' ? 'Inicio' : 'Home'}>{t('nav.home')}</a></li>
+                        <li><a href="#about-me" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 hover:border-b-[2px] border-white" data-i18n="nav.aboutme" title={lang === 'es' ? 'Sobre mí' : 'About me'}>{t('nav.aboutme')}</a></li>
+                        <li><a href="#skills" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 hover:border-b-[2px] border-white" data-i18n="nav.skills" title={lang === 'es' ? 'Habilidades' : 'Skills'}>{t('nav.skills')}</a></li>
+                        <li><a href="#projects" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 hover:border-b-[2px] border-white" data-i18n="nav.projects" title={lang === 'es' ? 'Proyectos' : 'Projects'}>{t('nav.projects')}</a></li>
+                        <li><a href="#contact" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 hover:border-b-[2px] border-white" data-i18n="nav.contact" title={lang === 'es' ? 'Contacto' : 'Contact'}>{t('nav.contact')}</a></li>
+                        <li><a href="cv-juancruzleone.pdf" target="_blank" rel="noopener noreferrer" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 border border-white p-1 rounded hover:bg-[#2d2d2d] dark:hover:bg-[#2d2d2d]" data-i18n="nav.buttonCV" title={lang === 'es' ? 'Descargar CV' : 'Download CV'}>{t('nav.buttonCV')}</a></li>
                     </ul>
                     <div class="flex">
                         <button id="themeSwitch" class="border border-contenedor rounded mr-4 bg-black hover:bg-[#2d2d2d] hover:dark:bg-[#2d2d2d]">
@@ -104,7 +123,7 @@ const t = useTranslations(lang);
 
     <script define:vars={{ initialLang: lang, ui }}>
         let currentLang = localStorage.getItem('lang') || initialLang;
-        let currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        let currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 
         function switchLanguage() {
             currentLang = currentLang === 'en' ? 'es' : 'en';
@@ -128,6 +147,7 @@ const t = useTranslations(lang);
             document.documentElement.lang = currentLang;
             updateAriaLabels();
             updateAltTexts();
+            updateTitles();
         }
 
         function updateAriaLabels() {
@@ -151,6 +171,16 @@ const t = useTranslations(lang);
                 langIcon.alt = currentLang === 'es' ? "Cambiar idioma" : "Change language";
                 langIcon.title = currentLang === 'es' ? "Cambiar idioma" : "Change language";
             }
+        }
+
+        function updateTitles() {
+            document.querySelectorAll('[title]').forEach(el => {
+                const title = el.getAttribute('title');
+                if (title) {
+                    const [esTitle, enTitle] = title.split('|');
+                    el.setAttribute('title', currentLang === 'es' ? esTitle.trim() : enTitle.trim());
+                }
+            });
         }
 
         function updateTheme() {

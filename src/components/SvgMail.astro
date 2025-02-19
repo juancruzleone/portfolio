@@ -1,7 +1,10 @@
 ---
+import { ui, defaultLang } from '../i18n/ui';
+
+const lang = Astro.cookies.get('lang')?.value || defaultLang;
 ---
 
-<a href="mailto:juancruzleone@outlook.com">
+<a href="mailto:juancruzleone@outlook.com" title={lang === 'es' ? "Enviar correo a juancruzleone@outlook.com" : "Send email to juancruzleone@outlook.com"} id="mailLink">
     <svg viewBox="0 -3.5 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" fill="#ffffff" stroke="#ffffff" class="p-1">
         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
         <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -16,3 +19,30 @@
         </g>
     </svg>
 </a>
+
+<script>
+  function updateMailTitle() {
+    const lang = localStorage.getItem('lang') || 'es';
+    const mailLink = document.getElementById('mailLink');
+    if (mailLink) {
+      mailLink.setAttribute('title', lang === 'es' ? "Enviar correo a juancruzleone@outlook.com" : "Send email to juancruzleone@outlook.com");
+    }
+  }
+
+  // Ejecutar la función al cargar la página
+  updateMailTitle();
+
+  // Observar cambios en localStorage
+  window.addEventListener('storage', (event) => {
+    if (event.key === 'lang') {
+      updateMailTitle();
+    }
+  });
+
+  // Manejar cambios de idioma dentro de la misma página
+  document.addEventListener('astro:language-changed', updateMailTitle);
+
+  // Agregar un observer para cambios en el DOM en caso de que el cambio de idioma modifique la estructura
+  const observer = new MutationObserver(updateMailTitle);
+  observer.observe(document.body, { childList: true, subtree: true });
+</script>

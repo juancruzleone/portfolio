@@ -1,12 +1,50 @@
 ---
 import Layout from "../layouts/Layout404.astro"
 import MainH1 from "../components/MainH1.astro"
+import { ui, defaultLang } from '../i18n/ui';
+
+const lang = Astro.cookies.get('lang')?.value || defaultLang;
 ---
 
 <Layout>
   <section class="text-center mt-40">
     <MainH1 title="Error 404" />
     <p data-i18n="404.error" class="text-black dark:text-white text-xl mb-10"></p>
-    <a href="/" data-i18n="404.buttonHome" class="border border-black dark:border-white rounded p-1 text-black dark:text-white"></a>
+    <a 
+      href="/" 
+      data-i18n="404.buttonHome" 
+      class="border border-black dark:border-white rounded p-1 text-black dark:text-white"
+      title={lang === 'es' ? 'Volver al inicio' : 'Return to home'}
+      id="homeButton"
+    ></a>
   </section>
- 
+</Layout>
+
+<script>
+  function updateButtonTitle() {
+    const lang = localStorage.getItem('lang') || 'es';
+    const homeButton = document.getElementById('homeButton');
+    if (homeButton) {
+      homeButton.title = lang === 'es' 
+        ? 'Volver al inicio' 
+        : 'Return to home';
+    }
+  }
+
+  // Ejecutar la función al cargar la página
+  updateButtonTitle();
+
+  // Observar cambios en localStorage
+  window.addEventListener('storage', (event) => {
+    if (event.key === 'lang') {
+      updateButtonTitle();
+    }
+  });
+
+  // Manejar cambios de idioma dentro de la misma página
+  document.addEventListener('astro:language-changed', updateButtonTitle);
+
+  // Agregar un observer para cambios en el DOM en caso de que el cambio de idioma modifique la estructura
+  const observer = new MutationObserver(updateButtonTitle);
+  observer.observe(document.body, { childList: true, subtree: true });
+</script>

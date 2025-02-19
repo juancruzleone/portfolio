@@ -2,6 +2,9 @@
 import { defaultLang } from '../i18n/ui';
 
 const lang = Astro.cookies.get('lang')?.value || defaultLang;
+
+// Definir la URL canónica
+const canonicalUrl = 'https://www.juancruzleone.dev';
 ---
 
 <!doctype html>
@@ -11,22 +14,35 @@ const lang = Astro.cookies.get('lang')?.value || defaultLang;
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/logo-3.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Juan Cruz Leone | Portfolio</title>
+		<title>Juan Cruz Leone | Portfolio de desarrollador frontend</title>
 
 		<!-- Meta Description for SEO -->
 		<meta name="description" content="Juan Cruz Leone, portfolio showcasing web development projects, UI/UX design, and coding skills. Explore my work in front-end, back-end, and full-stack development." />
 
-		<!-- Open Graph Meta Tags for Social Sharing -->
+		<!-- Meta Tags para SEO -->
+		<meta name="author" content="Juan Cruz Leone" />
+		<meta name="robots" content="index, follow" />
+
+		<!-- Canonical URL para SEO -->
+		<link rel="canonical" href={canonicalUrl} />
+
+		<!-- Publisher (opcional, aunque su uso es limitado) -->
+		<link rel="publisher" href={canonicalUrl} />
+
+		<!-- Open Graph Meta Tags para redes sociales -->
 		<meta property="og:title" content="Juan Cruz Leone | Portfolio" />
 		<meta property="og:description" content="Juan Cruz Leone, portfolio showcasing web development projects, UI/UX design, and coding skills. Explore my work in front-end, back-end, and full-stack development." />
-		<meta property="og:url" content="https://www.juancruzleone.dev" />
 		<meta property="og:type" content="website" />
-		
+		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:image" content="https://www.juancruzleone.dev/logo-3.svg" /> <!-- Agrega una imagen relevante para redes sociales -->
+		<meta property="og:site_name" content="Juan Cruz Leone | Portfolio" />
+
 		<!-- Twitter Card Meta Tags -->
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content="Juan Cruz Leone | Portfolio" />
 		<meta name="twitter:description" content="Juan Cruz Leone, portfolio showcasing web development projects, UI/UX design, and coding skills. Explore my work in front-end, back-end, and full-stack development." />
-		<meta name="twitter:url" content="https://www.juancruzleone.dev" />
+		<meta name="twitter:url" content={canonicalUrl} />
+		<meta name="twitter:image" content="https://www.juancruzleone.dev/logo-3.svg" /> <!-- Agrega una imagen relevante para Twitter -->
 
 		<!-- Estilos iniciales para evitar el parpadeo -->
 		<style>
@@ -67,12 +83,28 @@ const lang = Astro.cookies.get('lang')?.value || defaultLang;
 						<div class="flex">
 							<div class="border border-contenedor rounded mr-4 bg-black">
 								<button id="themeSwitch">
-									<img src="/luna.svg" alt={lang === 'es' ? "Cambiar tema" : "Change theme"} width="30" height="30" class="p-2 pb-1" id="themeIcon">
+									<img 
+										src="/luna.svg" 
+										alt={lang === 'es' ? "Cambiar tema" : "Change theme"} 
+										title={lang === 'es' ? "Cambiar tema" : "Change theme"} 
+										width="30" 
+										height="30" 
+										class="p-2 pb-1" 
+										id="themeIcon"
+									>
 								</button>
 							</div>
 							<div class="border border-contenedor rounded bg-black">
 								<button id="langSwitch">
-									<img src="/traductor.svg" alt={lang === 'es' ? "Cambiar idioma" : "Change language"} width="30" height="30" class="p-2 pb-0" id="langIcon">
+									<img 
+										src="/traductor.svg" 
+										alt={lang === 'es' ? "Cambiar idioma" : "Change language"} 
+										title={lang === 'es' ? "Cambiar idioma" : "Change language"} 
+										width="30" 
+										height="30" 
+										class="p-2 pb-0" 
+										id="langIcon"
+									>
 								</button>
 							</div>
 						</div>
@@ -115,6 +147,7 @@ const lang = Astro.cookies.get('lang')?.value || defaultLang;
 				});
 				document.documentElement.lang = currentLang;
 				updateAltTexts();
+				updateTitles();
 				
 				// Dispatch a custom event to notify components of language change
 				window.dispatchEvent(new CustomEvent('languagechange', { detail: { lang: currentLang } }));
@@ -141,6 +174,18 @@ const lang = Astro.cookies.get('lang')?.value || defaultLang;
 				}
 				if (langIcon) {
 					langIcon.alt = currentLang === 'es' ? "Cambiar idioma" : "Change language";
+				}
+			}
+
+			function updateTitles() {
+				const themeIcon = document.getElementById('themeIcon');
+				const langIcon = document.getElementById('langIcon');
+				
+				if (themeIcon) {
+					themeIcon.title = currentLang === 'es' ? "Cambiar tema" : "Change theme";
+				}
+				if (langIcon) {
+					langIcon.title = currentLang === 'es' ? "Cambiar idioma" : "Change language";
 				}
 			}
 

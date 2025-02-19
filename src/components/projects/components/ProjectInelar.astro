@@ -75,7 +75,7 @@ const lang = Astro.cookies.get('lang')?.value || defaultLang;
 </div>
 
 <script>
-  function updateImageAlt() {
+  function updateImageAttributes() {
     const lang = localStorage.getItem('lang') || 'es';
     const projectInelarImage = document.getElementById('projectInelarImage');
     if (projectInelarImage) {
@@ -89,19 +89,19 @@ const lang = Astro.cookies.get('lang')?.value || defaultLang;
   }
 
   // Ejecutar la función al cargar la página
-  updateImageAlt();
+  updateImageAttributes();
 
   // Observar cambios en localStorage
   window.addEventListener('storage', (event) => {
     if (event.key === 'lang') {
-      updateImageAlt();
+      updateImageAttributes();
     }
   });
 
   // Manejar cambios de idioma dentro de la misma página
-  document.addEventListener('astro:language-changed', updateImageAlt);
+  document.addEventListener('astro:language-changed', updateImageAttributes);
 
   // Agregar un observer para cambios en el DOM en caso de que el cambio de idioma modifique la estructura
-  const observer = new MutationObserver(updateImageAlt);
+  const observer = new MutationObserver(updateImageAttributes);
   observer.observe(document.body, { childList: true, subtree: true });
 </script>
