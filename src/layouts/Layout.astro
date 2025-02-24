@@ -2,7 +2,9 @@
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import { ui, defaultLang } from '../i18n/ui';
 
-const lang = getLangFromUrl(Astro.url);
+// Obtener el idioma de la URL (si existe)
+const urlLang = getLangFromUrl(Astro.url);
+const lang = urlLang || defaultLang;
 const t = useTranslations(lang);
 
 // Definir la URL canónica
@@ -79,13 +81,16 @@ const canonicalUrl = 'https://www.juancruzleone.dev';
         }
     </style>
 
-    <!-- Script para aplicar el tema antes de que el DOM se cargue -->
+    <!-- Script para aplicar el tema y el idioma antes de que el DOM se cargue -->
     <script is:inline>
         (function() {
-            const savedTheme = localStorage.getItem('theme') || 'dark';
+            // Verificar el idioma en localStorage
             const savedLang = localStorage.getItem('lang') || 'es';
-            document.documentElement.classList.add(savedTheme);
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+
+            // Aplicar el idioma y el tema antes de que el DOM se cargue
             document.documentElement.lang = savedLang;
+            document.documentElement.classList.add(savedTheme);
         })();
     </script>
 </head>
@@ -100,19 +105,19 @@ const canonicalUrl = 'https://www.juancruzleone.dev';
                         </svg>
                     </button>
                     <ul id="navMenu" class="hidden md:flex flex-col md:flex-row md:items-center w-full md:w-auto absolute md:static top-full left-0 bg-black md:bg-transparent rounded-md shadow-lg md:shadow-none md:space-x-6 p-4 md:p-0 transition-all duration-300 ease-in-out">
-                        <li><a href="#home" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 hover:border-b-[2px] border-white" data-i18n="nav.home" title={lang === 'es' ? 'Inicio' : 'Home'}>{t('nav.home')}</a></li>
-                        <li><a href="#about-me" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 hover:border-b-[2px] border-white" data-i18n="nav.aboutme" title={lang === 'es' ? 'Sobre mí' : 'About me'}>{t('nav.aboutme')}</a></li>
-                        <li><a href="#skills" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 hover:border-b-[2px] border-white" data-i18n="nav.skills" title={lang === 'es' ? 'Habilidades' : 'Skills'}>{t('nav.skills')}</a></li>
-                        <li><a href="#projects" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 hover:border-b-[2px] border-white" data-i18n="nav.projects" title={lang === 'es' ? 'Proyectos' : 'Projects'}>{t('nav.projects')}</a></li>
-                        <li><a href="#contact" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 hover:border-b-[2px] border-white" data-i18n="nav.contact" title={lang === 'es' ? 'Contacto' : 'Contact'}>{t('nav.contact')}</a></li>
-                        <li><a href="cv-juancruzleone.pdf" target="_blank" rel="noopener noreferrer" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 border border-white p-1 rounded hover:bg-[#2d2d2d] dark:hover:bg-[#2d2d2d]" data-i18n="nav.buttonCV" title={lang === 'es' ? 'Descargar CV' : 'Download CV'}>{t('nav.buttonCV')}</a></li>
+                        <li><a href="#home" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 hover:border-b-[2px] border-white" data-i18n="nav.home" title={t('nav.homeTitle')}>{t('nav.home')}</a></li>
+                        <li><a href="#about-me" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 hover:border-b-[2px] border-white" data-i18n="nav.aboutme" title={t('nav.aboutmeTitle')}>{t('nav.aboutme')}</a></li>
+                        <li><a href="#skills" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 hover:border-b-[2px] border-white" data-i18n="nav.skills" title={t('nav.skillsTitle')}>{t('nav.skills')}</a></li>
+                        <li><a href="#projects" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 hover:border-b-[2px] border-white" data-i18n="nav.projects" title={t('nav.projectsTitle')}>{t('nav.projects')}</a></li>
+                        <li><a href="#contact" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 hover:border-b-[2px] border-white" data-i18n="nav.contact" title={t('nav.contactTitle')}>{t('nav.contact')}</a></li>
+                        <li><a href="cv-juancruzleone.pdf" target="_blank" rel="noopener noreferrer" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 border border-white p-1 rounded hover:bg-[#2d2d2d] dark:hover:bg-[#2d2d2d]" data-i18n="nav.buttonCV" title={t('nav.buttonCVTitle')}>{t('nav.buttonCV')}</a></li>
                     </ul>
                     <div class="flex">
                         <button id="themeSwitch" class="border border-contenedor rounded mr-4 bg-black hover:bg-[#2d2d2d] hover:dark:bg-[#2d2d2d]">
-                            <img id="themeIcon" alt={lang === 'es' ? "Cambiar tema" : "Change theme"} title={lang === 'es' ? "Cambiar tema" : "Change theme"} width="30" height="30" class="p-2 pb-2">
+                            <img id="themeIcon" alt={t('nav.themeAlt')} title={t('nav.themeAlt')} width="30" height="30" class="p-2 pb-2">
                         </button>
                         <button id="langSwitch" class="border border-contenedor rounded bg-black hover:bg-[#2d2d2d] hover:dark:bg-[#2d2d2d]">
-                            <img id="langIcon" alt={lang === 'es' ? "Cambiar idioma" : "Change language"} title={lang === 'es' ? "Cambiar idioma" : "Change language"} width="30" height="30" class="p-2 pb-2">
+                            <img id="langIcon" alt={t('nav.langAlt')} title={t('nav.langAlt')} width="30" height="30" class="p-2 pb-2">
                         </button>
                     </div>
                 </div>
@@ -138,47 +143,30 @@ const canonicalUrl = 'https://www.juancruzleone.dev';
         }
 
         function updateContent() {
+            // Actualizar el idioma del documento
+            document.documentElement.lang = currentLang;
+            
+            // Traducir elementos con el atributo data-i18n
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
                 if (key) {
                     el.textContent = key.split('.').reduce((obj, k) => obj && obj[k], ui[currentLang]) || key;
                 }
             });
-            document.documentElement.lang = currentLang;
-            updateAriaLabels();
-            updateAltTexts();
-            updateTitles();
-        }
 
-        function updateAriaLabels() {
-            document.querySelectorAll('[aria-label]').forEach(el => {
-                const ariaLabel = el.getAttribute('aria-label');
-                if (ariaLabel) {
-                    el.setAttribute('aria-label', ui[currentLang].nav[ariaLabel] || ariaLabel);
+            // Actualizar los atributos title dinámicamente
+            document.querySelectorAll('[title]').forEach(el => {
+                const key = el.getAttribute('title');
+                if (key && ui[currentLang] && ui[currentLang].nav && ui[currentLang].nav[key]) {
+                  el.setAttribute('title', ui[currentLang].nav[key]);
                 }
             });
-        }
 
-        function updateAltTexts() {
-            const themeIcon = document.getElementById('themeIcon');
-            const langIcon = document.getElementById('langIcon');
-            
-            if (themeIcon) {
-                themeIcon.alt = currentLang === 'es' ? "Cambiar tema" : "Change theme";
-                themeIcon.title = currentLang === 'es' ? "Cambiar tema" : "Change theme";
-            }
-            if (langIcon) {
-                langIcon.alt = currentLang === 'es' ? "Cambiar idioma" : "Change language";
-                langIcon.title = currentLang === 'es' ? "Cambiar idioma" : "Change language";
-            }
-        }
-
-        function updateTitles() {
-            document.querySelectorAll('[title]').forEach(el => {
-                const title = el.getAttribute('title');
-                if (title) {
-                    const [esTitle, enTitle] = title.split('|');
-                    el.setAttribute('title', currentLang === 'es' ? esTitle.trim() : enTitle.trim());
+             // Actualizar los atributos alt dinámicamente
+             document.querySelectorAll('[alt]').forEach(el => {
+                const key = el.getAttribute('alt');
+                if (key && ui[currentLang] && ui[currentLang].nav && ui[currentLang].nav[key]) {
+                  el.setAttribute('alt', ui[currentLang].nav[key]);
                 }
             });
         }
@@ -193,35 +181,18 @@ const canonicalUrl = 'https://www.juancruzleone.dev';
             }
         }
 
-        document.getElementById('langSwitch').addEventListener('click', switchLanguage);
-        document.getElementById('themeSwitch').addEventListener('click', switchTheme);
+        document.addEventListener('DOMContentLoaded', () => {
+            // Traducir la página al cargarla
+            updateContent();
 
-        document.getElementById('menuToggle').addEventListener('click', () => {
-            const navMenu = document.getElementById('navMenu');
-            navMenu.classList.toggle('hidden');
+            document.getElementById('langSwitch').addEventListener('click', switchLanguage);
+            document.getElementById('themeSwitch').addEventListener('click', switchTheme);
+
+            document.getElementById('menuToggle').addEventListener('click', () => {
+                const navMenu = document.getElementById('navMenu');
+                navMenu.classList.toggle('hidden');
+            });
         });
-
-        // Aplicar el tema y el idioma inmediatamente al cargar la página
-        updateTheme();
-        updateContent();
-
-        // Observar cambios en localStorage
-        window.addEventListener('storage', (event) => {
-            if (event.key === 'lang') {
-                currentLang = event.newValue;
-                updateContent();
-            } else if (event.key === 'theme') {
-                currentTheme = event.newValue;
-                updateTheme();
-            }
-        });
-
-        // Manejar cambios de idioma dentro de la misma página
-        document.addEventListener('astro:language-changed', updateContent);
-
-        // Agregar un observer para cambios en el DOM en caso de que el cambio de idioma modifique la estructura
-        const observer = new MutationObserver(updateContent);
-        observer.observe(document.body, { childList: true, subtree: true });
     </script>
 </body>
 </html>

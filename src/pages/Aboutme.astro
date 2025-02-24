@@ -1,52 +1,30 @@
 ---
 import MainH2 from "../components/MainH2.astro";
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import { ui, defaultLang } from '../i18n/ui';
 
-const lang = Astro.cookies.get('lang')?.value || 'es';
+
+const urlLang = getLangFromUrl(Astro.url);
+const lang = urlLang || defaultLang;
+const t = useTranslations(lang);
 ---
 
 <section class="pl-6 mt-[200px]" id="about-me">
-    <MainH2 title="aboutme.title" />
+    <MainH2 title="aboutme.title" data-i18n="aboutme.title" />
     <div class="mt-2 flex flex-col md:flex-row items-center md:items-start gap-8">
       <div class="flex-1">
-        <p class="font-montserrat text-black dark:text-white text-ls leading-relaxed" data-i18n="aboutme.description"></p>
+        <p class="font-montserrat text-black dark:text-white text-ls leading-relaxed" data-i18n="aboutme.description">
+          {t('aboutme.description')}
+        </p>
       </div>
       <div class="flex-shrink-0">
         <img 
           src="/aboutme.avif" 
-          alt={lang === 'es' ? "Juan Cruz Leone en Mendoza" : "Juan Cruz Leone in Mendoza"} 
-          title={lang === 'es' ? "Juan Cruz Leone en Mendoza" : "Juan Cruz Leone in Mendoza"}
+          alt={t('aboutme.alt')}
+          title={t('aboutme.alt')}
           class="w-64 h-64 rounded-lg object-cover shadow-lg"
           id="aboutMeImage"
         >
       </div>
     </div>
 </section>
-
-<script>
-  function updateImageAlt() {
-    const lang = localStorage.getItem('lang') || 'es';
-    const aboutMeImage = document.getElementById('aboutMeImage');
-    if (aboutMeImage) {
-      aboutMeImage.alt = lang === 'es' ? "Juan Cruz Leone en Mendoza" : "Juan Cruz Leone in Mendoza";
-      aboutMeImage.title = lang === 'es' ? "Juan Cruz Leone en Mendoza" : "Juan Cruz Leone in Mendoza";
-    }
-  }
-
-  // Ejecutar la función al cargar la página
-  updateImageAlt();
-
-  // Observar cambios en localStorage
-  window.addEventListener('storage', (event) => {
-    if (event.key === 'lang') {
-      updateImageAlt();
-    }
-  });
-
-  // Manejar cambios de idioma dentro de la misma página
-  document.addEventListener('astro:language-changed', updateImageAlt);
-
-  // Agregar un observer para cambios en el DOM en caso de que el cambio de idioma modifique la estructura
-  const observer = new MutationObserver(updateImageAlt);
-  observer.observe(document.body, { childList: true, subtree: true });
-</script>
