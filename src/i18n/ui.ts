@@ -33,6 +33,12 @@ export const ui = {
       titleInelar: "Inelar | Redesign of web",
       description:
         "To approve my thesis, I redesigned the Inelar website and optimized the services provided through an admin panel",
+      titleCMMS: "CMMS Panel | Maintenance Management",
+      descriptionCMMS:
+        "Comprehensive CMMS (Computerized Maintenance Management System) panel for managing preventive and corrective maintenance, equipment, work orders, and generating detailed reports with charts and QR codes",
+      titleLeonix: "Leonix | E-commerce Platform",
+      descriptionLeonix:
+        "Modern e-commerce platform with integrated payment system through MercadoPago, email notifications, user authentication, and complete product management",
       tech: {
         nextjs: "NextJs",
         nodejs: "NodeJs",
@@ -86,6 +92,12 @@ export const ui = {
       titleInelar: "Inelar | Rediseño de la web",
       description:
         "Para aprobar mi tesis, rediseñé el sitio web de Inelar y optimicé los servicios prestados a través de un panel de administración",
+      titleCMMS: "CMMS Panel | Gestión de Mantenimiento",
+      descriptionCMMS:
+        "Panel CMMS (Sistema de Gestión de Mantenimiento Computerizado) completo para administrar mantenimientos preventivos y correctivos, equipos, órdenes de trabajo, y generar reportes detallados con gráficas y códigos QR",
+      titleLeonix: "Leonix | Plataforma E-commerce",
+      descriptionLeonix:
+        "Plataforma de e-commerce moderna con sistema de pagos integrado mediante MercadoPago, notificaciones por email, autenticación de usuarios y gestión completa de productos",
       tech: {
         nextjs: "NextJs",
         nodejs: "NodeJs",
