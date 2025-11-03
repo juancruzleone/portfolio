@@ -32,7 +32,7 @@ export const ui = {
       title: "Projects",
       titleInelar: "Inelar | Redesign of web",
       description:
-        "To approve my thesis, I redesigned the Inelar website and optimized the services provided through an admin panel",
+        "Complete redesign of the Inelar company website as my thesis project, implementing a modern and intuitive interface. Developed an admin panel for efficient management of services, projects, and content. Optimized user experience with responsive design, improved navigation, and integration of interactive features for better customer engagement",
       titleCMMS: "CMMS Panel | Maintenance Management",
       descriptionCMMS:
         "Comprehensive CMMS (Computerized Maintenance Management System) panel for managing preventive and corrective maintenance, equipment, work orders, and generating detailed reports with charts and QR codes",
@@ -91,7 +91,7 @@ export const ui = {
       title: "Proyectos",
       titleInelar: "Inelar | Rediseño de la web",
       description:
-        "Para aprobar mi tesis, rediseñé el sitio web de Inelar y optimicé los servicios prestados a través de un panel de administración",
+        "Rediseño completo del sitio web de la empresa Inelar como proyecto de tesis, implementando una interfaz moderna e intuitiva. Desarrollé un panel de administración para la gestión eficiente de servicios, proyectos y contenido. Optimicé la experiencia del usuario con diseño responsive, navegación mejorada e integración de funcionalidades interactivas para mejor engagement con los clientes",
       titleCMMS: "CMMS Panel | Gestión de Mantenimiento",
       descriptionCMMS:
         "Panel CMMS (Sistema de Gestión de Mantenimiento Computerizado) completo para administrar mantenimientos preventivos y correctivos, equipos, órdenes de trabajo, y generar reportes detallados con gráficas y códigos QR",
