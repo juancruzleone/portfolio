@@ -36,9 +36,9 @@ export const ui = {
       titleCMMS: "CMMS Panel | Maintenance Management",
       descriptionCMMS:
         "Comprehensive CMMS (Computerized Maintenance Management System) panel for managing preventive and corrective maintenance, equipment, work orders, and generating detailed reports with charts and QR codes",
-      titleLeonix: "Leonix | E-commerce Platform",
+      titleLeonix: "Leonix | Landing Page",
       descriptionLeonix:
-        "Modern e-commerce platform with integrated payment system through MercadoPago, email notifications, user authentication, and complete product management",
+        "Leonix company landing page that manages the CMMS panel. Integrated membership system to access the panel via MercadoPago subscriptions, email notifications, and user authentication",
       tech: {
         nextjs: "NextJs",
         nodejs: "NodeJs",
@@ -48,12 +48,20 @@ export const ui = {
     },
     nav: {
       home: "Home",
+      homeTitle: "Go to Home",
       aboutme: "About me",
+      aboutmeTitle: "Go to About Me",
       skills: "Skills",
+      skillsTitle: "See my Skills",
       projects: "Projects",
+      projectsTitle: "See my Projects",
       contact: "Contact",
+      contactTitle: "Contact me",
       buttonCV: "My CV",
-      navMenu: "Open navigation menu"
+      buttonCVTitle: "Download my CV",
+      navMenu: "Open navigation menu",
+      themeAlt: "Toggle theme",
+      langAlt: "Switch language"
     },
     modal: {
       title: "",
@@ -92,12 +100,12 @@ export const ui = {
       titleInelar: "Inelar | Rediseño de la web",
       description:
         "Rediseño completo del sitio web de la empresa Inelar como proyecto de tesis, implementando una interfaz moderna e intuitiva. Desarrollé un panel de administración para la gestión eficiente de servicios, proyectos y contenido. Optimicé la experiencia del usuario con diseño responsive, navegación mejorada e integración de funcionalidades interactivas para mejor engagement con los clientes",
-      titleCMMS: "CMMS Panel | Gestión de Mantenimiento",
+      titleCMMS: "Panel GMAO | Gestión de Mantenimiento",
       descriptionCMMS:
-        "Panel CMMS (Sistema de Gestión de Mantenimiento Computerizado) completo para administrar mantenimientos preventivos y correctivos, equipos, órdenes de trabajo, y generar reportes detallados con gráficas y códigos QR",
-      titleLeonix: "Leonix | Plataforma E-commerce",
+        "Panel GMAO (Gestión de Mantenimiento Asistido por Ordenador) completo para administrar mantenimientos preventivos y correctivos, equipos, órdenes de trabajo, y generar reportes detallados con gráficas y códigos QR",
+      titleLeonix: "Leonix | Landing Page",
       descriptionLeonix:
-        "Plataforma de e-commerce moderna con sistema de pagos integrado mediante MercadoPago, notificaciones por email, autenticación de usuarios y gestión completa de productos",
+        "Landing page de la empresa Leonix que gestiona el panel GMAO. Integra sistema de membresías para acceder al panel mediante suscripciones de MercadoPago, notificaciones por email y autenticación de usuarios",
       tech: {
         nextjs: "NextJs",
         nodejs: "NodeJs",
@@ -107,12 +115,20 @@ export const ui = {
     },
     nav: {
       home: "Inicio",
+      homeTitle: "Ir al Inicio",
       aboutme: "Sobre mí",
+      aboutmeTitle: "Ir a Sobre mí",
       skills: "Habilidades",
+      skillsTitle: "Ver mis Habilidades",
       projects: "Proyectos",
+      projectsTitle: "Ver mis Proyectos",
       contact: "Contacto",
+      contactTitle: "Contactarme",
       buttonCV: "Mi CV",
-      navMenu: "Abrir menú de navegación"
+      buttonCVTitle: "Descargar mi CV",
+      navMenu: "Abrir menú de navegación",
+      themeAlt: "Cambiar tema",
+      langAlt: "Cambiar idioma"
     },
     modal: {
       title: "",
