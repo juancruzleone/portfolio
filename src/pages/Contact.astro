@@ -34,22 +34,22 @@ const TEMPLATE_ID = import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID;
                 <button 
                     type="button" 
                     id="submitButton"
-                    class="p-2 bg-black dark:bg-white text-white dark:text-black mb-10 font-monserrat font-light rounded mt-2 dark:hover:bg-[#d9d9d9] hover:bg-[#121212]"
-                    data-i18n="contact.button"
+                    class="relative overflow-hidden group p-2 bg-black dark:bg-white border border-black dark:border-white text-white dark:text-black mb-10 font-monserrat font-light rounded mt-2 inline-block w-full"
                 >
-                    Enviar mensaje
+                    <span class="absolute inset-0 bg-white dark:bg-black -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-in-out"></span>
+                    <span class="relative z-10 group-hover:text-black dark:group-hover:text-white transition-colors duration-300" data-i18n="contact.button">Enviar mensaje</span>
                 </button>
             </form>
         </div>
         
         <div class="mt-[5px]">
-          <div class="hover:bg-[#2d2d2d] bg-black p-2 rounded cursor-pointer mt-[30px] ml-[60px] border border-contenedor w-[48px]">
+          <div class="hover:bg-white/10 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:-rotate-12 transition-all duration-300 bg-black p-2 rounded cursor-pointer mt-[30px] ml-[60px] border border-contenedor w-[48px]">
             <SvgMail />
           </div>
-          <div class="hover:bg-[#2d2d2d] bg-black p-2 rounded cursor-pointer mt-[30px] ml-[60px] border border-contenedor w-[48px]">
+          <div class="hover:bg-white/10 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:rotate-12 transition-all duration-300 bg-black p-2 rounded cursor-pointer mt-[30px] ml-[60px] border border-contenedor w-[48px]">
             <SvgLinkedin />
           </div>
-          <div class="hover:bg-[#2d2d2d] bg-black p-2 rounded cursor-pointer mt-[28px] ml-[60px] border border-contenedor w-[48px]">
+          <div class="hover:bg-white/10 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:-rotate-12 transition-all duration-300 bg-black p-2 rounded cursor-pointer mt-[28px] ml-[60px] border border-contenedor w-[48px]">
             <SvgGithub />
           </div>
         </div>
