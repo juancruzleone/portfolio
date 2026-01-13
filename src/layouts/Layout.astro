@@ -105,13 +105,13 @@ const canonicalUrl = 'https://www.juancruzleone.dev';
                         </svg>
                     </button>
                     <ul id="navMenu" class="hidden md:flex flex-col md:flex-row md:items-center w-full md:w-auto absolute md:static top-full left-0 bg-black md:bg-transparent rounded-md shadow-lg md:shadow-none md:space-x-6 p-4 md:p-0 transition-all duration-300 ease-in-out">
-                        <li><a href="#home" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 hover:border-b-[2px] border-white" data-i18n="nav.home" title={t('nav.homeTitle')}>{t('nav.home')}</a></li>
-                        <li><a href="#about-me" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 hover:border-b-[2px] border-white" data-i18n="nav.aboutme" title={t('nav.aboutmeTitle')}>{t('nav.aboutme')}</a></li>
-                        <li><a href="#skills" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 hover:border-b-[2px] border-white" data-i18n="nav.skills" title={t('nav.skillsTitle')}>{t('nav.skills')}</a></li>
-                        <li><a href="#projects" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 hover:border-b-[2px] border-white" data-i18n="nav.projects" title={t('nav.projectsTitle')}>{t('nav.projects')}</a></li>
-                        <li><a href="#contact" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 hover:border-b-[2px] border-white" data-i18n="nav.contact" title={t('nav.contactTitle')}>{t('nav.contact')}</a></li>
+                        <li><a href="#home" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 hover:border-b-[2px] border-white" data-i18n="nav.home" data-i18n-title="nav.homeTitle" title={t('nav.homeTitle')}>{t('nav.home')}</a></li>
+                        <li><a href="#about-me" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 hover:border-b-[2px] border-white" data-i18n="nav.aboutme" data-i18n-title="nav.aboutmeTitle" title={t('nav.aboutmeTitle')}>{t('nav.aboutme')}</a></li>
+                        <li><a href="#skills" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 hover:border-b-[2px] border-white" data-i18n="nav.skills" data-i18n-title="nav.skillsTitle" title={t('nav.skillsTitle')}>{t('nav.skills')}</a></li>
+                        <li><a href="#projects" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 hover:border-b-[2px] border-white" data-i18n="nav.projects" data-i18n-title="nav.projectsTitle" title={t('nav.projectsTitle')}>{t('nav.projects')}</a></li>
+                        <li><a href="#contact" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 hover:border-b-[2px] border-white" data-i18n="nav.contact" data-i18n-title="nav.contactTitle" title={t('nav.contactTitle')}>{t('nav.contact')}</a></li>
                         <li>
-                            <a href="cv-juancruzleone.pdf" target="_blank" rel="noopener noreferrer" class="relative overflow-hidden group border border-white p-1 rounded inline-block" title={t('nav.buttonCVTitle')}>
+                            <a href="cv-juancruzleone.pdf" target="_blank" rel="noopener noreferrer" class="relative overflow-hidden group border border-white p-1 rounded inline-block" data-i18n-title="nav.buttonCVTitle" title={t('nav.buttonCVTitle')}>
                                 <span class="absolute inset-0 bg-white -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-in-out"></span>
                                 <span class="relative z-10 text-white group-hover:text-black transition-colors duration-300" data-i18n="nav.buttonCV">{t('nav.buttonCV')}</span>
                             </a>
@@ -119,10 +119,10 @@ const canonicalUrl = 'https://www.juancruzleone.dev';
                     </ul>
                     <div class="flex">
                         <button id="themeSwitch" class="border border-contenedor rounded mr-4 bg-black hover:bg-white/10 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:-rotate-12 transition-all duration-300">
-                            <img id="themeIcon" alt={t('nav.themeAlt')} title={t('nav.themeAlt')} width="30" height="30" class="p-2 pb-2">
+                            <img id="themeIcon" data-i18n-alt="nav.themeAlt" alt={t('nav.themeAlt')} data-i18n-title="nav.themeAlt" title={t('nav.themeAlt')} width="30" height="30" class="p-2 pb-2">
                         </button>
                         <button id="langSwitch" class="border border-contenedor rounded bg-black hover:bg-white/10 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:rotate-12 transition-all duration-300">
-                            <img id="langIcon" alt={t('nav.langAlt')} title={t('nav.langAlt')} width="30" height="30" class="p-2 pb-2">
+                            <img id="langIcon" data-i18n-alt="nav.langAlt" alt={t('nav.langAlt')} data-i18n-title="nav.langAlt" title={t('nav.langAlt')} width="30" height="30" class="p-2 pb-2">
                         </button>
                     </div>
                 </div>
@@ -162,18 +162,24 @@ const canonicalUrl = 'https://www.juancruzleone.dev';
             });
 
             // Actualizar los atributos title dinámicamente
-            document.querySelectorAll('[title]').forEach(el => {
-                const key = el.getAttribute('title');
-                if (key && ui[currentLang] && ui[currentLang].nav && ui[currentLang].nav[key]) {
-                  el.setAttribute('title', ui[currentLang].nav[key]);
+            document.querySelectorAll('[data-i18n-title]').forEach(el => {
+                const key = el.getAttribute('data-i18n-title');
+                if (key) {
+                    const translation = key.split('.').reduce((obj, k) => obj && obj[k], ui[currentLang]);
+                    if (translation) {
+                        el.setAttribute('title', translation);
+                    }
                 }
             });
 
              // Actualizar los atributos alt dinámicamente
-             document.querySelectorAll('[alt]').forEach(el => {
-                const key = el.getAttribute('alt');
-                if (key && ui[currentLang] && ui[currentLang].nav && ui[currentLang].nav[key]) {
-                  el.setAttribute('alt', ui[currentLang].nav[key]);
+             document.querySelectorAll('[data-i18n-alt]').forEach(el => {
+                const key = el.getAttribute('data-i18n-alt');
+                if (key) {
+                    const translation = key.split('.').reduce((obj, k) => obj && obj[k], ui[currentLang]);
+                    if (translation) {
+                        el.setAttribute('alt', translation);
+                    }
                 }
             });
         }

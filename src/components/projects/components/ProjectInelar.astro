@@ -60,7 +60,7 @@ const lang = Astro.cookies.get('lang')?.value || defaultLang;
                 <a href="https://inelar.vercel.app/" target="_blank" rel="noopener noreferrer" 
                    aria-label={lang === 'es' ? 'Abrir proyecto Inelar' : 'Open Inelar project'} 
                    title={lang === 'es' ? 'Abrir proyecto Inelar' : 'Open Inelar project'}
-                   class="hover:bg-[#2d2d2d] bg-black p-2 rounded cursor-pointer border border-contenedor w-[35px] h-[35px] flex items-center justify-center"
+                   class="hover:bg-white/10 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:-rotate-12 transition-all duration-300 bg-black p-2 rounded cursor-pointer border border-contenedor w-[35px] h-[35px] flex items-center justify-center"
                    id="inelarLink"
                 >
                     <svg 
@@ -79,7 +79,7 @@ const lang = Astro.cookies.get('lang')?.value || defaultLang;
                 <a href="https://github.com/juancruzleone/InelarWeb" target="_blank" rel="noopener noreferrer" 
                    aria-label={lang === 'es' ? 'Abrir repositorio del proyecto en Github' : 'Open repository GitHub of project'} 
                    title={lang === 'es' ? 'Abrir repositorio del proyecto en Github' : 'Open repository GitHub of project'}
-                   class="hover:bg-[#2d2d2d] bg-black p-2 rounded cursor-pointer border border-contenedor w-[35px] h-[35px] flex items-center justify-center ml-4"
+                   class="hover:bg-white/10 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:rotate-12 transition-all duration-300 bg-black p-2 rounded cursor-pointer border border-contenedor w-[35px] h-[35px] flex items-center justify-center ml-4"
                    id="githubLink"
                 >
                     <svg viewBox="0 0 256 250" width="25" height="25" fill="#ffffff" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid">
