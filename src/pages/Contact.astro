@@ -1,25 +1,25 @@
 ---
-import MainH2 from "../components/MainH2.astro"
-import Label from "../components/contact/components/Label.astro"
-import Input from "../components/contact/components/Input.astro"
-import Textarea from "../components/contact/components/Textarea.astro"
-import ButtonContact from "../components/contact/components/buttonContact.astro"
-import SvgMail from "../../src/components/SvgMail.astro"
-import SvgLinkedin from "../components/SvgLinkedin.astro"
-import SvgGithub from "../components/SvgGithub.astro"
-import Modal from "../components/contact/components/Modal.astro"
+import MainH2 from "../components/MainH2.astro";
+import Label from "../components/contact/components/Label.astro";
+import Input from "../components/contact/components/Input.astro";
+import Textarea from "../components/contact/components/Textarea.astro";
+import ButtonContact from "../components/contact/components/buttonContact.astro";
+import SvgMail from "../components/SvgMail.astro";
+import SvgLinkedin from "../components/SvgLinkedin.astro";
+import SvgGithub from "../components/SvgGithub.astro";
+import Modal from "../components/contact/components/Modal.astro";
 
 // Obtenemos las variables de entorno
 const PUBLIC_KEY = import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY;
 const SERVICE_ID = import.meta.env.PUBLIC_EMAILJS_SERVICE_ID;
 const TEMPLATE_ID = import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID;
---- 
+---
 
 <section class="pl-6 mt-[60px]" id="contact">
     <MainH2 title="contact.title" />
     <div class="flex">
         <div class="w-[750px]">
-            <form 
+            <form
                 id="contactForm"
                 class="flex flex-col"
                 onsubmit="return false;"
@@ -28,124 +28,160 @@ const TEMPLATE_ID = import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID;
                 data-template-id={TEMPLATE_ID}
             >
                 <Label label="contact.email" />
-                <Input name="email" type="email" required />
+                <Input name="email" required />
                 <Label label="contact.message" />
-                <Textarea name="message" required />     
-                <button 
-                    type="button" 
+                <Textarea name="message" required />
+                <button
+                    type="submit"
                     id="submitButton"
-                    class="relative overflow-hidden group p-2 bg-black dark:bg-white border border-black dark:border-white text-white dark:text-black mb-10 font-monserrat font-light rounded mt-2 inline-block w-full"
+                    class="relative overflow-hidden group p-2 bg-black dark:bg-white border border-black dark:border-white text-white dark:text-black mb-10 font-monserrat font-light rounded mt-2 flex items-center justify-center gap-2 w-full"
                 >
-                    <span class="absolute inset-0 bg-white dark:bg-black -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-in-out"></span>
-                    <span class="relative z-10 group-hover:text-black dark:group-hover:text-white transition-colors duration-300" data-i18n="contact.button">Enviar mensaje</span>
+                    <span
+                        class="absolute inset-0 bg-white dark:bg-black -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-in-out"
+                    ></span>
+                    <div
+                        class="relative z-10 flex items-center gap-2 group-hover:text-black dark:group-hover:text-white transition-colors duration-300"
+                    >
+                        <span data-i18n="contact.button">Enviar mensaje</span>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="transition-colors duration-300"
+                        >
+                            <path
+                                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                            ></path><polyline points="22,6 12,13 2,6"
+                            ></polyline>
+                        </svg>
+                    </div>
                 </button>
             </form>
         </div>
-        
+
         <div class="mt-[5px]">
-          <div class="hover:bg-white/10 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:-rotate-12 transition-all duration-300 bg-black p-2 rounded cursor-pointer mt-[30px] ml-[60px] border border-contenedor w-[48px]">
-            <SvgMail />
-          </div>
-          <div class="hover:bg-white/10 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:rotate-12 transition-all duration-300 bg-black p-2 rounded cursor-pointer mt-[30px] ml-[60px] border border-contenedor w-[48px]">
-            <SvgLinkedin />
-          </div>
-          <div class="hover:bg-white/10 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:-rotate-12 transition-all duration-300 bg-black p-2 rounded cursor-pointer mt-[28px] ml-[60px] border border-contenedor w-[48px]">
-            <SvgGithub />
-          </div>
+            <div
+                class="group hover:bg-white hover:border-black dark:hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:-rotate-12 transition-all duration-300 bg-black p-2 rounded cursor-pointer mt-[30px] ml-[60px] border border-contenedor w-[48px]"
+            >
+                <SvgMail />
+            </div>
+            <div
+                class="group hover:bg-white hover:border-black dark:hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:rotate-12 transition-all duration-300 bg-black p-2 rounded cursor-pointer mt-[30px] ml-[60px] border border-contenedor w-[48px]"
+            >
+                <SvgLinkedin />
+            </div>
+            <div
+                class="group hover:bg-white hover:border-black dark:hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:-rotate-12 transition-all duration-300 bg-black p-2 rounded cursor-pointer mt-[28px] ml-[60px] border border-contenedor w-[48px]"
+            >
+                <SvgGithub />
+            </div>
         </div>
     </div>
-    
+
     <Modal />
 </section>
 
-<script is:inline src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script
+    is:inline
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+></script>
 
 <script>
-window.onload = function() {
-    if (typeof emailjs !== 'undefined') {
-        const form = document.getElementById('contactForm');
-        const submitButton = document.getElementById('submitButton');
-        const modal = document.querySelector('.modal');
-        const closeButton = modal.querySelector('button');
-        
-        // Obtenemos las credenciales desde los data attributes
-        const PUBLIC_KEY = form.dataset.publicKey;
-        const SERVICE_ID = form.dataset.serviceId;
-        const TEMPLATE_ID = form.dataset.templateId;
-        
-        // Inicializamos EmailJS con la public key desde las variables de entorno
-        emailjs.init(PUBLIC_KEY);
-        
-        let isSubmitting = false;
+    window.onload = function () {
+        if (typeof emailjs !== "undefined") {
+            const form = document.getElementById("contactForm");
+            const submitButton = document.getElementById("submitButton");
+            const modal = document.querySelector(".modal");
+            const closeButton = modal.querySelector("button");
 
-        submitButton.addEventListener('click', async () => {
-            if (isSubmitting) return;
-            
-            const emailInput = form.querySelector('input[name="email"]');
-            const messageInput = form.querySelector('textarea[name="message"]');
-            
-            if (!emailInput.value || !messageInput.value) {
-                alert('Por favor, completa todos los campos');
-                return;
-            }
+            // Obtenemos las credenciales desde los data attributes
+            const PUBLIC_KEY = form.dataset.publicKey;
+            const SERVICE_ID = form.dataset.serviceId;
+            const TEMPLATE_ID = form.dataset.templateId;
 
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(emailInput.value)) {
-                alert('Por favor, ingresa un email válido');
-                return;
-            }
+            // Inicializamos EmailJS con la public key desde las variables de entorno
+            emailjs.init(PUBLIC_KEY);
 
-            try {
-                isSubmitting = true;
-                
-                const originalButtonText = submitButton.innerHTML;
-                submitButton.innerHTML = 'Enviando...';
-                submitButton.disabled = true;
+            let isSubmitting = false;
 
-                const response = await emailjs.send(
-                    SERVICE_ID,
-                    TEMPLATE_ID,
-                    {
-                        from_name: emailInput.value,
-                        to_name: "Juan Cruz",
-                        message: messageInput.value,
-                        email: emailInput.value,
-                        to_email: "juancruzleone10@gmail.com"
-                    }
+            submitButton.addEventListener("click", async () => {
+                if (isSubmitting) return;
+
+                const emailInput = form.querySelector('input[name="email"]');
+                const messageInput = form.querySelector(
+                    'textarea[name="message"]',
                 );
 
-                if (response.status === 200) {
-                    modal.classList.remove('hidden');
-                    form.reset();
-                } else {
-                    throw new Error('Error al enviar el email');
+                if (!emailInput.value || !messageInput.value) {
+                    alert("Por favor, completa todos los campos");
+                    return;
                 }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo.');
-            } finally {
-                isSubmitting = false;
-                submitButton.innerHTML = originalButtonText;
-                submitButton.disabled = false;
-            }
-        });
 
-        closeButton.addEventListener('click', () => {
-            modal.classList.add('hidden');
-        });
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(emailInput.value)) {
+                    alert("Por favor, ingresa un email válido");
+                    return;
+                }
 
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.classList.add('hidden');
-            }
-        });
+                try {
+                    isSubmitting = true;
 
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            return false;
-        });
-    } else {
-        console.error('EmailJS no se ha cargado correctamente');
-    }
-};
+                    const originalButtonText = submitButton.innerHTML;
+                    submitButton.innerHTML = "Enviando...";
+                    submitButton.disabled = true;
+
+                    const response = await emailjs.send(
+                        SERVICE_ID,
+                        TEMPLATE_ID,
+                        {
+                            from_name: emailInput.value,
+                            to_name: "Juan Cruz",
+                            message: messageInput.value,
+                            email: emailInput.value,
+                            to_email: "juancruzleone10@gmail.com",
+                        },
+                    );
+
+                    if (response.status === 200) {
+                        modal.classList.remove("hidden");
+                        form.reset();
+                    } else {
+                        throw new Error("Error al enviar el email");
+                    }
+                } catch (error) {
+                    console.error("Error:", error);
+                    alert(
+                        "Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo.",
+                    );
+                } finally {
+                    isSubmitting = false;
+                    submitButton.innerHTML = originalButtonText;
+                    submitButton.disabled = false;
+                }
+            });
+
+            closeButton.addEventListener("click", () => {
+                modal.classList.add("hidden");
+            });
+
+            modal.addEventListener("click", (e) => {
+                if (e.target === modal) {
+                    modal.classList.add("hidden");
+                }
+            });
+
+            form.addEventListener("submit", (e) => {
+                e.preventDefault();
+                return false;
+            });
+        } else {
+            console.error("EmailJS no se ha cargado correctamente");
+        }
+    };
 </script>

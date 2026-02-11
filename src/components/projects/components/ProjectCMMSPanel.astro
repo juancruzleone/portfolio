@@ -2,20 +2,24 @@
 import MainH3 from "../../../components/MainH3.astro";
 import SvgUrl from "./SvgUrl.astro";
 import SvgGithub from "../../../components/projects/components/SvgGithub.astro";
-import { ui, defaultLang } from '../../../i18n/ui';
+import { ui, defaultLang } from "../../../i18n/ui";
 
-const lang = Astro.cookies.get('lang')?.value || defaultLang;
+const lang = Astro.cookies.get("lang")?.value || defaultLang;
 ---
 
 <div class="mt-6 rounded">
     <div class="flex flex-col md:flex-row">
         <img
-            src="/portadacmms2.PNG"
-            alt={lang === 'es' ? "Imagen del proyecto CMMS Panel" : "Image of the CMMS Panel project"}
-            title={lang === 'es' ? "Imagen del proyecto CMMS Panel" : "Image of the CMMS Panel project"}
+            src="/frontGMAO.PNG"
+            alt={lang === "es"
+                ? "Imagen del proyecto CMMS Panel"
+                : "Image of the CMMS Panel project"}
+            title={lang === "es"
+                ? "Imagen del proyecto CMMS Panel"
+                : "Image of the CMMS Panel project"}
             width="500"
             height="auto"
-            class="w-full md:w-[50%] rounded aspect-video object-contain"
+            class="w-full md:w-[45%] rounded"
             id="projectCMMSImage"
         />
 
@@ -25,70 +29,90 @@ const lang = Astro.cookies.get('lang')?.value || defaultLang;
             <p
                 class="font-montserrat text-black dark:text-white text-sm mt-2"
                 data-i18n="projects.descriptionCMMS"
-            ></p>
+            >
+            </p>
 
             <div class="flex flex-wrap mt-3">
                 <div
                     class="border border-black dark:border-white rounded text-center p-1 w-[80px] mr-2 mb-2"
                 >
-                    <p class="text-black dark:text-white font-montserrat text-xs">
+                    <p
+                        class="text-black dark:text-white font-montserrat text-xs"
+                    >
                         React
                     </p>
                 </div>
                 <div
                     class="border border-black dark:border-white rounded text-center p-1 w-[95px] mr-2 mb-2"
                 >
-                    <p class="text-black dark:text-white font-montserrat text-xs">
+                    <p
+                        class="text-black dark:text-white font-montserrat text-xs"
+                    >
                         TypeScript
                     </p>
                 </div>
                 <div
                     class="border border-black dark:border-white rounded text-center p-1 w-[80px] mr-2 mb-2"
                 >
-                    <p class="text-black dark:text-white font-montserrat text-xs">
+                    <p
+                        class="text-black dark:text-white font-montserrat text-xs"
+                    >
                         Zustand
                     </p>
                 </div>
                 <div
                     class="border border-black dark:border-white rounded text-center p-1 w-[80px] mr-2 mb-2"
                 >
-                    <p class="text-black dark:text-white font-montserrat text-xs">
+                    <p
+                        class="text-black dark:text-white font-montserrat text-xs"
+                    >
                         NodeJs
                     </p>
                 </div>
                 <div
                     class="border border-black dark:border-white rounded text-center p-1 w-[80px] mr-2 mb-2"
                 >
-                    <p class="text-black dark:text-white font-montserrat text-xs">
+                    <p
+                        class="text-black dark:text-white font-montserrat text-xs"
+                    >
                         ExpressJs
                     </p>
                 </div>
                 <div
                     class="border border-black dark:border-white rounded text-center p-1 w-[80px] mr-2 mb-2"
                 >
-                    <p class="text-black dark:text-white font-montserrat text-xs">
+                    <p
+                        class="text-black dark:text-white font-montserrat text-xs"
+                    >
                         MongoDB
                     </p>
                 </div>
             </div>
 
             <div class="flex mt-4">
-                <a href="https://cmms.leonix.net.ar/" target="_blank" rel="noopener noreferrer" 
-                   aria-label={lang === 'es' ? 'Abrir proyecto CMMS Panel' : 'Open CMMS Panel project'} 
-                   title={lang === 'es' ? 'Abrir proyecto CMMS Panel' : 'Open CMMS Panel project'}
-                   class="hover:bg-white/10 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:-rotate-12 transition-all duration-300 bg-black p-2 rounded cursor-pointer border border-contenedor w-[35px] h-[35px] flex items-center justify-center"
-                   id="cmmsLink"
+                <a
+                    href="https://cmms.leonix.net.ar/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={lang === "es"
+                        ? "Abrir proyecto CMMS Panel"
+                        : "Open CMMS Panel project"}
+                    title={lang === "es"
+                        ? "Abrir proyecto CMMS Panel"
+                        : "Open CMMS Panel project"}
+                    class="group hover:bg-white hover:border-black dark:hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:-rotate-12 transition-all duration-300 bg-black p-2 rounded cursor-pointer border border-contenedor w-[35px] h-[35px] flex items-center justify-center"
+                    id="cmmsLink"
                 >
-                    <svg 
-                        xmlns="http://www.w3.org/2000/svg" 
-                        viewBox="0 0 192 192" 
-                        width="25" 
-                        height="25" 
-                        fill="#ffffff" 
-                        stroke="#ffffff"
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 192 192"
+                        width="25"
+                        height="25"
+                        class="fill-white stroke-white group-hover:fill-black group-hover:stroke-black transition-colors duration-300"
                     >
-                        <path d="M84 128.6H54.6C36.6 128.6 22 114 22 96c0-9 3.7-17.2 9.6-23.1 5.9-5.9 14.1-9.6 23.1-9.6H84m24 65.3h29.4c9 0 17.2-3.7 23.1-9.6 5.9-5.9 9.6-14.1 9.6-23.1 0-18-14.6-32.6-32.6-32.6H108M67.9 96h56.2" 
-                            style="fill:none;stroke:#ffffff;stroke-width:12;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+                        <path
+                            d="M84 128.6H54.6C36.6 128.6 22 114 22 96c0-9 3.7-17.2 9.6-23.1 5.9-5.9 14.1-9.6 23.1-9.6H84m24 65.3h29.4c9 0 17.2-3.7 23.1-9.6 5.9-5.9 9.6-14.1 9.6-23.1 0-18-14.6-32.6-32.6-32.6H108M67.9 96h56.2"
+                            style="fill:none;stroke:inherit;stroke-width:12;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
                         ></path>
                     </svg>
                 </a>
@@ -98,33 +122,37 @@ const lang = Astro.cookies.get('lang')?.value || defaultLang;
 </div>
 
 <script>
-  function updateImageAttributes() {
-    const lang = localStorage.getItem('lang') || 'es';
-    const projectCMMSImage = document.getElementById('projectCMMSImage') as HTMLImageElement;
-    if (projectCMMSImage) {
-      projectCMMSImage.alt = lang === 'es' 
-        ? "Imagen del proyecto CMMS Panel" 
-        : "Image of the CMMS Panel project";
-      projectCMMSImage.title = lang === 'es' 
-        ? "Imagen del proyecto CMMS Panel" 
-        : "Image of the CMMS Panel project";
+    function updateImageAttributes() {
+        const lang = localStorage.getItem("lang") || "es";
+        const projectCMMSImage = document.getElementById(
+            "projectCMMSImage",
+        ) as HTMLImageElement;
+        if (projectCMMSImage) {
+            projectCMMSImage.alt =
+                lang === "es"
+                    ? "Imagen del proyecto CMMS Panel"
+                    : "Image of the CMMS Panel project";
+            projectCMMSImage.title =
+                lang === "es"
+                    ? "Imagen del proyecto CMMS Panel"
+                    : "Image of the CMMS Panel project";
+        }
     }
-  }
 
-  // Ejecutar la función al cargar la página
-  updateImageAttributes();
+    // Ejecutar la función al cargar la página
+    updateImageAttributes();
 
-  // Observar cambios en localStorage
-  window.addEventListener('storage', (event) => {
-    if (event.key === 'lang') {
-      updateImageAttributes();
-    }
-  });
+    // Observar cambios en localStorage
+    window.addEventListener("storage", (event) => {
+        if (event.key === "lang") {
+            updateImageAttributes();
+        }
+    });
 
-  // Manejar cambios de idioma dentro de la misma página
-  document.addEventListener('astro:language-changed', updateImageAttributes);
+    // Manejar cambios de idioma dentro de la misma página
+    document.addEventListener("astro:language-changed", updateImageAttributes);
 
-  // Agregar un observer para cambios en el DOM en caso de que el cambio de idioma modifique la estructura
-  const observer = new MutationObserver(updateImageAttributes);
-  observer.observe(document.body, { childList: true, subtree: true });
+    // Agregar un observer para cambios en el DOM en caso de que el cambio de idioma modifique la estructura
+    const observer = new MutationObserver(updateImageAttributes);
+    observer.observe(document.body, { childList: true, subtree: true });
 </script>

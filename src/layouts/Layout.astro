@@ -1,6 +1,6 @@
 ---
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
-import { ui, defaultLang } from '../i18n/ui';
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { ui, defaultLang } from "../i18n/ui";
 
 // Obtener el idioma de la URL (si existe)
 const urlLang = getLangFromUrl(Astro.url);
@@ -8,210 +8,390 @@ const lang = urlLang || defaultLang;
 const t = useTranslations(lang);
 
 // Definir la URL canónica
-const canonicalUrl = 'https://www.juancruzleone.dev';
+const canonicalUrl = "https://www.juancruzleone.dev";
 ---
 
 <!doctype html>
 <html lang={lang}>
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Juan Cruz Leone - Desarrollador Frontend de 21 años de Argentina. Especializado en crear interfaces intuitivas y bien estructuradas, con enfoque en código limpio y optimización de rendimiento. Graduado en Diseño y Programación Web del Instituto Da Vinci." />
-    <meta name="keywords" content="Juan Cruz Leone, Frontend Developer, Web Development, Portfolio, Argentina, Buenos Aires, Instituto Da Vinci, UI/UX, Diseño Web, Programación Web, React, JavaScript, HTML, CSS, Optimización de rendimiento, Experiencia de usuario" />
-    <meta name="author" content="Juan Cruz Leone" />
-    <meta name="robots" content="index, follow" />
-    <meta name="theme-color" content="#121212" />
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Juan Cruz Leone - Desarrollador Frontend de 21 años de Argentina. Especializado en crear interfaces intuitivas y bien estructuradas, con enfoque en código limpio y optimización de rendimiento. Graduado en Diseño y Programación Web del Instituto Da Vinci."
+        />
+        <meta
+            name="keywords"
+            content="Juan Cruz Leone, Frontend Developer, Web Development, Portfolio, Argentina, Buenos Aires, Instituto Da Vinci, UI/UX, Diseño Web, Programación Web, React, JavaScript, HTML, CSS, Optimización de rendimiento, Experiencia de usuario"
+        />
+        <meta name="author" content="Juan Cruz Leone" />
+        <meta name="robots" content="index, follow" />
+        <meta name="theme-color" content="#121212" />
 
-    <!-- Canonical URL para SEO -->
-    <link rel="canonical" href={canonicalUrl} />
+        <!-- Canonical URL para SEO -->
+        <link rel="canonical" href={canonicalUrl} />
 
-    <!-- Publisher (opcional, aunque su uso es limitado) -->
-    <link rel="publisher" href="https://www.juancruzleone.dev" />
+        <!-- Publisher (opcional, aunque su uso es limitado) -->
+        <link rel="publisher" href="https://www.juancruzleone.dev" />
 
-    <!-- Open Graph Meta Tags para redes sociales -->
-    <meta property="og:title" content="Juan Cruz Leone | Portfolio de Desarrollador Frontend" />
-    <meta property="og:description" content="Desarrollador Frontend de 21 años de Argentina. Creando interfaces intuitivas y optimizando rendimiento web. Graduado del Instituto Da Vinci en Diseño y Programación Web." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={canonicalUrl} />
-    <meta property="og:image" content="https://www.juancruzleone.dev/logo-3.svg" /> <!-- Agrega una imagen relevante para redes sociales -->
-    <meta property="og:site_name" content="Juan Cruz Leone | Portfolio" />
+        <!-- Open Graph Meta Tags para redes sociales -->
+        <meta
+            property="og:title"
+            content="Juan Cruz Leone | Portfolio de Desarrollador Frontend"
+        />
+        <meta
+            property="og:description"
+            content="Desarrollador Frontend de 21 años de Argentina. Creando interfaces intuitivas y optimizando rendimiento web. Graduado del Instituto Da Vinci en Diseño y Programación Web."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta
+            property="og:image"
+            content="https://www.juancruzleone.dev/logo-3.svg"
+        />
+        <!-- Agrega una imagen relevante para redes sociales -->
+        <meta property="og:site_name" content="Juan Cruz Leone | Portfolio" />
 
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Juan Cruz Leone | Portfolio de Desarrollador Frontend" />
-    <meta name="twitter:description" content="Desarrollador Frontend de 21 años de Argentina. Especializado en interfaces intuitivas y optimización de rendimiento. Graduado en Diseño y Programación Web." />
-    <meta name="twitter:url" content={canonicalUrl} />
-    <meta name="twitter:image" content="https://www.juancruzleone.dev/logo-3.svg" /> <!-- Agrega una imagen relevante para Twitter -->
+        <!-- Twitter Card Meta Tags -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+            name="twitter:title"
+            content="Juan Cruz Leone | Portfolio de Desarrollador Frontend"
+        />
+        <meta
+            name="twitter:description"
+            content="Desarrollador Frontend de 21 años de Argentina. Especializado en interfaces intuitivas y optimización de rendimiento. Graduado en Diseño y Programación Web."
+        />
+        <meta name="twitter:url" content={canonicalUrl} />
+        <meta
+            name="twitter:image"
+            content="https://www.juancruzleone.dev/logo-3.svg"
+        />
+        <!-- Agrega una imagen relevante para Twitter -->
 
-    <!-- Geo Tags -->
-    <meta name="geo.region" content="AR-B" />
-    <meta name="geo.placename" content="Buenos Aires" />
-    <meta name="geo.position" content="-34.6037;-58.3816" />
-    <meta name="ICBM" content="-34.6037, -58.3816" />
+        <!-- Geo Tags -->
+        <meta name="geo.region" content="AR-B" />
+        <meta name="geo.placename" content="Buenos Aires" />
+        <meta name="geo.position" content="-34.6037;-58.3816" />
+        <meta name="ICBM" content="-34.6037, -58.3816" />
 
-    <link rel="icon" type="image/svg+xml" href="/logo-3.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Juan Cruz Leone | Portfolio de Desarrollador Frontend</title>
+        <link rel="icon" type="image/svg+xml" href="/logo-3.svg" />
+        <meta name="generator" content={Astro.generator} />
+        <title>Juan Cruz Leone | Portfolio de Desarrollador Frontend</title>
 
-    <!-- Estilos iniciales para evitar el parpadeo -->
-    <style>
-        :root {
-            --bg-principal-light: #ffffff;
-            --bg-principal-dark: #121212;
-        }
-
-        body {
-            background-color: var(--bg-principal-dark);
-        }
-
-        .light body {
-            background-color: var(--bg-principal-light);
-        }
-
-        #themeIcon {
-            content: url('/luna.svg');
-        }
-
-        .light #themeIcon {
-            content: url('/sol.svg');
-        }
-
-        #langIcon {
-            content: url('/traductor.svg');
-        }
-    </style>
-
-    <!-- Script para aplicar el tema y el idioma antes de que el DOM se cargue -->
-    <script is:inline>
-        (function() {
-            // Verificar el idioma en localStorage
-            const savedLang = localStorage.getItem('lang') || 'es';
-            const savedTheme = localStorage.getItem('theme') || 'dark';
-
-            // Aplicar el idioma y el tema antes de que el DOM se cargue
-            document.documentElement.lang = savedLang;
-            document.documentElement.classList.add(savedTheme);
-        })();
-    </script>
-</head>
-<body class="bg-principal-light dark:bg-principal transition-colors duration-300">
-    <div class="max-w-[1000px] mx-auto mt-10 px-4">
-        <header class="sticky top-0 z-50">
-            <nav class="border border-contenedor bg-black rounded-md p-6 pl-4 relative">
-                <div class="flex justify-between items-center">
-                    <button id="menuToggle" class="md:hidden text-white focus:outline-none" aria-label={t('nav.navMenu')}>
-                        <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                        </svg>
-                    </button>
-                    <ul id="navMenu" class="hidden md:flex flex-col md:flex-row md:items-center w-full md:w-auto absolute md:static top-full left-0 bg-black md:bg-transparent rounded-md shadow-lg md:shadow-none md:space-x-6 p-4 md:p-0 transition-all duration-300 ease-in-out">
-                        <li><a href="#home" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 hover:border-b-[2px] border-white" data-i18n="nav.home" data-i18n-title="nav.homeTitle" title={t('nav.homeTitle')}>{t('nav.home')}</a></li>
-                        <li><a href="#about-me" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 hover:border-b-[2px] border-white" data-i18n="nav.aboutme" data-i18n-title="nav.aboutmeTitle" title={t('nav.aboutmeTitle')}>{t('nav.aboutme')}</a></li>
-                        <li><a href="#skills" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 hover:border-b-[2px] border-white" data-i18n="nav.skills" data-i18n-title="nav.skillsTitle" title={t('nav.skillsTitle')}>{t('nav.skills')}</a></li>
-                        <li><a href="#projects" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 hover:border-b-[2px] border-white" data-i18n="nav.projects" data-i18n-title="nav.projectsTitle" title={t('nav.projectsTitle')}>{t('nav.projects')}</a></li>
-                        <li><a href="#contact" class="text-white font-montserrat text-base block md:inline m-2 md:m-0 hover:border-b-[2px] border-white" data-i18n="nav.contact" data-i18n-title="nav.contactTitle" title={t('nav.contactTitle')}>{t('nav.contact')}</a></li>
-                        <li>
-                            <a href="cv-juancruzleone.pdf" target="_blank" rel="noopener noreferrer" class="relative overflow-hidden group border border-white p-1 rounded inline-block" data-i18n-title="nav.buttonCVTitle" title={t('nav.buttonCVTitle')}>
-                                <span class="absolute inset-0 bg-white -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-in-out"></span>
-                                <span class="relative z-10 text-white group-hover:text-black transition-colors duration-300" data-i18n="nav.buttonCV">{t('nav.buttonCV')}</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="flex">
-                        <button id="themeSwitch" class="border border-contenedor rounded mr-4 bg-black hover:bg-white/10 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:-rotate-12 transition-all duration-300">
-                            <img id="themeIcon" data-i18n-alt="nav.themeAlt" alt={t('nav.themeAlt')} data-i18n-title="nav.themeAlt" title={t('nav.themeAlt')} width="30" height="30" class="p-2 pb-2">
-                        </button>
-                        <button id="langSwitch" class="border border-contenedor rounded bg-black hover:bg-white/10 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:rotate-12 transition-all duration-300">
-                            <img id="langIcon" data-i18n-alt="nav.langAlt" alt={t('nav.langAlt')} data-i18n-title="nav.langAlt" title={t('nav.langAlt')} width="30" height="30" class="p-2 pb-2">
-                        </button>
-                    </div>
-                </div>
-            </nav>
-        </header>
-        <main>
-            <slot />
-        </main>
-    </div>
-
-    <script define:vars={{ initialLang: lang, ui }}>
-        let currentLang = localStorage.getItem('lang') || initialLang;
-        let currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-
-        function switchLanguage() {
-            currentLang = currentLang === 'en' ? 'es' : 'en';
-            localStorage.setItem('lang', currentLang);
-            updateContent();
-        }
-
-        function switchTheme() {
-            currentTheme = currentTheme === 'light' ? 'dark' : 'light';
-            localStorage.setItem('theme', currentTheme);
-            updateTheme();
-        }
-
-        function updateContent() {
-            // Actualizar el idioma del documento
-            document.documentElement.lang = currentLang;
-            
-            // Traducir elementos con el atributo data-i18n
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (key) {
-                    el.textContent = key.split('.').reduce((obj, k) => obj && obj[k], ui[currentLang]) || key;
-                }
-            });
-
-            // Actualizar los atributos title dinámicamente
-            document.querySelectorAll('[data-i18n-title]').forEach(el => {
-                const key = el.getAttribute('data-i18n-title');
-                if (key) {
-                    const translation = key.split('.').reduce((obj, k) => obj && obj[k], ui[currentLang]);
-                    if (translation) {
-                        el.setAttribute('title', translation);
-                    }
-                }
-            });
-
-             // Actualizar los atributos alt dinámicamente
-             document.querySelectorAll('[data-i18n-alt]').forEach(el => {
-                const key = el.getAttribute('data-i18n-alt');
-                if (key) {
-                    const translation = key.split('.').reduce((obj, k) => obj && obj[k], ui[currentLang]);
-                    if (translation) {
-                        el.setAttribute('alt', translation);
-                    }
-                }
-            });
-        }
-
-        function updateTheme() {
-            if (currentTheme === 'dark') {
-                document.documentElement.classList.add('dark');
-                document.documentElement.classList.remove('light');
-            } else {
-                document.documentElement.classList.remove('dark');
-                document.documentElement.classList.add('light');
+        <!-- Estilos iniciales para evitar el parpadeo -->
+        <style>
+            :root {
+                --bg-principal-light: #ffffff;
+                --bg-principal-dark: #121212;
             }
-        }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            // Traducir la página al cargarla
-            updateContent();
+            body {
+                background-color: var(--bg-principal-dark);
+            }
 
-            document.getElementById('langSwitch').addEventListener('click', switchLanguage);
-            document.getElementById('themeSwitch').addEventListener('click', switchTheme);
+            .light body {
+                background-color: var(--bg-principal-light);
+            }
 
-            document.getElementById('menuToggle').addEventListener('click', () => {
-                const navMenu = document.getElementById('navMenu');
-                navMenu.classList.toggle('hidden');
+            #themeIcon {
+                content: url("/luna.svg");
+            }
+
+            .light #themeIcon {
+                content: url("/sol.svg");
+            }
+
+            #langIcon {
+                content: url("/traductor.svg");
+            }
+
+            @keyframes theme-spin {
+                0% {
+                    transform: rotate(0deg) scale(1);
+                }
+                50% {
+                    transform: rotate(180deg) scale(0.8);
+                }
+                100% {
+                    transform: rotate(360deg) scale(1);
+                }
+            }
+
+            #themeIcon.spin {
+                animation: theme-spin 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+        </style>
+
+        <!-- Script para aplicar el tema y el idioma antes de que el DOM se cargue -->
+        <script is:inline>
+            (function () {
+                // Verificar el idioma en localStorage
+                const savedLang = localStorage.getItem("lang") || "es";
+                const savedTheme = localStorage.getItem("theme") || "dark";
+
+                // Aplicar el idioma y el tema antes de que el DOM se cargue
+                document.documentElement.lang = savedLang;
+                document.documentElement.classList.add(savedTheme);
+            })();
+        </script>
+    </head>
+    <body
+        class="bg-principal-light dark:bg-principal transition-colors duration-300"
+    >
+        <div class="max-w-[1000px] mx-auto mt-10 px-4">
+            <header class="sticky top-0 z-50">
+                <nav
+                    class="border border-contenedor bg-black rounded-md p-6 pl-4 relative"
+                >
+                    <div class="flex justify-between items-center">
+                        <button
+                            id="menuToggle"
+                            class="md:hidden text-white focus:outline-none"
+                            aria-label={t("nav.navMenu")}
+                        >
+                            <svg
+                                class="w-8 h-8"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M4 6h16M4 12h16m-7 6h7"></path>
+                            </svg>
+                        </button>
+                        <ul
+                            id="navMenu"
+                            class="hidden md:flex flex-col md:flex-row md:items-center w-full md:w-auto absolute md:static top-full left-0 bg-black md:bg-transparent rounded-md shadow-lg md:shadow-none md:space-x-6 p-4 md:p-0 transition-all duration-300 ease-in-out"
+                        >
+                            <li>
+                                <a
+                                    href="#home"
+                                    class="text-white font-montserrat text-base block md:inline m-2 md:m-0 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full"
+                                    data-i18n="nav.home"
+                                    data-i18n-title="nav.homeTitle"
+                                    title={t("nav.homeTitle")}
+                                    >{t("nav.home")}</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="#about-me"
+                                    class="text-white font-montserrat text-base block md:inline m-2 md:m-0 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full"
+                                    data-i18n="nav.aboutme"
+                                    data-i18n-title="nav.aboutmeTitle"
+                                    title={t("nav.aboutmeTitle")}
+                                    >{t("nav.aboutme")}</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="#skills"
+                                    class="text-white font-montserrat text-base block md:inline m-2 md:m-0 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full"
+                                    data-i18n="nav.skills"
+                                    data-i18n-title="nav.skillsTitle"
+                                    title={t("nav.skillsTitle")}
+                                    >{t("nav.skills")}</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="#projects"
+                                    class="text-white font-montserrat text-base block md:inline m-2 md:m-0 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full"
+                                    data-i18n="nav.projects"
+                                    data-i18n-title="nav.projectsTitle"
+                                    title={t("nav.projectsTitle")}
+                                    >{t("nav.projects")}</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="#contact"
+                                    class="text-white font-montserrat text-base block md:inline m-2 md:m-0 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full"
+                                    data-i18n="nav.contact"
+                                    data-i18n-title="nav.contactTitle"
+                                    title={t("nav.contactTitle")}
+                                    >{t("nav.contact")}</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="cv-juancruzleone.pdf"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="relative overflow-hidden group border border-white p-1 rounded inline-block"
+                                    data-i18n-title="nav.buttonCVTitle"
+                                    title={t("nav.buttonCVTitle")}
+                                >
+                                    <span
+                                        class="absolute inset-0 bg-white -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-in-out"
+                                    ></span>
+                                    <span
+                                        class="relative z-10 text-white group-hover:text-black transition-colors duration-300"
+                                        data-i18n="nav.buttonCV"
+                                        >{t("nav.buttonCV")}</span
+                                    >
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="flex">
+                            <button
+                                id="themeSwitch"
+                                class="border border-contenedor rounded mr-4 bg-black hover:bg-white/10 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:-rotate-12 transition-all duration-300"
+                            >
+                                <img
+                                    id="themeIcon"
+                                    data-i18n-alt="nav.themeAlt"
+                                    alt={t("nav.themeAlt")}
+                                    data-i18n-title="nav.themeAlt"
+                                    title={t("nav.themeAlt")}
+                                    width="30"
+                                    height="30"
+                                    class="p-2 pb-2"
+                                />
+                            </button>
+                            <button
+                                id="langSwitch"
+                                class="border border-contenedor rounded bg-black hover:bg-white/10 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:rotate-12 transition-all duration-300"
+                            >
+                                <img
+                                    id="langIcon"
+                                    data-i18n-alt="nav.langAlt"
+                                    alt={t("nav.langAlt")}
+                                    data-i18n-title="nav.langAlt"
+                                    title={t("nav.langAlt")}
+                                    width="30"
+                                    height="30"
+                                    class="p-2 pb-2"
+                                />
+                            </button>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+            <main>
+                <slot />
+            </main>
+        </div>
+
+        <script define:vars={{ initialLang: lang, ui }}>
+            let currentLang = localStorage.getItem("lang") || initialLang;
+            let currentTheme =
+                localStorage.getItem("theme") ||
+                (window.matchMedia("(prefers-color-scheme: dark)").matches
+                    ? "dark"
+                    : "light");
+
+            function switchLanguage() {
+                currentLang = currentLang === "en" ? "es" : "en";
+                localStorage.setItem("lang", currentLang);
+                updateContent();
+            }
+
+            function switchTheme() {
+                const themeIcon = document.getElementById("themeIcon");
+                if (themeIcon) {
+                    themeIcon.classList.remove("spin");
+                    // Force reflow to restart animation
+                    void themeIcon.offsetWidth;
+                    themeIcon.classList.add("spin");
+                    themeIcon.addEventListener(
+                        "animationend",
+                        () => {
+                            themeIcon.classList.remove("spin");
+                        },
+                        { once: true },
+                    );
+                }
+                currentTheme = currentTheme === "light" ? "dark" : "light";
+                localStorage.setItem("theme", currentTheme);
+                updateTheme();
+            }
+
+            function updateContent() {
+                // Actualizar el idioma del documento
+                document.documentElement.lang = currentLang;
+
+                // Traducir elementos con el atributo data-i18n
+                document.querySelectorAll("[data-i18n]").forEach((el) => {
+                    const key = el.getAttribute("data-i18n");
+                    if (key) {
+                        el.textContent =
+                            key
+                                .split(".")
+                                .reduce(
+                                    (obj, k) => obj && obj[k],
+                                    ui[currentLang],
+                                ) || key;
+                    }
+                });
+
+                // Actualizar los atributos title dinámicamente
+                document.querySelectorAll("[data-i18n-title]").forEach((el) => {
+                    const key = el.getAttribute("data-i18n-title");
+                    if (key) {
+                        const translation = key
+                            .split(".")
+                            .reduce((obj, k) => obj && obj[k], ui[currentLang]);
+                        if (translation) {
+                            el.setAttribute("title", translation);
+                        }
+                    }
+                });
+
+                // Actualizar los atributos alt dinámicamente
+                document.querySelectorAll("[data-i18n-alt]").forEach((el) => {
+                    const key = el.getAttribute("data-i18n-alt");
+                    if (key) {
+                        const translation = key
+                            .split(".")
+                            .reduce((obj, k) => obj && obj[k], ui[currentLang]);
+                        if (translation) {
+                            el.setAttribute("alt", translation);
+                        }
+                    }
+                });
+            }
+
+            function updateTheme() {
+                if (currentTheme === "dark") {
+                    document.documentElement.classList.add("dark");
+                    document.documentElement.classList.remove("light");
+                } else {
+                    document.documentElement.classList.remove("dark");
+                    document.documentElement.classList.add("light");
+                }
+            }
+
+            document.addEventListener("DOMContentLoaded", () => {
+                // Traducir la página al cargarla
+                updateContent();
+
+                document
+                    .getElementById("langSwitch")
+                    .addEventListener("click", switchLanguage);
+                document
+                    .getElementById("themeSwitch")
+                    .addEventListener("click", switchTheme);
+
+                document
+                    .getElementById("menuToggle")
+                    .addEventListener("click", () => {
+                        const navMenu = document.getElementById("navMenu");
+                        navMenu.classList.toggle("hidden");
+                    });
             });
-        });
-    </script>
-</body>
+        </script>
+    </body>
 </html>
 
 <style>
-    html, body {
+    html,
+    body {
         margin: 0;
         padding: 0;
         width: 100%;

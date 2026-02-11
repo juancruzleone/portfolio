@@ -1,7 +1,6 @@
 ---
 import MainH3 from "../../../components/MainH3.astro";
 import SvgUrl from "./SvgUrl.astro";
-import SvgGithub from "../../../components/projects/components/SvgGithub.astro";
 import { ui, defaultLang } from "../../../i18n/ui";
 
 const lang = Astro.cookies.get("lang")?.value || defaultLang;
@@ -10,25 +9,25 @@ const lang = Astro.cookies.get("lang")?.value || defaultLang;
 <div class="mt-6 rounded">
     <div class="flex flex-col md:flex-row">
         <img
-            src="/leonixFRONT.PNG"
+            src="/carlos kaplan.PNG"
             alt={lang === "es"
-                ? "Imagen del proyecto Leonix"
-                : "Image of the Leonix project"}
+                ? "Imagen del proyecto Kaplan Abogados"
+                : "Image of the Kaplan Abogados project"}
             title={lang === "es"
-                ? "Imagen del proyecto Leonix"
-                : "Image of the Leonix project"}
+                ? "Imagen del proyecto Kaplan Abogados"
+                : "Image of the Kaplan Abogados project"}
             width="500"
             height="auto"
             class="w-full md:w-[45%] rounded"
-            id="projectLeonixImage"
+            id="projectKaplanImage"
         />
 
         <!-- Contenido del proyecto, ahora debajo de la imagen en mobile -->
         <div class="mt-4 md:mt-0 md:ml-4">
-            <MainH3 title="projects.titleLeonix" />
+            <MainH3 title="projects.titleKaplan" />
             <p
                 class="font-montserrat text-black dark:text-white text-sm mt-2"
-                data-i18n="projects.descriptionLeonix"
+                data-i18n="projects.descriptionKaplan"
             >
             </p>
 
@@ -48,16 +47,7 @@ const lang = Astro.cookies.get("lang")?.value || defaultLang;
                     <p
                         class="text-black dark:text-white font-montserrat text-xs"
                     >
-                        MercadoPago
-                    </p>
-                </div>
-                <div
-                    class="border border-black dark:border-white rounded text-center p-1 w-[100px] mr-2 mb-2"
-                >
-                    <p
-                        class="text-black dark:text-white font-montserrat text-xs"
-                    >
-                        Polar
+                        Sanity CMS
                     </p>
                 </div>
                 <div
@@ -66,59 +56,24 @@ const lang = Astro.cookies.get("lang")?.value || defaultLang;
                     <p
                         class="text-black dark:text-white font-montserrat text-xs"
                     >
-                        NodeJs
-                    </p>
-                </div>
-                <div
-                    class="border border-black dark:border-white rounded text-center p-1 w-[80px] mr-2 mb-2"
-                >
-                    <p
-                        class="text-black dark:text-white font-montserrat text-xs"
-                    >
-                        ExpressJs
-                    </p>
-                </div>
-                <div
-                    class="border border-black dark:border-white rounded text-center p-1 w-[80px] mr-2 mb-2"
-                >
-                    <p
-                        class="text-black dark:text-white font-montserrat text-xs"
-                    >
-                        MongoDB
-                    </p>
-                </div>
-                <div
-                    class="border border-black dark:border-white rounded text-center p-1 w-[80px] mr-2 mb-2"
-                >
-                    <p
-                        class="text-black dark:text-white font-montserrat text-xs"
-                    >
-                        Resend
-                    </p>
-                </div>
-                <div
-                    class="border border-black dark:border-white rounded text-center p-1 w-[80px] mr-2 mb-2"
-                >
-                    <p
-                        class="text-black dark:text-white font-montserrat text-xs"
-                    >
-                        Bcrypt
+                        Tailwind
                     </p>
                 </div>
             </div>
 
             <div class="flex mt-4">
                 <a
-                    href="https://leonix.net.ar/"
+                    href="https://kaplanabogados.com.ar/"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={lang === "es"
-                        ? "Abrir proyecto Leonix"
-                        : "Open Leonix project"}
+                        ? "Abrir proyecto Kaplan Abogados"
+                        : "Open Kaplan Abogados project"}
                     title={lang === "es"
-                        ? "Abrir proyecto Leonix"
-                        : "Open Leonix project"}
+                        ? "Abrir proyecto Kaplan Abogados"
+                        : "Open Kaplan Abogados project"}
                     class="group hover:bg-white hover:border-black dark:hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:-rotate-12 transition-all duration-300 bg-black p-2 rounded cursor-pointer border border-contenedor w-[35px] h-[35px] flex items-center justify-center"
+                    id="kaplanLink"
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -141,18 +96,18 @@ const lang = Astro.cookies.get("lang")?.value || defaultLang;
 <script>
     function updateImageAttributes() {
         const lang = localStorage.getItem("lang") || "es";
-        const projectLeonixImage = document.getElementById(
-            "projectLeonixImage",
+        const projectKaplanImage = document.getElementById(
+            "projectKaplanImage",
         ) as HTMLImageElement;
-        if (projectLeonixImage) {
-            projectLeonixImage.alt =
+        if (projectKaplanImage) {
+            projectKaplanImage.alt =
                 lang === "es"
-                    ? "Imagen del proyecto Leonix"
-                    : "Image of the Leonix project";
-            projectLeonixImage.title =
+                    ? "Imagen del proyecto Kaplan Abogados"
+                    : "Image of the Kaplan Abogados project";
+            projectKaplanImage.title =
                 lang === "es"
-                    ? "Imagen del proyecto Leonix"
-                    : "Image of the Leonix project";
+                    ? "Imagen del proyecto Kaplan Abogados"
+                    : "Image of the Kaplan Abogados project";
         }
     }
 

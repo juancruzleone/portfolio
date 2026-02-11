@@ -39,6 +39,9 @@ export const ui = {
       titleLeonix: "Leonix | Landing Page",
       descriptionLeonix:
         "Leonix company landing page that manages the CMMS panel. Integrated membership system to access the panel via MercadoPago subscriptions, email notifications, and user authentication",
+      titleKaplan: "Kaplan Abogados | Web Redesign",
+      descriptionKaplan:
+        "Web redesign and development from scratch with Astro to achieve the best performance. CMS like Sanity were used to manage the content of their articles.",
       tech: {
         nextjs: "NextJs",
         nodejs: "NodeJs",
@@ -106,6 +109,9 @@ export const ui = {
       titleLeonix: "Leonix | Landing Page",
       descriptionLeonix:
         "Landing page de la empresa Leonix que gestiona el panel GMAO. Integra sistema de membresías para acceder al panel mediante suscripciones de MercadoPago, notificaciones por email y autenticación de usuarios",
+      titleKaplan: "Kaplan Abogados | Rediseño Web",
+      descriptionKaplan:
+        "Rediseño de la web y desarrollo desde cero con Astro para obtener el mejor rendimiento. Se utilizaron CMS como Sanity para gestionar el contenido de sus artículos.",
       tech: {
         nextjs: "NextJs",
         nodejs: "NodeJs",

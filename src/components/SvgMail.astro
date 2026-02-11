@@ -1,31 +1,67 @@
 ---
-import { ui, defaultLang } from '../i18n/ui';
+import { ui, defaultLang } from "../i18n/ui";
 
-const lang = Astro.cookies.get('lang')?.value || defaultLang;
+const lang = Astro.cookies.get("lang")?.value || defaultLang;
 ---
 
-<a href="mailto:juancruzleone@outlook.com" title={lang === 'es' ? "Enviar correo a juancruzleone@outlook.com" : "Send email to juancruzleone@outlook.com"} id="mailLink">
-    <svg viewBox="0 -3.5 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" fill="#ffffff" stroke="#ffffff" class="p-1">
-        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-        <g id="SVGRepo_iconCarrier"> 
-            <title>mail</title> 
-            <defs> </defs> 
-            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage"> 
-                <g id="Icon-Set-Filled" sketch:type="MSLayerGroup" transform="translate(-414.000000, -261.000000)" fill="#ffffff"> 
-                    <path d="M430,275.916 L426.684,273.167 L415.115,285.01 L444.591,285.01 L433.235,273.147 L430,275.916 L430,275.916 Z M434.89,271.89 L445.892,283.329 C445.955,283.107 446,282.877 446,282.634 L446,262.862 L434.89,271.89 L434.89,271.89 Z M414,262.816 L414,282.634 C414,282.877 414.045,283.107 414.108,283.329 L425.147,271.927 L414,262.816 L414,262.816 Z M445,261 L415,261 L430,273.019 L445,261 L445,261 Z" id="mail" sketch:type="MSShapeGroup"> </path> 
-                </g> 
-            </g> 
+<a
+  href="mailto:juancruzleone@outlook.com"
+  title={lang === "es"
+    ? "Enviar correo a juancruzleone@outlook.com"
+    : "Send email to juancruzleone@outlook.com"}
+  id="mailLink"
+>
+  <svg
+    viewBox="0 -3.5 32 32"
+    width="30"
+    height="30"
+    version="1.1"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+    class="p-1 fill-white group-hover:fill-black transition-colors duration-300"
+  >
+    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"
+    ></g>
+    <g id="SVGRepo_iconCarrier">
+      <title>mail</title>
+      <defs> </defs>
+      <g
+        id="Page-1"
+        stroke="none"
+        stroke-width="1"
+        fill-rule="evenodd"
+        sketch:type="MSPage"
+      >
+        <g
+          id="Icon-Set-Filled"
+          sketch:type="MSLayerGroup"
+          transform="translate(-414.000000, -261.000000)"
+        >
+          <path
+            d="M430,275.916 L426.684,273.167 L415.115,285.01 L444.591,285.01 L433.235,273.147 L430,275.916 L430,275.916 Z M434.89,271.89 L445.892,283.329 C445.955,283.107 446,282.877 446,282.634 L446,262.862 L434.89,271.89 L434.89,271.89 Z M414,262.816 L414,282.634 C414,282.877 414.045,283.107 414.108,283.329 L425.147,271.927 L414,262.816 L414,262.816 Z M445,261 L415,261 L430,273.019 L445,261 L445,261 Z"
+            id="mail"
+            sketch:type="MSShapeGroup"
+          >
+          </path>
         </g>
-    </svg>
+      </g>
+    </g>
+  </svg>
 </a>
 
 <script>
   function updateMailTitle() {
-    const lang = localStorage.getItem('lang') || 'es';
-    const mailLink = document.getElementById('mailLink');
+    const lang = localStorage.getItem("lang") || "es";
+    const mailLink = document.getElementById("mailLink");
     if (mailLink) {
-      mailLink.setAttribute('title', lang === 'es' ? "Enviar correo a juancruzleone@outlook.com" : "Send email to juancruzleone@outlook.com");
+      mailLink.setAttribute(
+        "title",
+        lang === "es"
+          ? "Enviar correo a juancruzleone@outlook.com"
+          : "Send email to juancruzleone@outlook.com",
+      );
     }
   }
 
@@ -33,14 +69,14 @@ const lang = Astro.cookies.get('lang')?.value || defaultLang;
   updateMailTitle();
 
   // Observar cambios en localStorage
-  window.addEventListener('storage', (event) => {
-    if (event.key === 'lang') {
+  window.addEventListener("storage", (event) => {
+    if (event.key === "lang") {
       updateMailTitle();
     }
   });
 
   // Manejar cambios de idioma dentro de la misma página
-  document.addEventListener('astro:language-changed', updateMailTitle);
+  document.addEventListener("astro:language-changed", updateMailTitle);
 
   // Agregar un observer para cambios en el DOM en caso de que el cambio de idioma modifique la estructura
   const observer = new MutationObserver(updateMailTitle);

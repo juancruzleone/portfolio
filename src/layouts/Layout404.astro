@@ -1,10 +1,10 @@
 ---
-import { defaultLang } from '../i18n/ui';
+import { defaultLang } from "../i18n/ui";
 
-const lang = Astro.cookies.get('lang')?.value || defaultLang;
+const lang = Astro.cookies.get("lang")?.value || defaultLang;
 
 // Definir la URL canónica
-const canonicalUrl = 'https://www.juancruzleone.dev';
+const canonicalUrl = "https://www.juancruzleone.dev";
 ---
 
 <!doctype html>
@@ -17,7 +17,10 @@ const canonicalUrl = 'https://www.juancruzleone.dev';
 		<title>Juan Cruz Leone | Portfolio de desarrollador frontend</title>
 
 		<!-- Meta Description for SEO -->
-		<meta name="description" content="Juan Cruz Leone, portfolio showcasing web development projects, UI/UX design, and coding skills. Explore my work in front-end, back-end, and full-stack development." />
+		<meta
+			name="description"
+			content="Juan Cruz Leone, portfolio showcasing web development projects, UI/UX design, and coding skills. Explore my work in front-end, back-end, and full-stack development."
+		/>
 
 		<!-- Meta Tags para SEO -->
 		<meta name="author" content="Juan Cruz Leone" />
@@ -31,18 +34,32 @@ const canonicalUrl = 'https://www.juancruzleone.dev';
 
 		<!-- Open Graph Meta Tags para redes sociales -->
 		<meta property="og:title" content="Juan Cruz Leone | Portfolio" />
-		<meta property="og:description" content="Juan Cruz Leone, portfolio showcasing web development projects, UI/UX design, and coding skills. Explore my work in front-end, back-end, and full-stack development." />
+		<meta
+			property="og:description"
+			content="Juan Cruz Leone, portfolio showcasing web development projects, UI/UX design, and coding skills. Explore my work in front-end, back-end, and full-stack development."
+		/>
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content={canonicalUrl} />
-		<meta property="og:image" content="https://www.juancruzleone.dev/logo-3.svg" /> <!-- Agrega una imagen relevante para redes sociales -->
+		<meta
+			property="og:image"
+			content="https://www.juancruzleone.dev/logo-3.svg"
+		/>
+		<!-- Agrega una imagen relevante para redes sociales -->
 		<meta property="og:site_name" content="Juan Cruz Leone | Portfolio" />
 
 		<!-- Twitter Card Meta Tags -->
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content="Juan Cruz Leone | Portfolio" />
-		<meta name="twitter:description" content="Juan Cruz Leone, portfolio showcasing web development projects, UI/UX design, and coding skills. Explore my work in front-end, back-end, and full-stack development." />
+		<meta
+			name="twitter:description"
+			content="Juan Cruz Leone, portfolio showcasing web development projects, UI/UX design, and coding skills. Explore my work in front-end, back-end, and full-stack development."
+		/>
 		<meta name="twitter:url" content={canonicalUrl} />
-		<meta name="twitter:image" content="https://www.juancruzleone.dev/logo-3.svg" /> <!-- Agrega una imagen relevante para Twitter -->
+		<meta
+			name="twitter:image"
+			content="https://www.juancruzleone.dev/logo-3.svg"
+		/>
+		<!-- Agrega una imagen relevante para Twitter -->
 
 		<!-- Estilos iniciales para evitar el parpadeo -->
 		<style>
@@ -52,59 +69,79 @@ const canonicalUrl = 'https://www.juancruzleone.dev';
 			}
 
 			body {
-				background-color: var(--bg-principal-dark); /* Fondo oscuro por defecto */
+				background-color: var(
+					--bg-principal-dark
+				); /* Fondo oscuro por defecto */
 			}
 
 			.light body {
-				background-color: var(--bg-principal-light); /* Fondo claro si el tema es light */
+				background-color: var(
+					--bg-principal-light
+				); /* Fondo claro si el tema es light */
 			}
 		</style>
 
 		<!-- Script para aplicar el tema antes de que el DOM se cargue -->
 		<script is:inline>
-			(function() {
+			(function () {
 				// Obtener el tema guardado en localStorage o usar 'dark' como predeterminado
-				const savedTheme = localStorage.getItem('theme') || 'dark';
+				const savedTheme = localStorage.getItem("theme") || "dark";
 				// Aplicar el tema al elemento <html>
-				if (savedTheme === 'dark') {
-					document.documentElement.classList.add('dark');
+				if (savedTheme === "dark") {
+					document.documentElement.classList.add("dark");
 				} else {
-					document.documentElement.classList.remove('dark');
-					document.documentElement.classList.add('light');
+					document.documentElement.classList.remove("dark");
+					document.documentElement.classList.add("light");
 				}
 			})();
 		</script>
 	</head>
-	<body class="bg-principal-light dark:bg-principal transition-colors duration-300">
+	<body
+		class="bg-principal-light dark:bg-principal transition-colors duration-300"
+	>
 		<div class="max-w-[1000px] mx-auto mt-10 px-4">
 			<header class="sticky top-0 z-50">
-				<nav class="border border-contenedor bg-[#121212] rounded-md p-6 pl-4">
+				<nav
+					class="border border-contenedor bg-[#121212] rounded-md p-6 pl-4"
+				>
 					<div class="flex justify-between items-center">
 						<div class="flex">
-							<div class="border border-contenedor rounded mr-4 bg-black">
+							<div
+								class="border border-contenedor rounded mr-4 bg-black"
+							>
 								<button id="themeSwitch">
-									<img 
-										src="/luna.svg" 
-										alt={lang === 'es' ? "Cambiar tema" : "Change theme"} 
-										title={lang === 'es' ? "Cambiar tema" : "Change theme"} 
-										width="30" 
-										height="30" 
-										class="p-2 pb-1" 
+									<img
+										src="/luna.svg"
+										alt={lang === "es"
+											? "Cambiar tema"
+											: "Change theme"}
+										title={lang === "es"
+											? "Cambiar tema"
+											: "Change theme"}
+										width="30"
+										height="30"
+										class="p-2 pb-1"
 										id="themeIcon"
-									>
+									/>
 								</button>
 							</div>
-							<div class="border border-contenedor rounded bg-black">
+							<div
+								class="border border-contenedor rounded bg-black"
+							>
 								<button id="langSwitch">
-									<img 
-										src="/traductor.svg" 
-										alt={lang === 'es' ? "Cambiar idioma" : "Change language"} 
-										title={lang === 'es' ? "Cambiar idioma" : "Change language"} 
-										width="30" 
-										height="30" 
-										class="p-2 pb-0" 
+									<img
+										src="/traductor.svg"
+										alt={lang === "es"
+											? "Cambiar idioma"
+											: "Change language"}
+										title={lang === "es"
+											? "Cambiar idioma"
+											: "Change language"}
+										width="30"
+										height="30"
+										class="p-2 pb-0"
 										id="langIcon"
-									>
+									/>
 								</button>
 							</div>
 						</div>
@@ -115,104 +152,137 @@ const canonicalUrl = 'https://www.juancruzleone.dev';
 		</div>
 
 		<script>
-			import { ui, defaultLang } from '../i18n/ui';
+			import { ui, defaultLang } from "../i18n/ui";
 
-			let currentLang = localStorage.getItem('lang') || '${lang}';
-			let currentTheme = localStorage.getItem('theme') || 'dark';
+			const cookieLang = document.documentElement.lang || defaultLang;
+			let currentLang = localStorage.getItem("lang") || cookieLang;
+			let currentTheme = localStorage.getItem("theme") || "dark";
 
 			function switchLanguage() {
-				currentLang = currentLang === 'en' ? 'es' : 'en';
-				localStorage.setItem('lang', currentLang);
+				currentLang = currentLang === "en" ? "es" : "en";
+				localStorage.setItem("lang", currentLang);
 				updateContent();
 			}
 
 			function switchTheme() {
-				currentTheme = currentTheme === 'light' ? 'dark' : 'light';
-				localStorage.setItem('theme', currentTheme);
+				currentTheme = currentTheme === "light" ? "dark" : "light";
+				localStorage.setItem("theme", currentTheme);
 				updateTheme();
 			}
 
 			function updateContent() {
-				document.querySelectorAll('[data-i18n]').forEach(el => {
-					const key = el.getAttribute('data-i18n');
+				document.querySelectorAll("[data-i18n]").forEach((el) => {
+					const key = el.getAttribute("data-i18n");
 					if (key) {
-						el.textContent = key.split('.').reduce((obj, k) => obj && obj[k], ui[currentLang]) || key;
+						el.textContent =
+							key
+								.split(".")
+								.reduce(
+									(obj, k) => obj && obj[k],
+									ui[currentLang],
+								) || key;
 					}
 				});
-				document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-					const key = el.getAttribute('data-i18n-placeholder');
-					if (key) {
-						el.setAttribute('placeholder', key.split('.').reduce((obj, k) => obj && obj[k], ui[currentLang]) || key);
-					}
-				});
+				document
+					.querySelectorAll("[data-i18n-placeholder]")
+					.forEach((el) => {
+						const key = el.getAttribute("data-i18n-placeholder");
+						if (key) {
+							el.setAttribute(
+								"placeholder",
+								key
+									.split(".")
+									.reduce(
+										(obj, k) => obj && obj[k],
+										ui[currentLang],
+									) || key,
+							);
+						}
+					});
 				document.documentElement.lang = currentLang;
 				updateAltTexts();
 				updateTitles();
-				
+
 				// Dispatch a custom event to notify components of language change
-				window.dispatchEvent(new CustomEvent('languagechange', { detail: { lang: currentLang } }));
+				window.dispatchEvent(
+					new CustomEvent("languagechange", {
+						detail: { lang: currentLang },
+					}),
+				);
 			}
 
 			function updateTheme() {
-				if (currentTheme === 'dark') {
-					document.documentElement.classList.add('dark');
-					document.documentElement.classList.remove('light');
-					document.getElementById('themeIcon').src = '/luna.svg';
+				if (currentTheme === "dark") {
+					document.documentElement.classList.add("dark");
+					document.documentElement.classList.remove("light");
+					document.getElementById("themeIcon").src = "/luna.svg";
 				} else {
-					document.documentElement.classList.remove('dark');
-					document.documentElement.classList.add('light');
-					document.getElementById('themeIcon').src = '/sol.svg';
+					document.documentElement.classList.remove("dark");
+					document.documentElement.classList.add("light");
+					document.getElementById("themeIcon").src = "/sol.svg";
 				}
 			}
 
 			function updateAltTexts() {
-				const themeIcon = document.getElementById('themeIcon');
-				const langIcon = document.getElementById('langIcon');
-				
+				const themeIcon = document.getElementById("themeIcon");
+				const langIcon = document.getElementById("langIcon");
+
 				if (themeIcon) {
-					themeIcon.alt = currentLang === 'es' ? "Cambiar tema" : "Change theme";
+					themeIcon.alt =
+						currentLang === "es" ? "Cambiar tema" : "Change theme";
 				}
 				if (langIcon) {
-					langIcon.alt = currentLang === 'es' ? "Cambiar idioma" : "Change language";
+					langIcon.alt =
+						currentLang === "es"
+							? "Cambiar idioma"
+							: "Change language";
 				}
 			}
 
 			function updateTitles() {
-				const themeIcon = document.getElementById('themeIcon');
-				const langIcon = document.getElementById('langIcon');
-				
+				const themeIcon = document.getElementById("themeIcon");
+				const langIcon = document.getElementById("langIcon");
+
 				if (themeIcon) {
-					themeIcon.title = currentLang === 'es' ? "Cambiar tema" : "Change theme";
+					themeIcon.title =
+						currentLang === "es" ? "Cambiar tema" : "Change theme";
 				}
 				if (langIcon) {
-					langIcon.title = currentLang === 'es' ? "Cambiar idioma" : "Change language";
+					langIcon.title =
+						currentLang === "es"
+							? "Cambiar idioma"
+							: "Change language";
 				}
 			}
 
-			document.getElementById('langSwitch').addEventListener('click', switchLanguage);
-			document.getElementById('themeSwitch').addEventListener('click', switchTheme);
+			document
+				.getElementById("langSwitch")
+				.addEventListener("click", switchLanguage);
+			document
+				.getElementById("themeSwitch")
+				.addEventListener("click", switchTheme);
 
 			// Initial content and theme update
-			document.addEventListener('DOMContentLoaded', () => {
-				localStorage.setItem('lang', currentLang);
-				localStorage.setItem('theme', currentTheme);
+			document.addEventListener("DOMContentLoaded", () => {
+				localStorage.setItem("lang", currentLang);
+				localStorage.setItem("theme", currentTheme);
 				updateContent();
 				updateTheme();
 			});
 
 			// Observar cambios en localStorage
-			window.addEventListener('storage', (event) => {
-				if (event.key === 'lang') {
+			window.addEventListener("storage", (event) => {
+				if (event.key === "lang") {
 					currentLang = event.newValue;
 					updateContent();
-				} else if (event.key === 'theme') {
+				} else if (event.key === "theme") {
 					currentTheme = event.newValue;
 					updateTheme();
 				}
 			});
 
 			// Manejar cambios de idioma dentro de la misma página
-			document.addEventListener('astro:language-changed', updateContent);
+			document.addEventListener("astro:language-changed", updateContent);
 
 			// Agregar un observer para cambios en el DOM en caso de que el cambio de idioma modifique la estructura
 			const observer = new MutationObserver(updateContent);
