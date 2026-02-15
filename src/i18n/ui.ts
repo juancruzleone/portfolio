@@ -75,6 +75,20 @@ export const ui = {
       error: "Page not found",
       buttonHome: "Go to home",
     },
+    consent: {
+      title: "Cookie Consent",
+      description: "We use cookies to analyze site traffic and optimize your experience. By accepting, you consent to the use of analytical cookies.",
+      accept: "Accept all",
+      reject: "Reject all",
+      manage: "Manage preferences",
+      settingsTitle: "Cookie Settings",
+      necessary: "Necessary cookies",
+      necessaryDesc: "Essential for the website to function. They cannot be disabled.",
+      analytics: "Analytics cookies",
+      analyticsDesc: "Help us understand how visitors interact with the site.",
+      save: "Save preferences",
+      alwaysActive: "Always active",
+    },
   },
   es: {
     home: {
@@ -144,6 +158,20 @@ export const ui = {
     404: {
       error: "Página no encontrada",
       buttonHome: "Ir al inicio",
+    },
+    consent: {
+      title: "Consentimiento de cookies",
+      description: "Utilizamos cookies para analizar el tráfico del sitio y optimizar tu experiencia. Al aceptar, consientes el uso de cookies analíticas.",
+      accept: "Aceptar todas",
+      reject: "Rechazar todas",
+      manage: "Gestionar preferencias",
+      settingsTitle: "Configuración de cookies",
+      necessary: "Cookies necesarias",
+      necessaryDesc: "Esenciales para el funcionamiento del sitio web. No se pueden desactivar.",
+      analytics: "Cookies analíticas",
+      analyticsDesc: "Nos ayudan a entender cómo los visitantes interactúan con el sitio.",
+      save: "Guardar preferencias",
+      alwaysActive: "Siempre activas",
     },
   },
 } as const;
