@@ -110,6 +110,12 @@ const TEMPLATE_ID = import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID;
 
             let isSubmitting = false;
 
+            const getRecipientEmail = () => {
+                const user = ["juan", "cruz", "leone", "10"].join("");
+                const domain = ["g", "mail"].join("");
+                return `${user}@${domain}.com`;
+            };
+
             submitButton.addEventListener("click", async () => {
                 if (isSubmitting) return;
 
@@ -144,7 +150,7 @@ const TEMPLATE_ID = import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID;
                             to_name: "Juan Cruz",
                             message: messageInput.value,
                             email: emailInput.value,
-                            to_email: "juancruzleone10@gmail.com",
+                            to_email: getRecipientEmail(),
                         },
                     );
 

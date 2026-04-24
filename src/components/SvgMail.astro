@@ -5,11 +5,12 @@ const lang = Astro.cookies.get("lang")?.value || defaultLang;
 ---
 
 <a
-  href="mailto:juancruzleone@outlook.com"
+  href="#"
   title={lang === "es"
-    ? "Enviar correo a juancruzleone@outlook.com"
-    : "Send email to juancruzleone@outlook.com"}
+    ? "Enviar correo"
+    : "Send email"}
   id="mailLink"
+  rel="nofollow"
 >
   <svg
     viewBox="0 -3.5 32 32"
@@ -52,6 +53,16 @@ const lang = Astro.cookies.get("lang")?.value || defaultLang;
 </a>
 
 <script>
+  const mailParts = {
+    user: ["juan", "cruz", "leone"],
+    domain: ["out", "look"],
+    tld: "com",
+  };
+
+  function getContactAddress() {
+    return `${mailParts.user.join("")}@${mailParts.domain.join("")}.${mailParts.tld}`;
+  }
+
   function updateMailTitle() {
     const lang = localStorage.getItem("lang") || "es";
     const mailLink = document.getElementById("mailLink");
@@ -59,14 +70,25 @@ const lang = Astro.cookies.get("lang")?.value || defaultLang;
       mailLink.setAttribute(
         "title",
         lang === "es"
-          ? "Enviar correo a juancruzleone@outlook.com"
-          : "Send email to juancruzleone@outlook.com",
+          ? "Enviar correo"
+          : "Send email",
       );
     }
   }
 
+  function prepareMailLink() {
+    const mailLink = document.getElementById("mailLink");
+    if (!mailLink) return;
+
+    mailLink.addEventListener("click", (event) => {
+      event.preventDefault();
+      window.location.href = `mailto:${getContactAddress()}`;
+    });
+  }
+
   // Ejecutar la función al cargar la página
   updateMailTitle();
+  prepareMailLink();
 
   // Observar cambios en localStorage
   window.addEventListener("storage", (event) => {
