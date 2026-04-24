@@ -278,7 +278,7 @@ const canonicalUrl = "https://www.juancruzleone.dev";
                         <div class="flex">
                             <button
                                 id="themeSwitch"
-                                class="border border-contenedor rounded mr-4 bg-black hover:bg-white/10 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:-rotate-12 transition-all duration-300"
+                                class="group border border-contenedor rounded mr-4 bg-black hover:bg-white hover:border-black dark:hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:-rotate-12 transition-all duration-300"
                             >
                                 <img
                                     id="themeIcon"
@@ -288,12 +288,12 @@ const canonicalUrl = "https://www.juancruzleone.dev";
                                     title={t("nav.themeAlt")}
                                     width="30"
                                     height="30"
-                                    class="p-2 pb-2"
+                                    class="p-2 pb-2 transition-all duration-300 group-hover:invert"
                                 />
                             </button>
                             <button
                                 id="langSwitch"
-                                class="border border-contenedor rounded bg-black hover:bg-white/10 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:rotate-12 transition-all duration-300"
+                                class="group border border-contenedor rounded bg-black hover:bg-white hover:border-black dark:hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:rotate-12 transition-all duration-300"
                             >
                                 <img
                                     id="langIcon"
@@ -303,7 +303,7 @@ const canonicalUrl = "https://www.juancruzleone.dev";
                                     title={t("nav.langAlt")}
                                     width="30"
                                     height="30"
-                                    class="p-2 pb-2"
+                                    class="p-2 pb-2 transition-all duration-300 group-hover:invert"
                                 />
                             </button>
                         </div>
