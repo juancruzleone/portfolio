@@ -1,16 +1,18 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
 import cloudflare from '@astrojs/cloudflare';
+import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind()],
+  vite: {
+    plugins: [tailwindcss()],
+  },
   output: "static",
   adapter: cloudflare(),
   image: {
     service: {
-      entrypoint: "astro/assets/services/squoosh"
+      entrypoint: "astro/assets/services/sharp"
     }
   }
 });
