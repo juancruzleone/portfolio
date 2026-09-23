@@ -9,6 +9,6 @@ export function getLangFromUrl(url: URL) {
 
 export function useTranslations(lang: keyof typeof ui) {
   return function t(key: string) {
-    return key.split(".").reduce((obj, k) => obj?.[k as keyof typeof obj], ui[lang]) || key;
+    return key.split(".").reduce((obj: any, k: string) => obj?.[k], ui[lang] as any) || key;
   }
 }

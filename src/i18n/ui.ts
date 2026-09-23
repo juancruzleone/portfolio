@@ -42,6 +42,15 @@ export const ui = {
       titleKaplan: "Kaplan Abogados | Web Redesign",
       descriptionKaplan:
         "Web redesign and development from scratch with Astro to achieve the best performance. CMS like Sanity were used to manage the content of their articles.",
+      titleCustomIT: "CustomIT | Soluciones IT a medida",
+      descriptionCustomIT:
+        "Corporate website for CustomIT built with PHP, Laravel and Blade templating. Tailored IT solutions for companies, with clear service communication, lead generation and performance optimization. Responsive design, SEO best practices and clean, maintainable architecture",
+      titleWeMove: "We Move The Future | Institutional Platform",
+      descriptionWeMove:
+        "Institutional website for We Move The Future built with WordPress and Elementor. A social impact initiative connecting youth employability programs across Latin America, with vibrant visual identity, strategic lines of action, and a collaborative network of members and partners",
+      titleMzmarq: "MZMARQ | Arquitectos",
+      descriptionMzmarq:
+        "Website update for MZMARQ architecture studio crafted with semantic HTML and CSS. Modernized editorial layout to showcase residential, educational and urban projects, with improved navigation, image optimization and responsive performance while preserving the studio's minimalist identity",
       tech: {
         nextjs: "NextJs",
         nodejs: "NodeJs",
@@ -126,6 +135,15 @@ export const ui = {
       titleKaplan: "Kaplan Abogados | Rediseño Web",
       descriptionKaplan:
         "Rediseño de la web y desarrollo desde cero con Astro para obtener el mejor rendimiento. Se utilizaron CMS como Sanity para gestionar el contenido de sus artículos.",
+      titleCustomIT: "CustomIT | Soluciones IT a medida",
+      descriptionCustomIT:
+        "Sitio web corporativo para CustomIT desarrollado con PHP, Laravel y Blade. Soluciones IT a medida para empresas, con comunicación clara de servicios, generación de leads y optimización de rendimiento. Diseño responsive, buenas prácticas de SEO y arquitectura limpia y mantenible",
+      titleWeMove: "We Move The Future | Plataforma institucional",
+      descriptionWeMove:
+        "Sitio web institucional para We Move The Future desarrollado con WordPress y Elementor. Iniciativa de impacto social que conecta programas de empleabilidad joven en Latinoamérica, con identidad visual vibrante, líneas de acción estratégicas y una red colaborativa de miembros y aliados",
+      titleMzmarq: "MZMARQ | Arquitectos",
+      descriptionMzmarq:
+        "Actualización del sitio web del estudio MZMARQ realizada con HTML y CSS semántico. Layout editorial minimalista para exhibir proyectos residenciales, educacionales y urbanos, con navegación mejorada, optimización de imágenes y rendimiento responsive manteniendo la identidad minimalista del estudio",
       tech: {
         nextjs: "NextJs",
         nodejs: "NodeJs",

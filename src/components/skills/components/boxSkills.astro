@@ -1,7 +1,6 @@
 ---
 import { ui, defaultLang } from '../../../i18n/ui';
 
-// Obtener el idioma actual desde las cookies o usar el idioma predeterminado
 const lang = Astro.cookies.get('lang')?.value || defaultLang;
 
 const skills = [
@@ -20,6 +19,8 @@ const skills = [
   { name: "PHP", light: "/Php_light.svg", dark: "/Php_dark.svg" },
   { name: "MySQL", light: "/mysqlLight.svg", dark: "/mysql.svg" },
   { name: "Laravel", light: "/laravelLight.svg", dark: "/laravel.svg" },
+  { name: "WordPress", light: "/wordpress.svg", dark: "/wordpress-white.svg" },
+  { name: "Elementor", light: "/elementor.svg", dark: "/elementor-white.svg" },
   { name: "Firebase", light: "/firebaseLight.svg", dark: "/firebase.svg" },
   { name: "Git", light: "/GitDark.svg", dark: "/git.svg" },
   { name: "Github", light: "/Github_light.svg", dark: "/Github_dark.svg" },
@@ -69,17 +70,11 @@ const skills = [
         : `${skillName} logo in ${img.classList.contains('dark:hidden') ? 'light' : 'dark'} mode`;
     });
   }
-
-  // Ejecutar la función al cargar la página
   updateSkillsAlt();
-
-  // Escuchar cambios en el idioma en localStorage sin recargar la página
   window.addEventListener('storage', (event) => {
     if (event.key === 'lang') {
       updateSkillsAlt();
     }
   });
-
-  // Detectar cambios en el idioma manualmente dentro de la página
   document.addEventListener('astro:language-changed', updateSkillsAlt);
 </script>

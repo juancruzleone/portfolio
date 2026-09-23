@@ -4,14 +4,37 @@ import ProjectInelar from "../components/projects/components/ProjectInelar.astro
 import ProjectCMMSPanel from "../components/projects/components/ProjectCMMSPanel.astro";
 import ProjectLeonix from "../components/projects/components/ProjectLeonix.astro";
 import ProjectKaplan from "../components/projects/components/ProjectKaplan.astro";
+import ProjectCustomIT from "../components/projects/components/ProjectCustomIT.astro";
+import ProjectWeMove from "../components/projects/components/ProjectWeMove.astro";
+import ProjectMzmarq from "../components/projects/components/ProjectMzmarq.astro";
 ---
 
-<section class="pl-6 mt-[60px]" id="projects">
-    <MainH2 title="projects.title" />
-    <div>
-        <ProjectKaplan />
-        <ProjectCMMSPanel />
-        <ProjectLeonix />
-        <ProjectInelar />
+<section class="px-6 mt-20 max-w-6xl mx-auto" id="projects">
+    <div class="mb-10">
+        <MainH2 title="projects.title" />
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-14">
+        <div class="group">
+            <ProjectMzmarq />
+        </div>
+        <div class="group">
+            <ProjectCustomIT />
+        </div>
+        <div class="group">
+            <ProjectWeMove />
+        </div>
+        <div class="group">
+            <ProjectKaplan />
+        </div>
+        <div class="group">
+            <ProjectLeonix />
+        </div>
+        <div class="group">
+            <ProjectCMMSPanel />
+        </div>
+        <div class="group">
+            <ProjectInelar />
+        </div>
     </div>
 </section>

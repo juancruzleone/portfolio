@@ -8,24 +8,24 @@ const lang = Astro.cookies.get("lang")?.value || defaultLang;
 <div class="flex flex-col">
     <div class="overflow-hidden rounded-xl border border-black/[0.06] dark:border-white/[0.08]">
         <img
-            src="/leonix.avif"
-            alt={lang === "es" ? "Imagen del proyecto Leonix" : "Image of the Leonix project"}
-            title={lang === "es" ? "Imagen del proyecto Leonix" : "Image of the Leonix project"}
+            src="/customit.avif"
+            alt={lang === "es" ? "Imagen del proyecto CustomIT" : "Image of the CustomIT project"}
+            title={lang === "es" ? "Imagen del proyecto CustomIT" : "Image of the CustomIT project"}
             width="500"
             height="auto"
             class="w-full aspect-[16/10] object-cover transition-all duration-500 group-hover:scale-[1.02] group-hover:opacity-[0.96]"
-            id="projectLeonixImage"
+            id="projectCustomITImage"
         />
     </div>
     <div class="pt-4 flex flex-col">
-        <MainH3 title="projects.titleLeonix" />
-        <p class="font-montserrat text-zinc-600 dark:text-zinc-400 text-sm mt-2 leading-relaxed line-clamp-3" data-i18n="projects.descriptionLeonix"></p>
+        <MainH3 title="projects.titleCustomIT" />
+        <p class="font-montserrat text-zinc-600 dark:text-zinc-400 text-sm mt-2 leading-relaxed line-clamp-3" data-i18n="projects.descriptionCustomIT"></p>
         <div class="flex flex-wrap items-center gap-x-2 mt-3 text-[11px] tracking-widest uppercase text-zinc-400 dark:text-zinc-500 font-montserrat">
-            <span>Astro</span><span class="opacity-30">·</span><span>MercadoPago</span><span class="opacity-30">·</span><span>NodeJs</span>
+            <span>PHP</span><span class="opacity-30">·</span><span>Laravel</span><span class="opacity-30">·</span><span>Blade</span>
         </div>
-        <a href="https://leonix.net.ar/" target="_blank" rel="noopener noreferrer"
-            aria-label={lang === "es" ? "Abrir proyecto Leonix" : "Open Leonix project"}
-            title={lang === "es" ? "Abrir proyecto Leonix" : "Open Leonix project"}
+        <a href="https://custom-it.com.ar/" target="_blank" rel="noopener noreferrer"
+            aria-label={lang === "es" ? "Abrir proyecto CustomIT" : "Open CustomIT project"}
+            title={lang === "es" ? "Abrir proyecto CustomIT" : "Open CustomIT project"}
             class="inline-flex items-center gap-1 mt-4 text-sm font-montserrat text-zinc-900 dark:text-zinc-100 underline underline-offset-4 decoration-zinc-300 dark:decoration-zinc-600 hover:decoration-zinc-900 dark:hover:decoration-white transition-colors">
             Ver proyecto <span aria-hidden="true">→</span>
         </a>
@@ -34,10 +34,10 @@ const lang = Astro.cookies.get("lang")?.value || defaultLang;
 <script>
     function updateImageAttributes() {
         const lang = localStorage.getItem("lang") || "es";
-        const el = document.getElementById("projectLeonixImage") as HTMLImageElement;
+        const el = document.getElementById("projectCustomITImage") as HTMLImageElement;
         if (el) {
-            el.alt = lang === "es" ? "Imagen del proyecto Leonix" : "Image of the Leonix project";
-            el.title = lang === "es" ? "Imagen del proyecto Leonix" : "Image of the Leonix project";
+            el.alt = lang === "es" ? "Imagen del proyecto CustomIT" : "Image of the CustomIT project";
+            el.title = lang === "es" ? "Imagen del proyecto CustomIT" : "Image of the CustomIT project";
         }
     }
     updateImageAttributes();
